@@ -3,7 +3,6 @@
   "version": "4.0.0",
   "description": "a theme for hexo",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack",
     "dist": "webpack -p"
   },
@@ -30,7 +29,7 @@
     "dom101": "^1.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.24.1",
-    "node-sass": "^3.9.3",
+    "node-sass": "^4.13.1",
     "postcss-loader": "^1.0.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
@@ -45,7 +44,6 @@
     "babel-preset-es2015": "6.24.0",
     "babel-preset-react": "6.23.0",
     "babel-preset-stage-2": "6.22.0",
-    "badjs-report": "^1.2.2",
     "es6-promise": "^4.0.5",
     "fetch": "^1.1.0",
     "fetch-ie8": "^1.4.3",
