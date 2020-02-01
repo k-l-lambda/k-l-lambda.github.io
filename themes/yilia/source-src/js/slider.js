@@ -135,7 +135,7 @@ function init() {
 		handleSearch(val)
     })
 
-	window.fetch(window.yiliaConfig.root + 'content.json?t=' + (+ new Date()), {
+	/*window.fetch(window.yiliaConfig.root + 'content.json?t=' + (+ new Date()), {
 		method: 'get',
 	}).then((res) => {
 		return res.json()
@@ -150,7 +150,7 @@ function init() {
 		searchWording !== '' && handleSearch(searchWording)
 	}).catch((err) => {
 		app.$set('jsonFail', true)
-	});
+	});*/
 
 	// 隐藏
 	document.querySelector('#container').onclick = (e) => {
