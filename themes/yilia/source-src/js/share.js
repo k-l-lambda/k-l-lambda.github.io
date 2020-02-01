@@ -15,7 +15,7 @@ function showWX() {
     let $mask = document.querySelector('.mask')
     addClass($wx, 'in')
     addClass($wx, 'ready')
-    addClass($mask, 'in')
+	addClass($mask, 'in')
 }
 
 function hideWX() {
