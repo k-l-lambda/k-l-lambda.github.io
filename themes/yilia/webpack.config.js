@@ -92,6 +92,6 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new CleanPlugin('builds')
+    new CleanPlugin(['source']),
   ])
 }
