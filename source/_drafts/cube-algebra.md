@@ -3,6 +3,8 @@ title: Perpendicular Algebra in 3D Space
 tags:
 ---
 
+## Motivation
+
 ## Quaternion space half reduction
 
 We define a space half reduction sign function **sgn<sub>h</sub>**:
@@ -34,6 +36,8 @@ $$abs_{h}(q) = abs_{h}(p),$$
 
 which means *q = p* or *q = -p*. Like plain equal, this *half-reduction equal* also has transitivity.
 
+## Calculus
+
 Now we have these obvious facts:
 
 $$i^{2} \cong j^{2} \cong k^{2} \cong 1$$
@@ -46,7 +50,7 @@ j \cong j^{-1} \\\\
 k \cong k^{-1}
 $$
 
-means &pm;180&deg; rotation arrives the same orientation.
+means &pm;180&deg; rotation arrives the same orientation (along a same axis).
 
 $$
 i^{\frac{3}{2}} \cong i^{-\frac{1}{2}} \\\\
@@ -54,22 +58,49 @@ j^{\frac{3}{2}} \cong j^{-\frac{1}{2}} \\\\
 k^{\frac{3}{2}} \cong k^{-\frac{1}{2}}
 $$
 
-means 270&deg; rotation equal -90&deg; rotation.
+means 270&deg; rotation equal -90&deg; rotation (along a same axis).
 
 Not very obvious, but we can get by computaion:
 
 $$
-i^{+\frac{1}{2}}j^{+\frac{1}{2}} = j^{+\frac{1}{2}}k^{+\frac{1}{2}} = k^{+\frac{1}{2}}i^{+\frac{1}{2}} \\\\
-i^{+\frac{1}{2}}j^{-\frac{1}{2}} = j^{-\frac{1}{2}}k^{-\frac{1}{2}} = k^{-\frac{1}{2}}i^{+\frac{1}{2}} \\\\
-i^{-\frac{1}{2}}j^{+\frac{1}{2}} = j^{+\frac{1}{2}}k^{-\frac{1}{2}} = k^{-\frac{1}{2}}i^{+\frac{1}{2}} \\\\
-i^{-\frac{1}{2}}j^{-\frac{1}{2}} = j^{-\frac{1}{2}}k^{+\frac{1}{2}} = k^{+\frac{1}{2}}i^{-\frac{1}{2}} \\\\
+\sqrt{i}\sqrt{j} = \sqrt{j}\sqrt{k} = \sqrt{k}\sqrt{i} \\\\
+\sqrt{i}\sqrt[-]{j} = \sqrt[-]{j}\sqrt[-]{k} = \sqrt[-]{k}\sqrt{i} \\\\
+\sqrt[-]{i}\sqrt{j} = \sqrt{j}\sqrt[-]{k} = \sqrt[-]{k}\sqrt[-]{i} \\\\
+\sqrt[-]{i}\sqrt[-]{j} = \sqrt[-]{j}\sqrt{k} = \sqrt[-]{i}\sqrt{k}
 $$
 
 $$
-j^{+\frac{1}{2}}i^{+\frac{1}{2}} = k^{-\frac{1}{2}}j^{+\frac{1}{2}} = i^{+\frac{1}{2}}k^{-\frac{1}{2}} \\\\
-j^{-\frac{1}{2}}i^{+\frac{1}{2}} = k^{+\frac{1}{2}}j^{-\frac{1}{2}} = i^{+\frac{1}{2}}k^{+\frac{1}{2}} \\\\
-j^{+\frac{1}{2}}i^{-\frac{1}{2}} = k^{+\frac{1}{2}}j^{+\frac{1}{2}} = i^{-\frac{1}{2}}k^{+\frac{1}{2}} \\\\
-j^{-\frac{1}{2}}i^{-\frac{1}{2}} = k^{-\frac{1}{2}}j^{-\frac{1}{2}} = i^{-\frac{1}{2}}k^{-\frac{1}{2}}
+\sqrt{j}\sqrt{i} = \sqrt[-]{k}\sqrt{j} = \sqrt{i}\sqrt[-]{k} \\\\
+\sqrt[-]{j}\sqrt{i} = \sqrt{k}\sqrt[-]{j} = \sqrt{i}\sqrt{k} \\\\
+\sqrt{j}\sqrt[-]{i} = \sqrt{k}\sqrt{j} = \sqrt[-]{i}\sqrt{k} \\\\
+\sqrt[-]{j}\sqrt[-]{i} = \sqrt[-]{k}\sqrt[-]{j} = \sqrt[-]{i}\sqrt[-]{k}
 $$
 
-These 8 lines don't equal each other. In fact they are values of all the permutations among *0.5&pm;0.5i&pm;0.5j&pm;0.5k*.
+Which $\sqrt[-]{x}$ stand for $x^{-\frac{1}{2}}$.
+
+These 8 lines don't equal each other (notice that quaternion multiplication is not exchangable, so $\sqrt{i}\sqrt{j} \neq \sqrt{j}\sqrt{i}$). In fact they are values of all the permutations among *0.5&pm;0.5i&pm;0.5j&pm;0.5k*.
+
+And these:
+
+$$
+\sqrt{i}j = \sqrt[-]{i}k = j\sqrt[-]{i} = k\sqrt[]{i} \\\\
+\sqrt[-]{i}j = \sqrt[]{i}k = j\sqrt[]{i} = k\sqrt[-]{i} \\\\
+\sqrt{j}k = \sqrt[-]{j}i = k\sqrt[-]{j} = i\sqrt[]{j} \\\\
+\sqrt[-]{j}k = \sqrt[]{j}i = k\sqrt[]{j} = i\sqrt[-]{j} \\\\
+\sqrt{k}i = \sqrt[-]{k}j = i\sqrt[-]{k} = j\sqrt[]{k} \\\\
+\sqrt[-]{k}i = \sqrt[]{k}j = i\sqrt[]{k} = j\sqrt[-]{k}
+$$
+
+These 6 lines, plus basic $&pm;\sqrt{i}$, $&pm;\sqrt{j}$, $&pm;\sqrt{k}$, these 12 items are values of all position permutations of $(\frac{\sqrt{2}}{2}, &pm;\frac{\sqrt{2}}{2}, 0, 0)$ product $(1, i, j, k)^{T}$, which $\frac{\sqrt{2}}{2}$ should be prior than $&pm;\frac{\sqrt{2}}{2}$ to satisfy space half-reduction. Because these items' order is $\frac{1}{2}$ or $\frac{3}{2}$, we call them *odds* items, correspondingly, items with order 0 or 1, called *even* items.
+
+## Elements and group
+
+Enumerated all possible combinations, we have all 24 individual elements. In i,j,k coefficients, they can be listed as:
+
+|   |   |   |
+|---|---|---|
+|1, 0, 0, 0| 4 items | *even* |
+|$\frac{\sqrt{2}}{2}$, $&pm;\frac{\sqrt{2}}{2}$, 0, 0| 12 items | *odds* |
+|0.5, &pm;0.5, &pm;0.5, &pm;0.5| 8 items | *even* |
+
+Which 0s' position in tuples are arbitrary.
