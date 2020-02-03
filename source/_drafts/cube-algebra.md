@@ -3,6 +3,10 @@ title: Perpendicular Algebra in 3D Space
 tags:
 ---
 
+<div class="fixed-ratio" style="width: 100%; padding-top: 100%">
+	<iframe src="/klstudio/embed.html#/documents/mesh-viewer-demo:quarter-array-4x6"></iframe>
+</div>
+
 ## Motivation
 
 ## Quaternion space half reduction
@@ -104,3 +108,7 @@ Enumerated all possible combinations, we have all 24 individual elements of grou
 |0.5, &pm;0.5, &pm;0.5, &pm;0.5| 8 items | *even* |
 
 Which 0s' position in tuples are arbitrary.
+
+<div class="fixed-ratio" style="width: 100%; padding-top: 67%">
+	<iframe src="/klstudio/embed.html#/documents/mesh-viewer-demo:quarter-categories"></iframe>
+</div>
