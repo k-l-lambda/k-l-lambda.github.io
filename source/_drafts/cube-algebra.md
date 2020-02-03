@@ -34,7 +34,7 @@ to stand for:
 
 $$abs_{h}(q) = abs_{h}(p),$$
 
-which means *q = p* or *q = -p*. Like plain equal, this *half-reduction equal* also has transitivity.
+which means *q = p* or *q = -p*, i.e. they represent the same 3D orientation. Like plain equal, this *half-reduction equal* also has transitivity.
 
 ## Calculus
 
@@ -50,7 +50,7 @@ j \cong j^{-1} \\\\
 k \cong k^{-1}
 $$
 
-means &pm;180&deg; rotation arrives the same orientation (along a same axis).
+means &pm;180&deg; rotation (along a same axis) arrives the same orientation.
 
 $$
 i^{\frac{3}{2}} \cong i^{-\frac{1}{2}} \\\\
@@ -78,7 +78,7 @@ $$
 
 Which $\sqrt[-]{x}$ stand for $x^{-\frac{1}{2}}$.
 
-These 8 lines don't equal each other (notice that quaternion multiplication is not exchangable, so $\sqrt{i}\sqrt{j} \neq \sqrt{j}\sqrt{i}$). In fact they are values of all the permutations among *0.5&pm;0.5i&pm;0.5j&pm;0.5k*.
+These 8 lines don't equal each other (notice that quaternion multiplication is not exchangable, so $\sqrt{i}\sqrt{j} \neq \sqrt{j}\sqrt{i}$). In fact, in additonal form, they are values of all the permutations among *0.5&pm;0.5i&pm;0.5j&pm;0.5k*.
 
 And these:
 
@@ -91,11 +91,11 @@ $$
 \sqrt[-]{k}i = \sqrt[]{k}j = i\sqrt[]{k} = j\sqrt[-]{k}
 $$
 
-These 6 lines, plus basic $&pm;\sqrt{i}$, $&pm;\sqrt{j}$, $&pm;\sqrt{k}$, these 12 items are values of all position permutations of $(\frac{\sqrt{2}}{2}, &pm;\frac{\sqrt{2}}{2}, 0, 0)$ product $(1, i, j, k)^{T}$, which $\frac{\sqrt{2}}{2}$ should be prior than $&pm;\frac{\sqrt{2}}{2}$ to satisfy space half-reduction. Because these items' order is $\frac{1}{2}$ or $\frac{3}{2}$, we call them *odds* items, correspondingly, items with order 0 or 1, called *even* items.
+These 6 lines, plus basic $&pm;\sqrt{i}$, $&pm;\sqrt{j}$, $&pm;\sqrt{k}$, these 12 items are values of all position permutations of $(\frac{\sqrt{2}}{2}, &pm;\frac{\sqrt{2}}{2}, 0, 0)$ multipy by $(1, i, j, k)^{T}$, which $\frac{\sqrt{2}}{2}$ should be prior than $&pm;\frac{\sqrt{2}}{2}$ to satisfy space half-reduction. Because these items' order number is $\frac{1}{2}$ or $\frac{3}{2}$, we call them *odds* items, correspondingly, items with order number 0 or 1, called *even* items.
 
 ## Elements and group
 
-Enumerated all possible combinations, we have all 24 individual elements. In i,j,k coefficients, they can be listed as:
+Enumerated all possible combinations, we have all 24 individual elements of group. In additional form, they can be listed as:
 
 |   |   |   |
 |---|---|---|
