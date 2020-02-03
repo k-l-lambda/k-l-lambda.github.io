@@ -416,3 +416,8 @@ i {
 .clearfix {
     @extend %clearfix;
 }
+
+iframe
+{
+    border: #ccca 1px solid;
+}
