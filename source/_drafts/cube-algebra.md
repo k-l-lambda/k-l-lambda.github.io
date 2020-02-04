@@ -3,9 +3,14 @@ title: Perpendicular Algebra in 3D Space
 tags:
 ---
 
-<div class="fixed-ratio" style="width: 100%; padding-top: 100%">
-	<iframe src="/klstudio/embed.html#/documents/mesh-viewer-demo:quarter-array-4x6"></iframe>
-</div>
+<figure align=center>
+	<span class="max600">
+		<span class="fixed-ratio" style="width: 100%; padding-top: 100%">
+			<iframe src="/klstudio/embed.html#/documents/mesh-viewer-demo:quarter-array-4x6"></iframe>
+		</span>
+	</span>
+	<figcaption>In 3D space, an object has 6 &times; 4 = 24 perpendicular orientations in total, not considering symmetries.</figcaption>
+</figure>
 
 ## Motivation
 

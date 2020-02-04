@@ -435,3 +435,15 @@ iframe
 		height: 100%;
 	}
 }
+
+.max600
+{
+	width: 100%;
+	max-width: 600px;
+	position: relative;
+}
+
+span.fixed-ratio, span.max600
+{
+	display: inline-block;
+}
