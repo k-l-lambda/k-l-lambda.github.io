@@ -15,13 +15,15 @@ tags:
 ## Motivation
 
 Canonical Rubik's Cube solver algorithm<sup>[1]</sup> constructs cube state from face colors and a lot of permutation rules. That may waste too many coding :)
+Face color is merely appearance, cubies' orientation is essential.
 Since Rubik's Cube seems already been used as the avatar of group theory (check this [wikipedia entry](https://en.wikipedia.org/wiki/Group_theory)),
-it's better to clarify all details of the cube rotation group structure, and constrct the whole Rubik's Cube representations based on cubies' orientation.
+it's better to clarify all details of the cube rotation group structure, and construct the whole Rubik's Cube representations based on cubies' orientation.
 
-Regardless of Rubik's Cube, orthogonal rotation in 3D space is usual and connected with interesting problems. e.g. how to quickly tell if 2 orthogonal [Euler angles](https://en.wikipedia.org/wiki/Euler_angles) are the same rotation, purely by algebra without experiment?
-[Quaternion calculus](https://en.wikipedia.org/wiki/Quaternion) may be the short answer, but when you do that, irrational numbers are inevitable, and that seems wasting and precise problematic.
+Regardless of Rubik's Cube, orthogonal rotation in 3D space is usual and connected with interesting problems. E.g. how to quickly tell if 2 orthogonal [Euler angles](https://en.wikipedia.org/wiki/Euler_angles) are the same rotation, purely by algebra without experiment?
+[Quaternion calculus](https://en.wikipedia.org/wiki/Quaternion) may be a short answer, but when you do that, irrational numbers are inevitable, and that seems wasting and precise problematic.
 
-All you need is a multiplication table, and the table is highly symmetric, so let's analyze the group structure.
+Programmers prefer easy implementation, which based on a set of simple representation and rules applied to them. No float numbers, no redundancy.
+All you need is a multiplication table, and the table is highly symmetric, so let's begin from analyzing the **R**<sup>3</sup> orthogonal rotation group structure.
 
 ## Quaternion space half reduction
 
@@ -60,6 +62,13 @@ $$abs_{h}(q) = abs_{h}(p),$$
 which means *q = p* or *q = -p*, i.e. they represent the same **R**<sup>3</sup> orientation/rotation. Obviously, this *half-reduction equal* also has transitivity as plain equal.
 
 ## Calculus
+
+Before calculus, here are tips for readers unfamiliar with quaternion:
+* imagine units *i*, *j*, *k* stand for 180&deg; rotation along 3 axes in **R**<sup>3</sup> respectively;
+* quaternion multiplication stands for rotations concatenation (not exchangable);
+* square root of imagine unit stands for 90&deg; rotation;
+* q<sup>-1</sup> stands for the opponent rotation of q.
+
 
 Now we have these obvious facts:
 
@@ -123,17 +132,37 @@ Because these items' order number is $\frac{1}{2}$ or $\frac{3}{2}$, we call the
 
 Enumerated all possible combinations, we have all 24 individual elements of group. In additional form, they can be listed as:
 
-|   |   |   |
+| $\cdot (1, i, j, k)^{T}$ |how many items|   |
 |---|---|---|
-|1, 0, 0, 0| 4 items | *even* |
-|$\frac{\sqrt{2}}{2}$, $&pm;\frac{\sqrt{2}}{2}$, 0, 0| 12 items | *odds* |
-|0.5, &pm;0.5, &pm;0.5, &pm;0.5| 8 items | *even* |
+|1, 0, 0, 0| 4 | *even* |
+|$\frac{\sqrt{2}}{2}$, $&pm;\frac{\sqrt{2}}{2}$, 0, 0| 12 | *odds* |
+|0.5, &pm;0.5, &pm;0.5, &pm;0.5| 8 | *even* |
 
 Which 0s' position in tuples are arbitrary.
 
-<div class="fixed-ratio" style="width: 100%; padding-top: 67%">
+Though addtional form has advantage of unique form for every element, but long for written, and identification confusable.
+So I prefer to use multiplication form, and they are consistent with Euler angle, therefore easy to comprehend.
+To reduce redundancy items in multiplication form, I picks item by alphabetical order. And in the same letter, by order of $\sqrt{i}$, $\sqrt[-]{i}$, $i$.
+
+Then we get the 24 elements set:
+
+$$ \\{ 1, \sqrt{i}, \sqrt[-]{i}, \sqrt{j}, \sqrt[-]{j}, \sqrt{k}, \sqrt[-]{k}, i, j, k, \sqrt{i}\sqrt{j}, \sqrt{i}\sqrt[-]{j}, \sqrt[-]{i}\sqrt{j}, \sqrt[-]{i}\sqrt[-]{j}, \sqrt{i}\sqrt{k}, \sqrt{i}\sqrt[-]{k}, \sqrt[-]{i}\sqrt{k}, \sqrt[-]{i}\sqrt[-]{k}, \sqrt{i}j, \sqrt[-]{i}j, i\sqrt{j}, i\sqrt[-]{j}, i\sqrt{k}, i\sqrt[-]{k} \\} $$
+
+And category by distance from origin:
+
+|elements|how many quarters rotations|   |
+|:-:|---|---|
+|1|0|origin|
+| $\sqrt{i}, \sqrt[-]{i}, \sqrt{j}, \sqrt[-]{j}, \sqrt{k}, \sqrt[-]{k}$ |1|one quarter|
+| $i, j, k$ |2|half|
+| $\sqrt{i}\sqrt{j}, \sqrt{i}\sqrt[-]{j}, \sqrt[-]{i}\sqrt{j}, \sqrt[-]{i}\sqrt[-]{j}, \sqrt{i}\sqrt{k}, \sqrt{i}\sqrt[-]{k}, \sqrt[-]{i}\sqrt{k}, \sqrt[-]{i}\sqrt[-]{k}$ |2|two quaters|
+| $\sqrt{i}j, \sqrt[-]{i}j, i\sqrt{j}, i\sqrt[-]{j}, i\sqrt{k}, i\sqrt[-]{k}$ |3|three quarters|
+
+The visualization:
+
+<figure class="fixed-ratio" style="width: 100%; padding-top: 67%">
 	<iframe src="/klstudio/embed.html#/documents/mesh-viewer-demo:quarter-categories"></iframe>
-</div>
+</figure>
 
 
 [1]: https://github.com/hkociemba/RubiksCube-TwophaseSolver
