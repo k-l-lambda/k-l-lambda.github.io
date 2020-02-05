@@ -1,5 +1,5 @@
 ---
-title: Orthogonal Algebra in 3D Space
+title: Cube Rotation Algebra
 tags:
 ---
 
@@ -9,7 +9,7 @@ tags:
 			<iframe src="/klstudio/embed.html#/documents/mesh-viewer-demo:quarter-array-4x6"></iframe>
 		</span>
 	</span>
-	<figcaption>In 3D space, an object has 6 &times; 4 = 24 orthogonal orientations in total, without symmetric consider.</figcaption>
+	<figcaption>In 3D space, an object has 6 &times; 4 = 24 orthogonal orientations in total.</figcaption>
 </figure>
 
 ## Motivation
@@ -92,7 +92,7 @@ $$
 
 means 270&deg; rotation equal -90&deg; rotation (along a same axis).
 
-Not very obvious, but we can get by computaion:
+Not very obvious, but we can get rest items by computaion. The twice heterogeneous quarter rotation (can also be treated as 120&deg; rotation along cube diagonal):
 
 $$
 \sqrt{i}\sqrt{j} = \sqrt{j}\sqrt{k} = \sqrt{k}\sqrt{i} \\\\
@@ -110,10 +110,12 @@ $$
 
 Which $\sqrt[-]{x}$ stand for $x^{-\frac{1}{2}}$.
 
+(Wait, does $\sqrt{i}$ make sense? Yes, $\sqrt{i} = \frac{\sqrt{2}}{2}(1 + i)$, try to do this math: $(\frac{\sqrt{2}}{2}(1 + i))^2$.)
+
 These 8 lines don't equal each other (notice that quaternion multiplication is not exchangable, so $\sqrt{i}\sqrt{j} \neq \sqrt{j}\sqrt{i}$).
 In fact, in additonal form, they are values of all the permutations among *0.5&pm;0.5i&pm;0.5j&pm;0.5k*.
 
-And these:
+And thrice quarter rotation (can also be treated as 180&deg; rotation along a section square diagonal):
 
 $$
 \sqrt{i}j = \sqrt[-]{i}k = j\sqrt[-]{i} = k\sqrt[]{i} \\\\
@@ -141,18 +143,18 @@ Enumerated all possible combinations, we have all 24 individual elements of grou
 Which 0s' position in tuples are arbitrary.
 
 Though addtional form has advantage of unique form for every element, but long for written, and identification confusable.
-So I prefer to use multiplication form, and they are consistent with Euler angle, therefore easy to comprehend.
-To reduce redundancy items in multiplication form, I picks item by alphabetical order. And in the same letter, by order of $\sqrt{i}$, $\sqrt[-]{i}$, $i$.
+So I prefer to use multiplication form, and which is consistent with Euler angle, therefore geometry instinct and easy to comprehend.
+To reduce redundancy items in multiplication form, I picks item by alphabetical order, and in the same letter, by order of $\sqrt{i}$, $\sqrt[-]{i}$, $i$.
 
 Then we get the 24 elements set:
 
-$$ \\{ 1, \sqrt{i}, \sqrt[-]{i}, \sqrt{j}, \sqrt[-]{j}, \sqrt{k}, \sqrt[-]{k}, i, j, k, \sqrt{i}\sqrt{j}, \sqrt{i}\sqrt[-]{j}, \sqrt[-]{i}\sqrt{j}, \sqrt[-]{i}\sqrt[-]{j}, \sqrt{i}\sqrt{k}, \sqrt{i}\sqrt[-]{k}, \sqrt[-]{i}\sqrt{k}, \sqrt[-]{i}\sqrt[-]{k}, \sqrt{i}j, \sqrt[-]{i}j, i\sqrt{j}, i\sqrt[-]{j}, i\sqrt{k}, i\sqrt[-]{k} \\} $$
+$$ O_{24}: \\{ 1, \sqrt{i}, \sqrt[-]{i}, \sqrt{j}, \sqrt[-]{j}, \sqrt{k}, \sqrt[-]{k}, i, j, k, \sqrt{i}\sqrt{j}, \sqrt{i}\sqrt[-]{j}, \sqrt[-]{i}\sqrt{j}, \sqrt[-]{i}\sqrt[-]{j}, \sqrt{i}\sqrt{k}, \sqrt{i}\sqrt[-]{k}, \sqrt[-]{i}\sqrt{k}, \sqrt[-]{i}\sqrt[-]{k}, \sqrt{i}j, \sqrt[-]{i}j, i\sqrt{j}, i\sqrt[-]{j}, i\sqrt{k}, i\sqrt[-]{k} \\} $$
 
-And category by distance from origin:
+And categorization by distance from origin:
 
 |elements|how many quarters rotations|   |
 |:-:|---|---|
-|1|0|origin|
+|1|0|identity|
 | $\sqrt{i}, \sqrt[-]{i}, \sqrt{j}, \sqrt[-]{j}, \sqrt{k}, \sqrt[-]{k}$ |1|one quarter|
 | $i, j, k$ |2|half|
 | $\sqrt{i}\sqrt{j}, \sqrt{i}\sqrt[-]{j}, \sqrt[-]{i}\sqrt{j}, \sqrt[-]{i}\sqrt[-]{j}, \sqrt{i}\sqrt{k}, \sqrt{i}\sqrt[-]{k}, \sqrt[-]{i}\sqrt{k}, \sqrt[-]{i}\sqrt[-]{k}$ |2|two quaters|
@@ -162,6 +164,28 @@ The visualization:
 
 <figure class="fixed-ratio" style="width: 100%; padding-top: 67%">
 	<iframe src="/klstudio/embed.html#/documents/mesh-viewer-demo:quarter-categories"></iframe>
+</figure>
+
+Now only one more thing, define a half-reduction multiplication as operation:
+
+$$ q \otimes p := abs_{h}(q \cdot p) $$
+
+$O_{24}$ is closed for this operation, i.e. all results by half-reduction multipy between 2 arbitrary elements in $O_{24}$ are returned in 24 elements.
+
+Then we get the cube symmetry group (or [full octahedral symmetry group](https://en.wikipedia.org/wiki/Octahedral_symmetry#Full_octahedral_symmetry)):
+
+$$ O_{h}: \\{ O_{24}, 1, \otimes \\} $$
+
+3D [Caley graph](https://en.wikipedia.org/wiki/Cayley_graph) for the group:
+
+<figure>
+	<span class="fixed-ratio" style="width: 100%; padding-top: 60%">
+		<iframe src="/klstudio/embed.html#/cube-cayley-graph"></iframe>
+	</span>
+	<figCaption>
+		<p>Caley graph of $O_{h}$, click top right controls to perform permutations.</p>
+		<p>This is an ealier work, sorry for I was using <em>i</em>, <em>i'</em> stand for $\sqrt[&pm;]{i}$ in this article.</p>
+	</figCaption>
 </figure>
 
 
