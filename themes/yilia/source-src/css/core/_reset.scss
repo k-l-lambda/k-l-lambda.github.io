@@ -436,14 +436,23 @@ iframe
 	}
 }
 
-.max600
+.max600, .max800
 {
 	width: 100%;
-	max-width: 600px;
 	position: relative;
 }
 
-span.fixed-ratio, span.max600
+.max600
+{
+	max-width: 600px;
+}
+
+.max800
+{
+	max-width: 800px;
+}
+
+span.fixed-ratio, span.max600, span.max800
 {
 	display: inline-block;
 }
@@ -451,4 +460,9 @@ span.fixed-ratio, span.max600
 figure
 {
 	text-align: center;
+}
+
+.article-inner figcaption p
+{
+	margin: 0.2em 0;
 }
