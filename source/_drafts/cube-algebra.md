@@ -198,7 +198,8 @@ I have to confess this graph's architecture configuration is far from perfection
 
 ## Next step
 
-Soon later, I will talk about some thinking about Rubik's Cube representation in computer and some ideas maybe helpful for solver algorithm.
+Soon later, I will talk about some thinking about Rubik's Cube representation in computer and some ideas maybe helpful for solver algorithm<sup>[2]</sup>.
 
 
 [1]: https://github.com/hkociemba/RubiksCube-TwophaseSolver
+[2]: https://en.wikipedia.org/wiki/God%27s_algorithm
