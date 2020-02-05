@@ -148,7 +148,7 @@ To reduce redundancy items in multiplication form, I picks item by alphabetical 
 
 Then we get the 24 elements set:
 
-$$ O_{24}: \\{ 1, \sqrt{i}, \sqrt[-]{i}, \sqrt{j}, \sqrt[-]{j}, \sqrt{k}, \sqrt[-]{k}, i, j, k, \sqrt{i}\sqrt{j}, \sqrt{i}\sqrt[-]{j}, \sqrt[-]{i}\sqrt{j}, \sqrt[-]{i}\sqrt[-]{j}, \sqrt{i}\sqrt{k}, \sqrt{i}\sqrt[-]{k}, \sqrt[-]{i}\sqrt{k}, \sqrt[-]{i}\sqrt[-]{k}, \sqrt{i}j, \sqrt[-]{i}j, i\sqrt{j}, i\sqrt[-]{j}, i\sqrt{k}, i\sqrt[-]{k} \\} $$
+$$ O_{24}: \\{ 1, \sqrt{i}, \sqrt[-]{i}, \sqrt{j}, \sqrt[-]{j}, \sqrt{k}, \sqrt[-]{k}, i, j, k, \sqrt{i}\sqrt{j}, \sqrt{i}\sqrt[-]{j}, \sqrt{i}\sqrt{k}, \sqrt{i}\sqrt[-]{k}, \sqrt[-]{i}\sqrt{j}, \sqrt[-]{i}\sqrt[-]{j}, \sqrt[-]{i}\sqrt{k}, \sqrt[-]{i}\sqrt[-]{k}, \sqrt{i}j, \sqrt[-]{i}j, i\sqrt{j}, i\sqrt[-]{j}, i\sqrt{k}, i\sqrt[-]{k} \\} $$
 
 And categorization by distance from origin:
 
@@ -187,6 +187,12 @@ $$ O_{h}: \\{ O_{24}, 1, \otimes \\} $$
 		<p>This is an ealier work, sorry for I was using <em>i</em>, <em>i'</em> stand for $\sqrt[&pm;]{i}$ in this article.</p>
 	</figCaption>
 </figure>
+
+I have to confess this graph's architecture configuration is far from perfection, any good idea about $O_{h}$ visualization please tell me.
+
+## Next step
+
+Soon later, I will talk about some thinking about Rubik's Cube representation in computer and some ideas maybe helpful for solver algorithm.
 
 
 [1]: https://github.com/hkociemba/RubiksCube-TwophaseSolver
