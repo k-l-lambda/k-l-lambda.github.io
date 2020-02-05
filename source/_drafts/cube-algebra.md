@@ -176,6 +176,12 @@ Then we get the cube symmetry group (or [full octahedral symmetry group](https:/
 
 $$ O_{h}: \\{ O_{24}, 1, \otimes \\} $$
 
+This is the group table:
+
+<!-- md cube-rotation-table.md -->
+
+You may notice that top-left 4&times;4 area in the table is a subgroup by only half rotation elements.
+
 3D [Caley graph](https://en.wikipedia.org/wiki/Cayley_graph) for the group:
 
 <figure>

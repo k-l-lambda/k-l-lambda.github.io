@@ -4,7 +4,8 @@ MathJax.Hub.Config({
         inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
         processEscapes: true,
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
+	},
+	TeX: {MAXBUFFER: 102400},
 });
 
 MathJax.Hub.Queue(function() {

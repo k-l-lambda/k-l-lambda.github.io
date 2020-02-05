@@ -103,3 +103,6 @@ deploy:
 marked:
   gfm: true
   breaks: false
+
+include_markdown:
+  dir: source/_template
