@@ -460,6 +460,13 @@ span.fixed-ratio, span.max600, span.max800
 figure
 {
 	text-align: center;
+	margin: 2em 0;
+}
+
+figcaption
+{
+	font-size: 90%;
+	color: #555;
 }
 
 .article-inner figcaption p
