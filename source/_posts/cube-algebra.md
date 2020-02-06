@@ -208,14 +208,14 @@ This is the group table:
 
 You may notice that top-left 4&times;4 area in the table is a subgroup by only half rotation elements.
 
-3D [Caley graph](https://en.wikipedia.org/wiki/Cayley_graph) for the group:
+3D [Cayley graph](https://en.wikipedia.org/wiki/Cayley_graph) for the group:
 
 <figure>
 	<span class="fixed-ratio" style="width: 100%; padding-top: 60%">
 		<iframe src="/klstudio/embed.html#/cube-cayley-graph"></iframe>
 	</span>
 	<figCaption>
-		<p>Caley graph of $O_{h}$, click top right controls to perform permutations.</p>
+		<p>Cayley graph of $O_{h}$, click top right controls to perform permutations.</p>
 		<p>This is an ealier work, sorry for I was using <em>i</em>, <em>i'</em> stand for $\sqrt[&pm;]{i}$ in this article.</p>
 	</figCaption>
 </figure>
