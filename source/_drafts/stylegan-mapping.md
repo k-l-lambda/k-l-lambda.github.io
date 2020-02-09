@@ -9,7 +9,7 @@ tags:
 	<img src="/images/stylegan-network.webp" width="240" />
 	<img src="/images/stylegan-geometry.webp" width="600" />
 	<figcaption>
-		StyleGAN generator network architecture & geometry concept illustration
+		StyleGAN generator network architecture & geometry conceptual illustration
 	</figcaption>
 </figure>
 
@@ -37,18 +37,27 @@ Then plot the projections in a 3D coordinate system, as you see blow.
 		<iframe src="/klstudio/embed.html#/documents/stylegan-mapping"></iframe>
 	</span>
 	<figcaption>
-		Evenly interpolated 96 points on a great circle of unit shpere.
-		Sample circles: 1 specified (on the plane of first 2 axes) and 5 random. <wbr />
+		Evenly interpolated 96 points on a great circle of unit shpere. <br />
+		Sample circles: 1 specified (on the plane of first 2 axes) and 5 random. <br />
 		The mapping network is from <em>stylegan2-ffhq-config-f</em>
 		<sup><a target="_blank" href="https://github.com/NVlabs/stylegan2/blob/master/pretrained_networks.py#L32">3</a></sup>.
 	</figcaption>
 </figure>
 
-As you see in the plotting, projected circles don't look like circle at all in most dimensions. So the mapping from Z to W is highly unsmoothed.
-Notice the intervals between neighbor points, that seems uneven in global, but roughly even in segments locally.
+As you see in the plotting, projected circles entwines in most dimensions. So the mapping from Z to W is more rugged than I expected in the conceptual illustration.
+Intervals between neighbor points, though not very even, but high dimensional aspect can't be speculated by low dimensional projections.
+
 When you select very many dimensions (by moving the second slider to right), you will see the overall distribution of points' coordinates.
+It may be a significant observation that most points congregate at the first octant (+, +, +), more exactly, the tetrahedron area with vertices about *(0, 0, 0), (1.5, 0, 0), (0, 1.5, 0), (0, 0, 1.5)*.
+This phenomenon reminds [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) activation's effection.
+According to StyleGAN source code<sup>[4]</sup>, *Leaky ReLU* is used in mapping network by default, which coincides the ploting results.
+In some sense, the asymmetry may be necessary to disentanglement learning.
+But in a further thinking, considering the network is trained on a dataset from nature, why nature need asymmetry and where does it come from?
+
+Space splitting.
 
 
 [1]: https://arxiv.org/abs/1812.04948
 [2]: https://arxiv.org/abs/1912.04958
 [3]: https://github.com/NVlabs/stylegan2/blob/master/pretrained_networks.py#L32
+[4]: https://github.com/NVlabs/stylegan2/blob/master/training/networks_stylegan2.py#L261
