@@ -1,7 +1,8 @@
 # Header
 
 menu:
-  #主页: /
+  home: /
+  tags: /tags
   #随笔: /tags/随笔/
 
 # SubNav
@@ -68,7 +69,7 @@ google_analytics: UA-20678203-2
 favicon: /favicon.ico
 
 #你的头像url
-avatar: /profile.png
+avatar: /img/profile.png
 
 #是否开启分享
 share_jia: true
@@ -107,7 +108,7 @@ style:
 # slider的设置
 slider:
   # 是否默认展开tags板块
-  showTags: false
+  showTags: true
 
 # 智能菜单
 # 如不需要，将该对应项置为false
@@ -115,9 +116,9 @@ slider:
 #smart_menu:
 #  friends: false
 smart_menu:
-  innerArchive: #'ARCHIVE'
+  innerArchive: false #'ARCHIVE'
   friends: 'LINKS'
-  aboutme: #'ABOUT ME'
+  aboutme: false
 
 friends:
   K.L. Studio: /klstudio/

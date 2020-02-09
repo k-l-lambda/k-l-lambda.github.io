@@ -2,6 +2,10 @@
 title: Cube Rotation Algebra
 date: 2020-02-05 17:00:57
 tags:
+- math
+- algebra
+- group
+- Rubik's cube
 ---
 
 
