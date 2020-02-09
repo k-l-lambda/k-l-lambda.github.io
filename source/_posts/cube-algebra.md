@@ -5,7 +5,7 @@ tags:
 - math
 - algebra
 - group
-- Rubik's cube
+- rubiks_cube
 ---
 
 
