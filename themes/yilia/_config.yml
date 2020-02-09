@@ -115,11 +115,11 @@ slider:
 #smart_menu:
 #  friends: false
 smart_menu:
-  innerArchive: #'所有文章'
-  friends: #'友链'
-  aboutme: #'关于我'
+  innerArchive: #'ARCHIVE'
+  friends: 'LINKS'
+  aboutme: #'ABOUT ME'
 
 friends:
-  link1: http://localhost:4000/
+  K.L. Studio: /klstudio/
 
 aboutme: 
