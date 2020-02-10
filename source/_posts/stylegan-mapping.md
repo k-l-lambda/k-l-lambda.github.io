@@ -35,7 +35,7 @@ $$ \textbf{w}: [w_{1}, w_{2}, w_{3}, ..., w_{512}] \rightarrow \\{[w_{1}, w_{2},
 Then plot the projections in a 3D coordinate system viewport, as you see below.
 
 <figure>
-	<span class="fixed-ratio" style="width: 100%; padding-top: min(66%, 586px); max-width: 1025px">
+	<span class="fixed-ratio" style="width: 100%; padding-top: 66%; padding-top: min(66%, 586px); max-width: 1025px">
 		<iframe src="/klstudio/embed.html#/documents/stylegan-mapping"></iframe>
 	</span>
 	<figcaption>
