@@ -1,9 +1,11 @@
 ---
 title: StyleGAN Mapping Network Geometry Visualization
 tags:
-- deep_learning
-- stylegan
+  - deep_learning
+  - stylegan
+date: 2020-02-10 14:22:52
 ---
+
 
 <figure>
 	<img src="/images/stylegan-network.webp" width="240" />

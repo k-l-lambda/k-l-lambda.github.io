@@ -2,7 +2,7 @@
 
 menu:
   home: /
-  tags: /tags
+  #tags: /tags
   #随笔: /tags/随笔/
 
 # SubNav
