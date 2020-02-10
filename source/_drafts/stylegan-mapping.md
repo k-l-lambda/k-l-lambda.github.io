@@ -55,10 +55,15 @@ In some sense, the asymmetry may be necessary to disentanglement learning.
 But in a further thinking, considering the network is trained on a dataset from nature, why nature need such a specific asymmetry and where it come from?
 
 Lastly, inspection on features of generated images. Let's suppose there are some superplanes in the Z space, which split some binary high-level semantic features,
-such as male/female, young/old, skin color dark/light and so on (some feature maybe there is no definite boundary, but moving along its normal vector will change this feature most rapidly).
+such as male/female, young/old, skin color dark/light and so on (for some feature there is no definite boundary probably, but moving along some direction, i.e. plane's normal vector, will change this feature most rapidly)[^5].
+And a random unit sphere great circle (with a random normal vector) will intersect with most feature superplanes.
+In fact, considering the high dimensions, 2 random superplanes will be very closed to perpendicular in most cases.
+So we will get an interesting inference, generated images sampling from a great circle will experience many features variation: male/female, old/young, and anything you can imagine.
+So such an experiment can be helpful to see the diversity of a GAN, and test how well fitted the network with dataset.
 
 
-[^1]: https://arxiv.org/abs/1812.04948
-[^2]: https://arxiv.org/abs/1912.04958
-[^3]: https://github.com/NVlabs/stylegan2/blob/master/pretrained_networks.py#L32
-[^4]: https://github.com/NVlabs/stylegan2/blob/master/training/networks_stylegan2.py#L261
+[^1]: paper: [A Style-Based Generator Architecture for Generative Adversarial Networks](https://arxiv.org/abs/1812.04948)
+[^2]: paper: [Analyzing and Improving the Image Quality of StyleGAN](https://arxiv.org/abs/1912.04958)
+[^3]: code: [StyleGAN/pretrained_networks.py](https://github.com/NVlabs/stylegan2/blob/master/pretrained_networks.py#L32)
+[^4]: code: [StyleGAN/training/networks_stylegan2.py](https://github.com/NVlabs/stylegan2/blob/master/training/networks_stylegan2.py#L261)
+[^5]: Someone may argue that feature space could be more straight for W than Z, but considering the highly irregular shape and the relation between *&psi;* and feature intensity, I think it's an open question.
