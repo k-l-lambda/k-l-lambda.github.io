@@ -61,9 +61,15 @@ In fact, considering the high dimensions, 2 random superplanes will be very clos
 So we will get an interesting inference, generated images sampling from a great circle will experience many features variation: male/female, old/young, and anything you can imagine.
 So such an experiment can be helpful to see the diversity of a GAN, and test how well fitted the network with dataset.
 
+This is my StyleGAN [web porting project](https://github.com/k-l-lambda/stylegan-web) for research. A video demo:
+
+<a href="https://github.com/k-l-lambda/stylegan-web">
+	<video src="/images/explorer-demo.webm" style="width: 100%; max-width: 800px" autoplay loop></video>
+</a>
+
 
 [^1]: paper: [A Style-Based Generator Architecture for Generative Adversarial Networks](https://arxiv.org/abs/1812.04948)
 [^2]: paper: [Analyzing and Improving the Image Quality of StyleGAN](https://arxiv.org/abs/1912.04958)
-[^3]: code: [StyleGAN/pretrained_networks.py](https://github.com/NVlabs/stylegan2/blob/master/pretrained_networks.py#L32)
-[^4]: code: [StyleGAN/training/networks_stylegan2.py](https://github.com/NVlabs/stylegan2/blob/master/training/networks_stylegan2.py#L261)
+[^3]: [pretrained network links in code](https://github.com/NVlabs/stylegan2/blob/master/pretrained_networks.py#L32)
+[^4]: [mapping network code](https://github.com/NVlabs/stylegan2/blob/master/training/networks_stylegan2.py#L261)
 [^5]: Someone may argue that feature space could be more straight for W than Z, but considering the highly irregular shape and the relation between *&psi;* and feature intensity, I think it's an open question.
