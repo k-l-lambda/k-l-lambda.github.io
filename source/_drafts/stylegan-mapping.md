@@ -22,15 +22,15 @@ By normalization at the beginning of mapping network, input z vectors are on the
 Supposing `mapping` is a continuous function, all possible w points from Z will distribute on a irregular closed 512-d surface.
 To show a 512-d manifold is difficult, for humans only have 2-d vision. But we can show some local characteristics by dimension slicing.
 
-Here is my way. Pick a geodesic line on sphere, i.e. a circle, map it into W space, then show the warped result circle.
-To get a section circle of 512-d sphere, for generility, random sample 2 points (standard normal random then normalize),
-then slerp between and beyond them multiple times evenly, until finished one cycle on sphere.
-To show the 512-d result, I simply project the high dimensional line into multiple low dimensional lines.
-I.e. for every point *w* in circle:
+Here is my way. Pick a geodesic line on sphere, i.e. a great circle, map it into W space, then show the warped result circle.
+To get a great circle of 512-d sphere, for generility, random sample 2 points (by a standard normal distribution sample then normalize it),
+then slerp between and beyond them multiple times evenly, until finished one cycle on the sphere.
+To show the 512-d result circle, I simply project the high dimensional line into multiple low dimensional lines.
+I.e. for every point *w* in the result circle:
 
 $$ \textbf{w}: [w_{1}, w_{2}, w_{3}, ..., w_{512}] \rightarrow \\{[w_{1}, w_{2}, w_{3}], [w_{4}, w_{5}, w_{6}], ...\\} $$
 
-Then plot the projections in a 3D coordinate system, as you see blow.
+Then plot the projections in a 3D coordinate system viewport, as you see below.
 
 <figure>
 	<span class="fixed-ratio" style="width: 100%; padding-top: min(66%, 586px); max-width: 1025px">
@@ -45,7 +45,7 @@ Then plot the projections in a 3D coordinate system, as you see blow.
 </figure>
 
 As you see in the plotting, projected circles entwines in most dimensions. So the mapping from Z to W is more rugged than I expected in the conceptual illustration.
-Intervals between neighbor points, though not very even, but high dimensional aspect can't be speculated by low dimensional projections.
+Intervals between neighbor points, though not very even, but high dimensional gauge can't be speculated by low dimensional projections.
 
 When you select very many dimensions (by moving the second slider to right), you will see the overall distribution of points' coordinates.
 It may be a significant observation that most points congregate at the first octant (+, +, +), more exactly, the tetrahedron area with vertices about *(0, 0, 0), (1.5, 0, 0), (0, 1.5, 0), (0, 0, 1.5)*.
@@ -56,7 +56,7 @@ But in a further thinking, considering the network is trained on a dataset from 
 
 Lastly, inspection on features of generated images. Let's suppose there are some superplanes in the Z space, which split some binary high-level semantic features,
 such as male/female, young/old, skin color dark/light and so on (for some feature there is no definite boundary probably, but moving along some direction, i.e. plane's normal vector, will change this feature most rapidly)[^5].
-And a random unit sphere great circle (with a random normal vector) will intersect with most feature superplanes.
+And we can safely suppose that a random great circle (with a random normal vector) on unit sphere will intersect with most feature superplanes.
 In fact, considering the high dimensions, 2 random superplanes will be very closed to perpendicular in most cases.
 So we will get an interesting inference, generated images sampling from a great circle will experience many features variation: male/female, old/young, and anything you can imagine.
 So such an experiment can be helpful to see the diversity of a GAN, and test how well fitted the network with dataset.
