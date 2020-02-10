@@ -1,7 +1,8 @@
 # Header
 
 menu:
-  home: /
+  blog home: /
+  studio: /klstudio/
   #tags: /tags
   #随笔: /tags/随笔/
 
@@ -117,7 +118,7 @@ slider:
 #  friends: false
 smart_menu:
   innerArchive: false #'ARCHIVE'
-  friends: 'LINKS'
+  friends: false #'LINKS'
   aboutme: false
 
 friends:
