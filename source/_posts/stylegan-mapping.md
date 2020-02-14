@@ -60,7 +60,7 @@ Lastly, inspection on features of generated images. Let's suppose there are some
 such as male/female, young/old, skin color dark/light and so on (for some feature there is no definite boundary probably, but moving along some direction, i.e. plane's normal vector, will change this feature most rapidly)[^5].
 And we can safely suppose that a random great circle (with a random normal vector) on unit sphere will intersect with most feature superplanes.
 In fact, considering the high dimensions, 2 random superplanes will be very closed to perpendicular in most cases.
-So we will get an interesting inference, generated images sampling from a great circle will experience many features variation: male/female, old/young, and anything you can imagine.
+So we will get an interesting inference, generated images sampling from a great circle will experience many features variation: male/female, old/young, and anything else you can imagine.
 So such an experiment can be helpful to see the diversity of a GAN, and test how well fitted the network with dataset.
 
 This is my StyleGAN [web porting project](https://github.com/k-l-lambda/stylegan-web) for research. A video demo:

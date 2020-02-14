@@ -63,7 +63,7 @@ $$q \cong p$$
 
 to stand for:
 
-$$abs_{h}(q) = abs_{h}(p),$$
+$$abs_{h}(q) = abs_{h}( p ),$$
 
 which means *q = p* or *q = -p*, i.e. they represent the same **R**<sup>3</sup> orientation/rotation. Obviously, this *half-reduction equal* also has transitivity as plain equal.
 
