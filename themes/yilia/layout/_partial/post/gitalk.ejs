@@ -11,7 +11,7 @@ if (<%=theme.gitalk.enable%>) {
   	repo: '<%=theme.gitalk.repo%>',
   	owner: '<%=theme.gitalk.githubID%>',
   	admin: ['<%=theme.gitalk.adminUser%>'],
-  	id: '<%= page.date %>',
+  	id: '<%= page.date.toString().split(" GMT")[0] %>',
   	distractionFreeMode: '<%=theme.gitalk.distractionFreeMode%>'
 })
 gitalk.render('gitalk-container') 
