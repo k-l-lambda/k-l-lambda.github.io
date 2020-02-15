@@ -93,11 +93,21 @@ changyan_conf: false
 disqus: false
 
 #5、Gitment
-gitment_owner: 'k-l-lambda'      #你的 GitHub ID
-gitment_repo: 'k-l-lambda.github.io'          #存储评论的 repo
+gitment_owner:            #你的 GitHub ID
+gitment_repo: ''          #存储评论的 repo
 gitment_oauth:
-  client_id: 'b112cf72545693090bf9'           #client ID
+  client_id: ''           #client ID
   client_secret: ''       #client secret
+
+gitalk:
+  enable: true
+  githubID: k-l-lambda   
+  repo: 'k-l-lambda.github.io'
+  ClientID: 'b112cf72545693090bf9'
+  #ClientSecret:
+  adminUser:  k-l-lambda
+  distractionFreeMode: true
+
 
 # 样式定制 - 一般不需要修改，除非有很强的定制欲望…
 style:
