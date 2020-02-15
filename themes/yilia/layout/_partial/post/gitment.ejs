@@ -8,7 +8,7 @@ var gitment = new Gitment({
   repo: '<%=theme.gitment_repo%>',
   oauth: {
     client_id: '<%=theme.gitment_oauth.client_id%>',
-    client_secret: '<%=theme.gitment_oauth.client_secret%>',
+    client_secret: '<%= process.env.oauth_client_secret || theme.gitment_oauth.client_secret%>',
   },
 })
 gitment.render('gitment-ctn')
