@@ -31,6 +31,8 @@ Regardless of Rubik's Cube, orthogonal rotation in 3D space is usual and connect
 Programmers prefer easy implementation, which based on a set of simple representation and rules applied to them. No float numbers, no redundancy.
 All you need is a multiplication table, and the table is highly symmetric, so let's begin from analyzing the **R**<sup>3</sup> orthogonal rotation group structure.
 
+<!-- more -->
+
 ## Quaternion space half reduction
 
 In fact, we can invent a new symbol system to represent every element, but it may be a better choice to keep compatible with quaternion.
