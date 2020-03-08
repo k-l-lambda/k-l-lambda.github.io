@@ -28,6 +28,8 @@ date: 2020-02-10 14:22:52
 The design of `mapping` is intended to disentangle the manifold mapping from latent space to feature variation space.
 I'm interested in how the shape of learned mapping in network warps exactly, so this is my experiment.
 
+<!-- more -->
+
 By normalization at the beginning of mapping network, input z vectors are on the regular 512-d unit spherical surface.
 Supposing `mapping` is a continuous function, all possible w points from Z will distribute on a irregular closed 512-d surface.
 To show a 512-d manifold is difficult, for humans only have 2-d vision. But we can show some local characteristics by dimension slicing.
