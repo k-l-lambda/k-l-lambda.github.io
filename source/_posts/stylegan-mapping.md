@@ -8,8 +8,16 @@ date: 2020-02-10 14:22:52
 
 
 <figure>
-	<img src="/images/stylegan-network.webp" width="240" />
-	<img src="/images/stylegan-geometry.webp" width="600" />
+	<picture>
+		<source srcset="/images/stylegan-network.webp" type="image/webp" />
+		<source srcset="/images/stylegan-network.png" type="image/png" />
+		<img src="/images/stylegan-network.png" width="240" />
+	</picture>
+	<picture>
+		<source srcset="/images/stylegan-geometry.webp" type="image/webp" />
+		<source srcset="/images/stylegan-geometry.jpg" type="image/jpeg" />
+		<img src="/images/stylegan-geometry.jpg" width="600" />
+	</picture>
 	<figcaption>
 		StyleGAN generator network architecture & geometry conceptual illustration
 	</figcaption>
