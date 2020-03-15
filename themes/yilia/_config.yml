@@ -3,6 +3,7 @@
 menu:
   blog: /
   studio: /klstudio/
+  #team: https://findlab.github.io/
   #tags: /tags
   #随笔: /tags/随笔/
 
@@ -133,5 +134,6 @@ smart_menu:
 
 friends:
   K.L. Studio: /klstudio/
+  Find Lab: https://findlab.github.io/
 
 aboutme: 
