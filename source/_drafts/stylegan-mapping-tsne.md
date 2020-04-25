@@ -12,7 +12,7 @@ tags:
 	</picture>
 	<figcaption>
 		<p>StyleGAN mapping sampling points visualization by embedding projector</p>
-		<p><a href="https://projector.tensorflow.org/?config=https://gist.githubusercontent.com/k-l-lambda/ec91b00e74a62b6435ec098138f9ab0d/raw/df0e1a3f7a8e29476e30c723038f425f71bba0bd/embedding-projector-config.json">click here to see live visulization</a></p>
+		<p><a href="https://projector.tensorflow.org/?config=https://gist.githubusercontent.com/k-l-lambda/ec91b00e74a62b6435ec098138f9ab0d/raw/df0e1a3f7a8e29476e30c723038f425f71bba0bd/embedding-projector-config.json">click here to see 3D visulization</a></p>
 	</figcaption>
 </figure>
 
