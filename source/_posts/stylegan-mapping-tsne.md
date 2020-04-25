@@ -3,7 +3,9 @@ title: A Postscript for StyleGAN Mapping Network Geometry Visualization
 tags:
   - deep_learning
   - stylegan
+date: 2020-04-25 11:52:06
 ---
+
 
 
 <figure>
@@ -20,6 +22,8 @@ tags:
 Some days after the former post of [StyleGAN Mapping Network Geometry Visualization](/2020/02/10/stylegan-mapping/),
 I realized that there are some canonical dimension reduction methods for data visualization, such as [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis), [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding).
 These ways may be more intuitive to show data characteristics. So I did some attempts on this.
+
+<!-- more -->
 
 Firstly I tried a [t-SNE implementation by tensorflow.js](https://github.com/tensorflow/tfjs-tsne),
 disappointedly, after a moment struggling against release version compatibility problem,
