@@ -21,24 +21,53 @@ Till now, the popular way to represent a Rubik's cube state is the facelets expa
 
 ![a cube3 expanding graph sample](/images/cube3-expand-graph-original.png)
 
-By this way, you can't tell which facelets are adjacent each other straightway, also it's hard to tell what the cube will change into after a twist applied.
+By this way, you can't tell which facelets are adjacent each other straightway, also it's hard to imagine what the cube will change into after a twist applied.
 That because it comes from the appearance, but not the essential.
 Furtherly, as [my preivous blog](2020/02/05/cube-algebra/#Motivation) wrote, Rubik’s Cube solver programs who construct cube state from facelet color is clumsy.
 Rubik’s Cube is a game about cubes's **rotation** and **permutation** (but not painting color), **matrix** is the most proper math tool here.
 
 However, the fact revealed by this method is not easy to see through, and that is just what I will tell you in this blog.
 
+<!-- more -->
+
 ## Cube orientation representation
 
-figure: 24 orientation knights
+Recently, I found 2 lucky things, this is the first:
 
-figure: random rotation cube
+<figure>
+	<span class="max600">
+		<span class="fixed-ratio" style="width: 100%; padding-top: 100%">
+			<iframe src="/klstudio/embed.html#/documents/mesh-viewer-demo:quarter-array-4x6-greek"></iframe>
+		</span>
+	</span>
+	<figcaption>Representing 24 orthogonal orientations by lowercase Greek letters.</figcaption>
+</figure>
 
-&alpha; = 1
-&beta; = i^1/2
-&gamma; = j^1/2
-&delta; = k^1/2
-...
+You will be familiar with this figure if you have read [my preivous blog](2020/02/05/cube-algebra/#Motivation).
+The lucky is that we have exact 24 modern Greek letters in total coincidentally.
+
+I have explained cube rotation algebra in [the preivous blog](2020/02/05/cube-algebra/#Motivation) in details,
+now I just show you what the relationship looks like between Greek letters and colored cubes.
+
+<figure>
+	<span style="display: inline-block; width: 400px;">
+		<span class="fixed-ratio" style="width: 100%; padding-top: 100%">
+			<iframe src="/klstudio/embed.html#/documents/flipping-cube-demo"></iframe>
+		</span>
+	</span>
+</figure>
+
+In quaternion, we can define them as:
+
+$$
+\alpha = 1 \\\\
+\beta = i \\\\
+\gamma = j \\\\
+\delta = k \\\\
+\epsilon = \sqrt{i} \\\\
+... \\\\
+\omega = i\sqrt[-]{k}
+$$
 
 table: multiplication table of Oh in greek letters
 
