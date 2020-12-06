@@ -32,6 +32,8 @@ However, the fact revealed by this method is not easy to see through, and that i
 
 ## Cube orientation representation
 
+Let's begin with the 1-order Rubik's cube.
+
 Recently, I found 2 lucky things, this is the first:
 
 <figure>
@@ -57,7 +59,7 @@ now I just show you what the relationship looks like between Greek letters and c
 	</span>
 </figure>
 
-In quaternion, we can define them as:
+Mathematically, they are quaternions:
 
 $$
 \alpha = 1 \\\\
@@ -69,9 +71,17 @@ $$
 \omega = i\sqrt[-]{k}
 $$
 
-table: multiplication table of Oh in greek letters
+These 24 elements make up a group $O_{h}$, that means they are closed to multiplication, and the multiplication satisfys the associative law.
 
-figure: interactive cube * cube = cube
+And this is the group multiplication table:
+
+<!-- md cube-rotation-table-greek.md -->
+
+This is the multiplication visualization:
+
+<figure>
+	<iframe src="/klstudio/embed.html#/documents/cube-multiplication-demo"></iframe>
+</figure>
 
 
 ## Rubik's cube position representation
