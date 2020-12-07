@@ -80,7 +80,7 @@ And this is the group multiplication table:
 This is the multiplication visualization:
 
 <figure>
-	<iframe src="/klstudio/embed.html#/documents/cube-multiplication-demo"></iframe>
+	<iframe src="/klstudio/embed.html#/documents/cube-multiplication-demo" width="600" height="280"></iframe>
 </figure>
 
 
@@ -95,6 +95,8 @@ figure: cube3 with position labels
 
 
 ## Cube rotation and position permutation
+
+![2D rect rotation permutation sample](/images/rect2x2-permutation.drawio.svg)
 
 #figure: interactive cube3 with position & cubie labels
 
