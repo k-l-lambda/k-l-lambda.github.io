@@ -17,7 +17,7 @@ tags:
 
 To describe a chess game state, you don't need to mention every chess piece's details.
 Essentially, a chess piece is just a symbol. Ignoring appearance detail helps us to grab the game gist.
-Till now, the popular way to represent a Rubik's cube state is the facelets expanding graph, like this:
+Till now, a popular way to represent a Rubik's cube state is the facelets expanding graph, like this:
 
 ![a cube3 expanding graph sample](/images/cube3-expand-graph-original.png)
 
@@ -59,7 +59,7 @@ now I just show you what the relationship looks like between Greek letters and c
 	</span>
 </figure>
 
-Mathematically, they are quaternions:
+Mathematically, they can be defined in quaternions:
 
 $$
 \alpha = 1 \\\\
@@ -71,7 +71,8 @@ $$
 \omega = i\sqrt[-]{k}
 $$
 
-These 24 elements make up a group $O_{h}$, that means they are closed to multiplication, and the multiplication satisfys the associative law.
+These 24 elements make up a group [$O_{h}$](https://en.wikipedia.org/wiki/Octahedral_symmetry#Full_octahedral_symmetry),
+that means they are closed for multiplication, and the multiplication satisfys the associative law.
 
 And this is the group multiplication table:
 
@@ -96,7 +97,77 @@ figure: cube3 with position labels
 
 ## Cube rotation and position permutation
 
-![2D rect rotation permutation sample](/images/rect2x2-permutation.drawio.svg)
+<figure>
+	<picture>
+		<img src="/images/rect2x2-permutation.drawio.svg" />
+	</picture>
+</figure>
+
+<style>
+	table td
+	{
+		text-align: center;
+	}
+
+	table.no-border
+	{
+		border: 0;
+	}
+
+	table.no-border > tbody > tr > td
+	{
+		border: 0;
+	}
+
+	table strong
+	{
+		color: red;
+	}
+</style>
+
+<table class="no-border">
+<tr><td>
+
+|	| A | B | C | D |
+|:-:|:-:|:-:|:-:|:-:|
+| <strong>A</strong> | 1 |	|	|	|
+| <strong>B</strong> |	| 1 |	|	|
+| <strong>C</strong> |	|	| 1 |	|
+| <strong>D</strong> |	|	|	| 1 |
+
+</td>
+<td style="font-size: 400%">&#x21e8;</td>
+<td>
+
+|	| A | B | C | D |
+|:-:|:-:|:-:|:-:|:-:|
+| <strong>A</strong> |	| 1 |	|	|
+| <strong>B</strong> |	|	|	| 1 |
+| <strong>C</strong> | 1 |	|	|	|
+| <strong>D</strong> |	|	| 1 |	|
+
+</td>
+</table>
+
+$$
+\alpha
+\begin{bmatrix}
+1 &  &  & \\\\
+& 1 &  & \\\\
+&  & 1 & \\\\
+&  &  &1
+\end{bmatrix} \to \eta \begin{bmatrix}
+& 1 &  & \\\\
+&  &  & 1 \\\\
+1 &  &  & \\\\
+&  & 1 &
+\end{bmatrix} = \begin{bmatrix}
+& \eta &  & \\\\
+&  &  & \eta \\\\
+\eta &  &  & \\\\
+&  & \eta &
+\end{bmatrix}
+$$
 
 #figure: interactive cube3 with position & cubie labels
 
