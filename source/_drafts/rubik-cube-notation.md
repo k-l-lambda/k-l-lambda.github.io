@@ -169,7 +169,9 @@ $$
 \end{bmatrix}
 $$
 
-#figure: interactive cube3 with position & cubie labels
+<figure>
+	<iframe src="/klstudio/embed.html#/documents/dynamic-labeled-cube3-demo" width="960" height="600"></iframe>
+</figure>
 
 mat(state-vector) = diag(state-vector) * permutation-matrix
 
@@ -178,7 +180,9 @@ cube3 matrix
 
 ## Rubik's cube multiplication
 
-figure: interactive cube3 * cube3 = cube3
+<figure>
+	<iframe src="/klstudio/embed.html#/documents/cube3-multiplication-demo" width="800" height="400"></iframe>
+</figure>
 
 matrix multiplication
 
