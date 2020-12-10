@@ -173,6 +173,12 @@ $$
 	<iframe src="/klstudio/embed.html#/documents/dynamic-labeled-cube3-demo" width="960" height="600"></iframe>
 </figure>
 
+<figure>
+	<picture>
+		<img src="/images/cube3-matrix-illustration.drawio.svg" style="max-width: 600px" />
+	</picture>
+</figure>
+
 mat(state-vector) = diag(state-vector) * permutation-matrix
 
 cube3 matrix
