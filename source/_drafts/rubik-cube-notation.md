@@ -88,14 +88,30 @@ This is the multiplication visualization:
 </figure>
 
 
-## Rubik's cube position representation
+## Cubies' position representation
 
-A = (1, 0, 0, ...)
-B = (0, 1, 0, ...)
-C = (0, 0, 1, ...)
-...
+In 3-order Rubik's cube, we have $3^3-1=26$ cubies.
+And this is the second lucky thing: there are 26 Latin letters in total.
+So we can labeled 26 cubie positions by A-Z. It looks like this:
 
-figure: cube3 with position labels
+<figure>
+	<span class="max600">
+		<span class="fixed-ratio" style="width: 100%; padding-top: 100%">
+			<iframe src="/klstudio/embed.html#/documents/static-labeled-cube3-demo"></iframe>
+		</span>
+	</span>
+	<figcaption>Rubik's cube with labels on cubies</figcaption>
+</figure>
+
+Mathematically, we define 26 one-hot vectors:
+
+$$
+\boldsymbol{A} = (\mathbf{1}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) \\\\
+\boldsymbol{B} = (0, \mathbf{1}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) \\\\
+\boldsymbol{C} = (0, 0, \mathbf{1}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) \\\\
+... \\\\
+\boldsymbol{Z} = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \mathbf{1})
+$$
 
 
 ## Cube rotation and position permutation
