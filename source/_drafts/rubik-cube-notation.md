@@ -32,7 +32,10 @@ However, the fact revealed by this method is not easy to see through, and that i
 
 ## Cube orientation representation
 
-Let's begin with the 1-order Rubik's cube.
+Let's begin with a simple case, the *1-order Rubik's cube*, i.e. a single cube.
+How to restore a rotated cube to the original orientation, in a shorttest way?
+That's just [my preivous blog](2020/02/05/cube-algebra/#Motivation)'s topic.
+Now let's symbolize them in a new way.
 
 Recently, I found 2 lucky things, this is the first:
 
