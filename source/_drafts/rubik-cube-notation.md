@@ -65,13 +65,15 @@ now I just show you what the relationship looks like between Greek letters and c
 Mathematically, they can be defined in quaternions:
 
 $$
-\alpha = 1 \\\\
-\beta = i \\\\
-\gamma = j \\\\
-\delta = k \\\\
-\epsilon = \sqrt{i} = \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} i \\\\
-... \\\\
-\omega = i\sqrt[-]{k} = \frac{\sqrt{2}}{2} i - \frac{\sqrt{2}}{2} j
+\begin{aligned}
+& \alpha = 1 \\\\
+& \beta = i \\\\
+& \gamma = j \\\\
+& \delta = k \\\\
+& \epsilon = \sqrt{i} = \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} i \\\\
+& ... \\\\
+& \omega = i\sqrt[-]{k} = \frac{\sqrt{2}}{2} i - \frac{\sqrt{2}}{2} j
+\end{aligned}
 $$
 
 These 24 elements make up a group [$O_{h}$](https://en.wikipedia.org/wiki/Octahedral_symmetry#Full_octahedral_symmetry),
@@ -250,6 +252,10 @@ $$
 mat(S)=diag(S) \cdot displace(o_i, P_i)^T|_{i=1,...,26}
 $$
 
+$$
+P_i = \boldsymbol{A}, \boldsymbol{B}, \boldsymbol{C}, ..., \boldsymbol{Z} |_{\text{when } i=1,...,26}
+$$
+
 while *diag* stands for diagonal matrix, *displace* is a position mapping by a specific orientation, from a one-hot position vector to another.
 This is the dispacement table:
 
@@ -265,15 +271,48 @@ $$
 
 The whole table is 26&times;24, what shows here is a part, and you can imagine the rest.
 
-Let's take the top matrix in this blog as an example:
+Let's take the top matrix in this blog ([the tetris pattern](/klstudio/embed.html#/documents/dynamic-labeled-cube3#LKONLKONLOKNLKONKLNOGCAAFD)) as an example:
 
 <!-- md cube3-matrix-deduce-tetris.md -->
 
 For short, I will refer it as:
 
 $$
-\left \langle \omicron, \lambda, \pi, \mu, \omicron, \lambda, \pi, \mu, \lambda, \omicron, \omicron, \lambda, \pi, \mu, \pi, \mu, \omicron, \mu, \lambda, \pi, \eta, \kappa, \iota, \zeta, \alpha, \alpha \right \rangle
+\left \langle \omicron \lambda \pi \mu \omicron \lambda \pi \mu \lambda \omicron \omicron \lambda \pi \mu \pi \mu \omicron \mu \lambda \pi \eta \kappa \iota \zeta \alpha \alpha \right \rangle
 $$
+
+### State space capacity
+
+3D object has 3 degrees of freedom in rotation, but the most convenient method to represent it is using 4 fields, i.e. quaternion.
+So a proper state space redundancy is necessary for the sake of calculation.
+
+A valid 3-order Rubik's cube's total variation is:
+
+$$
+\frac{8! \times 3^8 \times 12! \times 2^{12}}{2 \times 2 \times 3} = 43252003274489856000 \approx 4.33 \times 10^{19}
+$$
+
+If allowing disassembly, the number becomes twelve times larger:
+
+$$
+8! \times 3^8 \times 12! \times 2^{12} = 519024039293878272000 \approx 5.19 \times 10^{20}
+$$
+
+Besides that, representing a Rubik's cube state in orientation vector ignores cubies' position conflicting. The total variation is:
+
+$$
+24^{20} = 4019988717840603673710821376 \approx 4.02 \times 10^{28}
+$$
+
+(For equality, I ignored 6 axes cubies here.)
+
+And above all these, the facet color scheme allow painting abitrary color in 6 kinds for every facet. Its total variation is:
+
+$$
+6^{48} = 22452257707354557240087211123792674816 \approx 2.25 \times 10^{38}
+$$
+
+As a Rubik's cube computer implementation, I'm afraid the redundancy of this scheme is beyond necessary, and is waste and misleading.
 
 ## Calculation of Rubik's cube
 
@@ -284,8 +323,37 @@ This is an example to show what the Rubik's cube multiplication looks like:
 	<iframe src="/klstudio/embed.html#/documents/cube3-multiplication-demo" width="800" height="400"></iframe>
 </figure>
 
+As all groups, Rubik's cube multiplication obeys associative law, but is not exchangeable.
+
 
 ## Rubik's cube solver
 
-U = <&alpha; &alpha; &gamma; &gamma; ...>
-...
+Now, we known this significant fact: **the Rubik's cube solver problem is a matrix decomposition problem**!
+
+Specifically, we have 12 unit quarter twists in matrix form:
+
+$$
+\begin{aligned}
+& U = \left \langle  \alpha \alpha \zeta \zeta \alpha \alpha \zeta \zeta  \alpha \alpha \alpha \alpha \zeta \zeta \zeta \zeta \alpha \alpha \alpha \alpha  \alpha \alpha \zeta \alpha \alpha \alpha  \right \rangle \\\\
+& U' = \left \langle  \alpha \alpha \iota \iota \alpha \alpha \iota \iota  \alpha \alpha \alpha \alpha \iota \iota \iota \iota \alpha \alpha \alpha \alpha  \alpha \alpha \iota \alpha \alpha \alpha  \right \rangle \\\\
+& D = \left \langle  \iota \iota \alpha \alpha \iota \iota \alpha \alpha  \iota \iota \iota \iota \alpha \alpha \alpha \alpha \alpha \alpha \alpha \alpha  \alpha \alpha \alpha \iota \alpha \alpha  \right \rangle \\\\
+& D' = \left \langle  \zeta \zeta \alpha \alpha \zeta \zeta \alpha \alpha  \zeta \zeta \zeta \zeta \alpha \alpha \alpha \alpha \alpha \alpha \alpha \alpha  \alpha \alpha \alpha \zeta \alpha \alpha  \right \rangle \\\\
+& L = \left \langle  \theta \alpha \theta \alpha \theta \alpha \theta \alpha  \alpha \alpha \theta \alpha \alpha \alpha \theta \alpha \theta \alpha \alpha \theta  \alpha \alpha \alpha \alpha \theta \alpha  \right \rangle \\\\
+& L' = \left \langle  \epsilon \alpha \epsilon \alpha \epsilon \alpha \epsilon \alpha  \alpha \alpha \epsilon \alpha \alpha \alpha \epsilon \alpha \epsilon \alpha \alpha \epsilon  \alpha \alpha \alpha \alpha \epsilon \alpha  \right \rangle \\\\
+& R = \left \langle  \alpha \epsilon \alpha \epsilon \alpha \epsilon \alpha \epsilon  \alpha \alpha \alpha \epsilon \alpha \alpha \alpha \epsilon \alpha \epsilon \alpha \epsilon  \alpha \alpha \alpha \alpha \alpha \epsilon  \right \rangle \\\\
+& R' = \left \langle  \alpha \theta \alpha \theta \alpha \theta \alpha \theta  \alpha \alpha \alpha \theta \alpha \alpha \alpha \theta \alpha \theta \alpha \theta  \alpha \alpha \alpha \alpha \alpha \theta  \right \rangle \\\\
+& F = \left \langle  \eta \eta \eta \eta \alpha \alpha \alpha \alpha  \eta \alpha \alpha \alpha \eta \alpha \alpha \alpha \eta \eta \alpha \alpha  \eta \alpha \alpha \alpha \alpha \alpha  \right \rangle \\\\
+& F' = \left \langle  \kappa \kappa \kappa \kappa \alpha \alpha \alpha \alpha  \kappa \alpha \alpha \alpha \kappa \alpha \alpha \alpha \kappa \kappa \alpha \alpha  \kappa \alpha \alpha \alpha \alpha \alpha  \right \rangle \\\\
+& B = \left \langle  \alpha \alpha \alpha \alpha \kappa \kappa \kappa \kappa  \alpha \kappa \alpha \alpha \alpha \kappa \alpha \alpha \alpha \alpha \kappa \kappa  \alpha \kappa \alpha \alpha \alpha \alpha  \right \rangle \\\\
+& B' = \left \langle  \alpha \alpha \alpha \alpha \eta \eta \eta \eta  \alpha \eta \alpha \alpha \alpha \eta \alpha \alpha \alpha \alpha \eta \eta  \alpha \eta \alpha \alpha \alpha \alpha  \right \rangle \\\\
+\end{aligned}
+$$
+
+To find a path from the solved state to an arbitrary state, is just finding a multiplication decomposition in unit twists for the specific state matrix.
+
+We known that any 3-order Rubik's cube state can be solved in 26 quarter twists in most[^1].
+But finding the shortest solution is still a pending problem.
+I hope the matrix representation can provide some new approaches for this problem. After all, linear algebra is a highly developed domain already.
+
+
+[^1]: [God's Number is 26 in the Quarter-Turn Metric](http://www.cube20.org/qtm/)
