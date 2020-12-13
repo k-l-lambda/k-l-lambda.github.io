@@ -69,9 +69,9 @@ $$
 \beta = i \\\\
 \gamma = j \\\\
 \delta = k \\\\
-\epsilon = \sqrt{i} \\\\
+\epsilon = \sqrt{i} = \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} i \\\\
 ... \\\\
-\omega = i\sqrt[-]{k}
+\omega = i\sqrt[-]{k} = \frac{\sqrt{2}}{2} i - \frac{\sqrt{2}}{2} j
 $$
 
 These 24 elements make up a group [$O_{h}$](https://en.wikipedia.org/wiki/Octahedral_symmetry#Full_octahedral_symmetry),
@@ -113,14 +113,37 @@ $$
 \boldsymbol{Z} = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \mathbf{1})
 $$
 
+This form is convenient for constructing matrices, e.g. a 26&times;26 identity matrix can be represented as:
+
+$$
+\begin{bmatrix}
+\boldsymbol{A}^T & \boldsymbol{B}^T & \boldsymbol{C}^T & ... & \boldsymbol{X}^T & \boldsymbol{Y}^T & \boldsymbol{Z}^T
+\end{bmatrix}^T
+$$
+
 
 ## Cube rotation and position permutation
+
+Rotation causes displacement, it's a kind of linear transformation. We can see this clearly in matrix.
+Take this simple example firstly:
 
 <figure>
 	<picture>
 		<img src="/images/rect2x2-permutation.drawio.svg" />
 	</picture>
 </figure>
+
+<style>
+	.red
+	{
+		color: red;
+	}
+</style>
+
+We have 4 (2&times;2) boxes labeled by red <em class="red">A</em> <em class="red">B</em> <em class="red">C</em> <em class="red">D</em>,
+and we have 4 fixed cells labeled by black <em>A</em> <em>B</em> <em>C</em> <em>D</em>.
+
+Before and after a 90&deg; rotation, we record boxes' position in a 4&times;4 table:
 
 <style>
 	table td
@@ -168,6 +191,8 @@ $$
 </td>
 </table>
 
+So this is the matrix's meaning, every row tells us which cell the box is at.
+
 $$
 \alpha
 \begin{bmatrix}
@@ -188,9 +213,16 @@ $$
 \end{bmatrix}
 $$
 
+And plused an orientation scalar in Greek letters.
+(Why *&eta;*? Try to look up what *&eta;* stands for in the 24 knights figure.)
+
+Now let's extend 2&times;2 into 26&times;26:
+
 <figure>
 	<iframe src="/klstudio/embed.html#/documents/dynamic-labeled-cube3-demo" width="960" height="600"></iframe>
 </figure>
+
+For the matrix you see above, I arranged the cubies' order as this:
 
 <figure>
 	<picture>
@@ -203,13 +235,14 @@ mat(state-vector) = diag(state-vector) * permutation-matrix
 cube3 matrix
 
 
-## Rubik's cube multiplication
+## Calculation of Rubik's cube
+
+Once we represent a Rubik's cube state by a matrix, we can calculate it purely by algebra.
+This is an example to show what the Rubik's cube multiplication looks like:
 
 <figure>
 	<iframe src="/klstudio/embed.html#/documents/cube3-multiplication-demo" width="800" height="400"></iframe>
 </figure>
-
-matrix multiplication
 
 
 ## Rubik's cube solver
