@@ -230,10 +230,50 @@ For the matrix you see above, I arranged the cubies' order as this:
 	</picture>
 </figure>
 
-mat(state-vector) = diag(state-vector) * permutation-matrix
+A state matrix can be decomposed into 2 parts: orientations and position permutation.
+And position permutation is determined by orientations, so to present a Rubik's cube state we only need to record a vector of orientation symbols.
+Mathematically, we have a state vector:
 
-cube3 matrix
+$$
+S=o_i | _{i=1,...,26}
+$$
 
+while
+
+$$
+o_i \in \left \\{ \alpha, \beta, \gamma, ..., \omega \right \\}
+$$
+
+then the state matrix is:
+
+$$
+mat(S)=diag(S) \cdot displace(o_i, P_i)^T|_{i=1,...,26}
+$$
+
+while *diag* stands for diagonal matrix, *displace* is a position mapping by a specific orientation, from a one-hot position vector to another.
+This is the dispacement table:
+
+$$
+\begin{matrix}
+\text{displace} & \alpha & \beta & \gamma & ... \\\\
+\color{red} A & \boldsymbol{A} & \boldsymbol{G} & \boldsymbol{F} & ... \\\\
+\color{red} B & \boldsymbol{B} & \boldsymbol{H} & \boldsymbol{E} & ... \\\\
+\color{red} C & \boldsymbol{C} & \boldsymbol{E} & \boldsymbol{H} & ... \\\\
+... & & & &
+\end{matrix}
+$$
+
+The whole table is 26&times;24, what shows here is a part, and you can imagine the rest.
+
+Let's take the top matrix in this blog as an example:
+
+<!-- md cube3-matrix-deduce-tetris.md -->
+
+For short, I will refer it as:
+
+$$
+\left \langle \omicron, \lambda, \pi, \mu, \omicron, \lambda, \pi, \mu, \lambda, \omicron, \omicron, \lambda, \pi, \mu, \pi, \mu, \omicron, \mu, \lambda, \pi, \eta, \kappa, \iota, \zeta, \alpha, \alpha \right \rangle
+$$
 
 ## Calculation of Rubik's cube
 
