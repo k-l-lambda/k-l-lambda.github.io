@@ -1,9 +1,11 @@
 ---
 title: How to represent a Rubik's cube state in a calculable form?
 tags:
-- rubiks_cube
-- algebra
+  - rubiks_cube
+  - algebra
+date: 2020-12-14 21:37:33
 ---
+
 
 
 <figure>
