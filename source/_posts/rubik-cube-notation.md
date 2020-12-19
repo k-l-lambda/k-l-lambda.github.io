@@ -357,5 +357,7 @@ We known that any 3-order Rubik's cube state can be solved in 26 quarter twists 
 But finding the shortest solution is still a pending problem.
 I hope the matrix representation can provide some new approaches for this problem. After all, linear algebra is a highly developed domain already.
 
+Here is the link of [Rubik's cube & matrix interactive demo](/klstudio/#/documents/dynamic-labeled-cube3).
+
 
 [^1]: [God's Number is 26 in the Quarter-Turn Metric](http://www.cube20.org/qtm/)
