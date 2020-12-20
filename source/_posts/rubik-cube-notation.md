@@ -13,7 +13,7 @@ date: 2020-12-14 21:37:33
 		<img src="/images/cube3-matrix-tetris.svg" alt="a cube3 matrix samle #LKONLKONLOKNLKONKLNOGCAAFD" />
 	</picture>
 	<figcaption>
-		Guess what this is? <a href="/klstudio/embed.html#/documents/dynamic-labeled-cube3#LKONLKONLOKNLKONKLNOGCAAFD">See the answer here.</a>
+		Guess what this is? <a target="_blank" href="/klstudio/#/documents/dynamic-labeled-cube3#LKONLKONLOKNLKONKLNOGCAAFD">See the answer here.</a>
 	</figcaption>
 </figure>
 
@@ -25,7 +25,7 @@ Till now, a popular way to represent a Rubik's cube state is the facelets expand
 
 By this way, you can't tell which facelets are adjacent each other straightway, also it's hard to imagine what the cube will change into after a twist applied.
 That because it comes from the appearance, but not the essential.
-Furtherly, as [my preivous blog](2020/02/05/cube-algebra/#Motivation) wrote, Rubik’s Cube solver programs who construct cube state from facelet color is clumsy.
+Furtherly, as [my preivous blog](/2020/02/05/cube-algebra/#Motivation) wrote, Rubik’s Cube solver programs who construct cube state from facelet color is clumsy.
 Rubik’s Cube is a game about cubes's **rotation** and **permutation** (but not painting color), **matrix** is the most proper math tool here.
 
 However, the fact revealed by this method is not easy to see through, and that is just what I will tell you in this blog.
@@ -36,7 +36,7 @@ However, the fact revealed by this method is not easy to see through, and that i
 
 Let's begin with a simple case, the *1-order Rubik's cube*, i.e. a single cube.
 How to restore a rotated cube to the original orientation, in a shorttest way?
-That's just [my preivous blog](2020/02/05/cube-algebra/#Motivation)'s topic.
+That's just [Cube Rotation Algebra](/2020/02/05/cube-algebra/)'s topic.
 Now let's symbolize them in a new way.
 
 Recently, I found 2 lucky things, this is the first:
@@ -50,10 +50,10 @@ Recently, I found 2 lucky things, this is the first:
 	<figcaption>Representing 24 orthogonal orientations by lowercase Greek letters.</figcaption>
 </figure>
 
-You will be familiar with this figure if you have read [my preivous blog](2020/02/05/cube-algebra/#Motivation).
+You will be familiar with this figure if you have read [Cube Rotation Algebra](/2020/02/05/cube-algebra/).
 The lucky is that we have exact 24 modern Greek letters in total coincidentally.
 
-I have explained cube rotation algebra in [the preivous blog](2020/02/05/cube-algebra/#Motivation) in details,
+I have explained cube rotation algebra in [the preivous blog](/2020/02/05/cube-algebra/) in details,
 now I just show you what the relationship looks like between Greek letters and colored cubes.
 
 <figure>
@@ -357,7 +357,13 @@ We known that any 3-order Rubik's cube state can be solved in 26 quarter twists 
 But finding the shortest solution is still a pending problem.
 I hope the matrix representation can provide some new approaches for this problem. After all, linear algebra is a highly developed domain already.
 
-Here is the link of [Rubik's cube & matrix interactive demo](/klstudio/#/documents/dynamic-labeled-cube3).
+
+## Try it youself
+
+<figure>
+	<iframe src="/klstudio/embed.html#/documents/dynamic-labeled-cube3" width="960" height="600"></iframe>
+	<figcaption>Twist this Rubik's cube and see its matrix. <a target="_blank" href="/klstudio/#/documents/dynamic-labeled-cube3">Open in new tab &#x1f855;</a></figcaption>
+</figure>
 
 
 [^1]: [God's Number is 26 in the Quarter-Turn Metric](http://www.cube20.org/qtm/)
