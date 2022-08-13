@@ -10,7 +10,7 @@ date: 2022-08-13 14:46:11
 
 <figure>
 	<picture>
-		{% img figure /images/angular_diameter_turnaround.png 800 '"" "xkcd 2622"' %}
+		{% img figure /images/xkcd-angular_diameter_turnaround.png 740 '"" "xkcd 2622"' %}
 	</picture>
 	<figcaption><a href="https://xkcd.com/2622/">xkcd/2622</a></figcaption>
 </figure>
@@ -32,4 +32,4 @@ date: 2022-08-13 14:46:11
 好久没有更新博客了, 去年至今其实有一些酝酿中的想法, 没时间整理成paper, 只能再往后推了. 
 最近打算先翻译一些有趣的xkcd漫画作品.
 
-非常怀念过去在科学松鼠会上看[Ent](http://www.songshuehu.net/ent.htm)<sup>[*](https://www.163.com/dy/article/GBP09SFP055218MP.html)</sup>翻译各种xkcd等各种科学漫画的时光.
+非常怀念过去在科学松鼠会上看[Ent](http://www.songshuehu.net/ent.htm)<sup>[*](https://www.163.com/dy/article/GBP09SFP055218MP.html)</sup>翻译xkcd等各种科学漫画的时光.
