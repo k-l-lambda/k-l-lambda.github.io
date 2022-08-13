@@ -1,10 +1,12 @@
 ---
-title: '[xkcd] "复"元音'
+title: '[xkcd] “复”元音'
 tags:
   - translation
   - xkcd
   - 中文
+date: 2022-08-13 15:55:33
 ---
+
 
 <figure>
 	<picture>
