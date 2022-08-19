@@ -18,10 +18,10 @@ date: 2022-08-13 15:55:33
 
 > 语言学提示：<br/>
 > 沿虚轴扩展国际音标元音平面，由此生成"**复**元音"。<br/>
-> 这诅咒般的声音已超越人类心智的理解能力！
+> 这天煞的声音已超越人类心智的理解能力！
 
 
-国际音标中的元音可以按发音位置(前-后)和口型(闭-开)两个维度分类, 即所谓'VOWEL PLANE'.
+国际音标中的元音可以按发音位置(前-后)和口型(闭-开)两个维度分类, 即所谓'[VOWEL PLANE](https://en.wikipedia.org/wiki/Vowel_diagram)'.
 如下图:
 {% img figure /images/English_vowel_chart.svg.png 240 '"" "vowel plane"' %}
 
