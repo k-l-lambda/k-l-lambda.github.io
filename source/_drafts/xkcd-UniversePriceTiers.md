@@ -15,3 +15,6 @@ tags:
 	</picture>
 	<figcaption>宇宙价格等级</figcaption>
 </figure>
+
+
+"Sow the wind, reap the whirlwind"是一句西方谚语，相当于“种瓜得瓜，种豆得豆”，或“善有善报，恶有恶报”。
