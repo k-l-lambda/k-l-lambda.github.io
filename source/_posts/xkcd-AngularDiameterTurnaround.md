@@ -12,7 +12,7 @@ date: 2022-08-13 14:46:11
 	<picture>
 		{% img figure /images/xkcd-angular_diameter_turnaround.png 740 '"" "xkcd 2622"' %}
 	</picture>
-	<figcaption><a href="https://xkcd.com/2622/">xkcd/2622</a></figcaption>
+	<figcaption>原作：<a href="https://xkcd.com/2622/">xkcd/2622</a></figcaption>
 </figure>
 
 

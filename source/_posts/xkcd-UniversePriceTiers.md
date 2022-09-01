@@ -4,7 +4,9 @@ tags:
   - translation
   - xkcd
   - 中文
+date: 2022-09-01 23:18:20
 ---
+
 
 原作：[xkcd/2666](https://xkcd.com/2666/)
 

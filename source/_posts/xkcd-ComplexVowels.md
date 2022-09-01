@@ -12,7 +12,7 @@ date: 2022-08-13 15:55:33
 	<picture>
 		{% img figure /images/xkcd-complex_vowels.png 270 '"" "xkcd 2657"' %}
 	</picture>
-	<figcaption><a href="https://xkcd.com/2657/">xkcd/2657</a></figcaption>
+	<figcaption>原作：<a href="https://xkcd.com/2657/">xkcd/2657</a></figcaption>
 </figure>
 
 
