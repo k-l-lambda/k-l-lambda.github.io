@@ -16,8 +16,8 @@
 <meta property="og:description" content="StyleGAN mapping sampling points visualization by embedding projector 		click here to see 3D visulization 	  Some days after the former post of StyleGAN Mapping Network Geometry Visualizat">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://k-l-lambda.github.io/images/stylegan-mapping-sampling-pca.png">
-<meta property="article:published_time" content="2020-04-25T11:52:06.000Z">
-<meta property="article:modified_time" content="2022-09-01T15:20:58.385Z">
+<meta property="article:published_time" content="2020-04-25T03:52:06.000Z">
+<meta property="article:modified_time" content="2020-04-25T03:55:09.318Z">
 <meta property="article:author" content="K.L.">
 <meta property="article:tag" content="deep_learning">
 <meta property="article:tag" content="stylegan">
@@ -53,7 +53,7 @@ ga('send', 'pageview');
 
   
 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -67,7 +67,7 @@ ga('send', 'pageview');
 			<img src="/img/profile.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">K.L.</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -119,7 +119,7 @@ ga('send', 'pageview');
 				<img src="/img/profile.png" class="js-avatar">
 			</a>
 			<hgroup>
-			  <h1 class="header-author js-header-author">K.L.</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -179,7 +179,7 @@ ga('send', 'pageview');
 
         
         <a href="/2020/04/25/stylegan-mapping-tsne/" class="archive-article-date">
-  	<time datetime="2020-04-25T11:52:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
+  	<time datetime="2020-04-25T03:52:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
 </a>
         
       </header>
@@ -192,20 +192,20 @@ ga('send', 'pageview');
 	</picture>
 	<figcaption>
 		<p>StyleGAN mapping sampling points visualization by embedding projector</p>
-		<p><a href="https://projector.tensorflow.org/?config=https://gist.githubusercontent.com/k-l-lambda/ec91b00e74a62b6435ec098138f9ab0d/raw/df0e1a3f7a8e29476e30c723038f425f71bba0bd/embedding-projector-config.json" target="_blank" rel="noopener">click here to see 3D visulization</a></p>
+		<p><a target="_blank" rel="noopener" href="https://projector.tensorflow.org/?config=https://gist.githubusercontent.com/k-l-lambda/ec91b00e74a62b6435ec098138f9ab0d/raw/df0e1a3f7a8e29476e30c723038f425f71bba0bd/embedding-projector-config.json">click here to see 3D visulization</a></p>
 	</figcaption>
 </figure>
 <p>Some days after the former post of <a href="/2020/02/10/stylegan-mapping/">StyleGAN Mapping Network Geometry Visualization</a>,
-I realized that there are some canonical dimension reduction methods for data visualization, such as <a href="https://en.wikipedia.org/wiki/Principal_component_analysis" target="_blank" rel="noopener">PCA</a>, <a href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding" target="_blank" rel="noopener">t-SNE</a>.
+I realized that there are some canonical dimension reduction methods for data visualization, such as <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding">t-SNE</a>.
 These ways may be more intuitive to show data characteristics. So I did some attempts on this.</p>
-<a id="more"></a>
-<p>Firstly I tried a <a href="https://github.com/tensorflow/tfjs-tsne" target="_blank" rel="noopener">t-SNE implementation by tensorflow.js</a>,
+<span id="more"></span>
+<p>Firstly I tried a <a target="_blank" rel="noopener" href="https://github.com/tensorflow/tfjs-tsne">t-SNE implementation by tensorflow.js</a>,
 disappointedly, after a moment struggling against release version compatibility problem,
 I found that the upper limit of data dimensions is merely 40 on a browser WebGL backend, while SytleGAN W space is 512-d.</p>
 <p>Finally, I give up the attempt of a more sophisticated t-SNE implementation,
-I found the <a href="https://projector.tensorflow.org/" target="_blank" rel="noopener">tensorflow embedding projector</a> is a not bad option.
+I found the <a target="_blank" rel="noopener" href="https://projector.tensorflow.org/">tensorflow embedding projector</a> is a not bad option.
 Its integration with github gist is handy.</p>
-<p>This is the <a href="https://projector.tensorflow.org/?config=https://gist.githubusercontent.com/k-l-lambda/ec91b00e74a62b6435ec098138f9ab0d/raw/df0e1a3f7a8e29476e30c723038f425f71bba0bd/embedding-projector-config.json" target="_blank" rel="noopener"><strong>live 3D visualization</strong></a>.
+<p>This is the <a target="_blank" rel="noopener" href="https://projector.tensorflow.org/?config=https://gist.githubusercontent.com/k-l-lambda/ec91b00e74a62b6435ec098138f9ab0d/raw/df0e1a3f7a8e29476e30c723038f425f71bba0bd/embedding-projector-config.json"><strong>live 3D visualization</strong></a>.
 It seems t-SNE result is more smooth, but a bit unstable.
 For t-SNE, the result to the experiment of one random circle, points will convergence to a nearly regular round.
 That seems mainly caused by lack of adjacencies on a circle sampling. Then I made a configuration of 3 random circles, as shown in the top illustration.
@@ -369,7 +369,7 @@ gitalk.render('gitalk-container')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 K.L.
+    		&copy; 2023 K.L.
     	</div>
       	<div class="footer-right">
       		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>

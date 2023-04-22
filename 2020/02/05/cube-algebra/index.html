@@ -15,8 +15,8 @@
 <meta property="og:site_name" content="K.L.">
 <meta property="og:description" content="In 3D space, an object has 6 &amp;times; 4 &#x3D; 24 orthogonal orientations in total.  Motivation Canonical Rubik’s Cube solver algorithm1 constructs cube state from face colors and a lot of p">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-05T17:00:57.000Z">
-<meta property="article:modified_time" content="2022-09-01T15:20:58.385Z">
+<meta property="article:published_time" content="2020-02-05T09:00:57.000Z">
+<meta property="article:modified_time" content="2020-12-14T13:37:00.687Z">
 <meta property="article:author" content="K.L.">
 <meta property="article:tag" content="math">
 <meta property="article:tag" content="algebra">
@@ -53,7 +53,7 @@ ga('send', 'pageview');
 
   
 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -67,7 +67,7 @@ ga('send', 'pageview');
 			<img src="/img/profile.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">K.L.</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -119,7 +119,7 @@ ga('send', 'pageview');
 				<img src="/img/profile.png" class="js-avatar">
 			</a>
 			<hgroup>
-			  <h1 class="header-author js-header-author">K.L.</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -179,7 +179,7 @@ ga('send', 'pageview');
 
         
         <a href="/2020/02/05/cube-algebra/" class="archive-article-date">
-  	<time datetime="2020-02-05T17:00:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-05</time>
+  	<time datetime="2020-02-05T09:00:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-05</time>
 </a>
         
       </header>
@@ -195,15 +195,15 @@ ga('send', 'pageview');
 	<figcaption>In 3D space, an object has 6 &times; 4 = 24 orthogonal orientations in total.</figcaption>
 </figure>
 <h2 id="Motivation">Motivation</h2>
-<p>Canonical Rubik’s Cube solver algorithm<sup><a href="https://github.com/hkociemba/RubiksCube-TwophaseSolver" target="_blank" rel="noopener">1</a></sup> constructs cube state from face colors and a lot of permutation rules. That may waste too many coding :)
+<p>Canonical Rubik’s Cube solver algorithm<sup><a target="_blank" rel="noopener" href="https://github.com/hkociemba/RubiksCube-TwophaseSolver">1</a></sup> constructs cube state from face colors and a lot of permutation rules. That may waste too many coding :)
 Face color is merely appearance, cubies’ orientation is essential.
-Since Rubik’s Cube seems already been used as the avatar of group theory (check this <a href="https://en.wikipedia.org/wiki/Group_theory" target="_blank" rel="noopener">wikipedia entry</a>),
+Since Rubik’s Cube seems already been used as the avatar of group theory (check this <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Group_theory">wikipedia entry</a>),
 it’s better to clarify all details of the cube rotation group structure, and construct the whole Rubik’s Cube representations based on cubies’ orientation.</p>
-<p>Regardless of Rubik’s Cube, orthogonal rotation in 3D space is usual and connected with interesting problems. E.g. how to quickly tell if 2 orthogonal <a href="https://en.wikipedia.org/wiki/Euler_angles" target="_blank" rel="noopener">Euler angles</a> are the same rotation, purely by algebra without experiment?
-<a href="https://en.wikipedia.org/wiki/Quaternion" target="_blank" rel="noopener">Quaternion calculus</a> may be a short answer, but when you do that, irrational numbers are inevitable, and that seems wasting and precise problematic.</p>
+<p>Regardless of Rubik’s Cube, orthogonal rotation in 3D space is usual and connected with interesting problems. E.g. how to quickly tell if 2 orthogonal <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a> are the same rotation, purely by algebra without experiment?
+<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Quaternion">Quaternion calculus</a> may be a short answer, but when you do that, irrational numbers are inevitable, and that seems wasting and precise problematic.</p>
 <p>Programmers prefer easy implementation, which based on a set of simple representation and rules applied to them. No float numbers, no redundancy.
 All you need is a multiplication table, and the table is highly symmetric, so let’s begin from analyzing the <strong>R</strong><sup>3</sup> orthogonal rotation group structure.</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="Quaternion-space-half-reduction">Quaternion space half reduction</h2>
 <p>In fact, we can invent a new symbol system to represent every element, but it may be a better choice to keep compatible with quaternion.
 However, by quaternion we should solve an ambiguity issue firstly. Because in <strong>R</strong><sup>3</sup> geometry, a pair of quaternion <em>±q</em> represent a same rotation.
@@ -378,7 +378,7 @@ To reduce redundancy items in multiplication form, I picks item by alphabetical 
 <p>$O_{24}$ is closed for this operation, i.e. all results by half-reduction multipy between 2 arbitrary elements in $O_{24}$ are returned in 24 elements.</p>
 <p>$1$ is the identity element, $\{ \sqrt{i}, \sqrt{j}, \sqrt{k} \}$ is the generating set, i.e. all 24 elements can be generated by multiplication among this 3 elements.
 Every element has a corresponding inverse element.</p>
-<p>Then we get the cube symmetry group (or <a href="https://en.wikipedia.org/wiki/Octahedral_symmetry#Full_octahedral_symmetry" target="_blank" rel="noopener">full octahedral symmetry group</a>):</p>
+<p>Then we get the cube symmetry group (or <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Octahedral_symmetry#Full_octahedral_symmetry">full octahedral symmetry group</a>):</p>
 <p>$$ O_{h}: \{ O_{24}, 1, \otimes \} $$</p>
 <p>This is the group table:</p>
 <p style="font-size: 9px">
@@ -413,7 +413,7 @@ $
 $
 </p>
 <p>You may notice that top-left 4×4 area in the table is a subgroup by only half rotation elements.</p>
-<p>3D <a href="https://en.wikipedia.org/wiki/Cayley_graph" target="_blank" rel="noopener">Cayley graph</a> for the group:</p>
+<p>3D <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cayley_graph">Cayley graph</a> for the group:</p>
 <figure>
 	<span class="fixed-ratio" style="width: 100%; padding-top: 60%">
 		<iframe src="/klstudio/embed.html#/cube-cayley-graph"></iframe>
@@ -425,7 +425,7 @@ $
 </figure>
 <p>I have to confess this graph’s architecture configuration is far from perfection, any good idea about $O_{h}$ visualization please tell me.</p>
 <h2 id="Next-step">Next step</h2>
-<p>Soon later, I will talk about some thinking about Rubik’s Cube representation in computer and some ideas maybe helpful for solver algorithm<sup><a href="https://en.wikipedia.org/wiki/God%27s_algorithm" target="_blank" rel="noopener">2</a></sup>.</p>
+<p>Soon later, I will talk about some thinking about Rubik’s Cube representation in computer and some ideas maybe helpful for solver algorithm<sup><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/God%27s_algorithm">2</a></sup>.</p>
 
       
 
@@ -593,7 +593,7 @@ gitalk.render('gitalk-container')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 K.L.
+    		&copy; 2023 K.L.
     	</div>
       	<div class="footer-right">
       		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>

@@ -17,8 +17,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://k-l-lambda.github.io/images/stylegan-network.png">
 <meta property="og:image" content="https://k-l-lambda.github.io/images/stylegan-geometry.jpg">
-<meta property="article:published_time" content="2020-02-10T14:22:52.000Z">
-<meta property="article:modified_time" content="2022-09-01T15:20:58.385Z">
+<meta property="article:published_time" content="2020-02-10T06:22:52.000Z">
+<meta property="article:modified_time" content="2020-03-08T05:43:53.312Z">
 <meta property="article:author" content="K.L.">
 <meta property="article:tag" content="deep_learning">
 <meta property="article:tag" content="stylegan">
@@ -54,7 +54,7 @@ ga('send', 'pageview');
 
   
 
-<meta name="generator" content="Hexo 4.2.1"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -68,7 +68,7 @@ ga('send', 'pageview');
 			<img src="/img/profile.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">K.L.</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -120,7 +120,7 @@ ga('send', 'pageview');
 				<img src="/img/profile.png" class="js-avatar">
 			</a>
 			<hgroup>
-			  <h1 class="header-author js-header-author">K.L.</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -180,7 +180,7 @@ ga('send', 'pageview');
 
         
         <a href="/2020/02/10/stylegan-mapping/" class="archive-article-date">
-  	<time datetime="2020-02-10T14:22:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
+  	<time datetime="2020-02-10T06:22:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
 </a>
         
       </header>
@@ -202,11 +202,11 @@ ga('send', 'pageview');
 		StyleGAN generator network architecture & geometry conceptual illustration
 	</figcaption>
 </figure>
-<p><a href="https://github.com/NVlabs/stylegan2" target="_blank" rel="noopener">StyleGAN</a><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> generator network has two parts: full-connected mapping network (named <em><code>mapping</code></em>), and pyramid CNN synthesis network (named <em><code>g</code></em>).
+<p><a target="_blank" rel="noopener" href="https://github.com/NVlabs/stylegan2">StyleGAN</a><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> generator network has two parts: full-connected mapping network (named <em><code>mapping</code></em>), and pyramid CNN synthesis network (named <em><code>g</code></em>).
 <code>Mapping</code> is a transformation from dimension 512 to 512, and <code>g</code> is a transformation from dimension 512 to 1024×1024×3.
 The design of <code>mapping</code> is intended to disentangle the manifold mapping from latent space to feature variation space.
 I’m interested in how the shape of learned mapping in network warps exactly, so this is my experiment.</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>By normalization at the beginning of mapping network, input z vectors are on the regular 512-d unit spherical surface.
 Supposing <code>mapping</code> is a continuous function, all possible w points from Z will distribute on a irregular closed 512-d surface.
 To show a 512-d manifold is difficult, for humans only have 2-d vision. But we can show some local characteristics by dimension slicing.</p>
@@ -232,7 +232,7 @@ I.e. for every point <em>w</em> in the result circle:</p>
 Intervals between neighbor points, though not very even, but high dimensional gauge can’t be speculated by low dimensional projections.</p>
 <p>When you select very many dimensions (by moving the second slider to right), you will see the overall distribution of points’ coordinates.
 It may be a significant observation that most points congregate at the first octant (+, +, +), more exactly, the tetrahedron area with vertices about <em>(0, 0, 0), (1.5, 0, 0), (0, 1.5, 0), (0, 0, 1.5)</em>.
-This phenomenon reminds <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)" target="_blank" rel="noopener">ReLU</a> activation’s effection.
+This phenomenon reminds <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)">ReLU</a> activation’s effection.
 According to StyleGAN source code<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>, <em>Leaky ReLU</em> is used in mapping network by default, which coincides the ploting results.
 In some sense, the asymmetry may be necessary to disentanglement learning.
 But in a further thinking, considering the network is trained on a dataset from nature, why nature need such a specific asymmetry and where it come from?</p>
@@ -242,18 +242,18 @@ And we can safely suppose that a random great circle (with a random normal vecto
 In fact, considering the high dimensions, 2 random superplanes will be very closed to perpendicular in most cases.
 So we will get an interesting inference, generated images sampling from a great circle will experience many features variation: male/female, old/young, and anything else you can imagine.
 So such an experiment can be helpful to see the diversity of a GAN, and test how well fitted the network with dataset.</p>
-<p>This is my StyleGAN <a href="https://github.com/k-l-lambda/stylegan-web" target="_blank" rel="noopener">web porting project</a> for research. A video demo:</p>
-<a href="https://github.com/k-l-lambda/stylegan-web" target="_blank" rel="noopener">
+<p>This is my StyleGAN <a target="_blank" rel="noopener" href="https://github.com/k-l-lambda/stylegan-web">web porting project</a> for research. A video demo:</p>
+<a target="_blank" rel="noopener" href="https://github.com/k-l-lambda/stylegan-web">
 	<video src="/images/explorer-demo.webm" style="width: 100%; max-width: 800px" autoplay loop></video>
 </a>
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>paper: <a href="https://arxiv.org/abs/1812.04948" target="_blank" rel="noopener">A Style-Based Generator Architecture for Generative Adversarial Networks</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>paper: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1812.04948">A Style-Based Generator Architecture for Generative Adversarial Networks</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p>paper: <a href="https://arxiv.org/abs/1912.04958" target="_blank" rel="noopener">Analyzing and Improving the Image Quality of StyleGAN</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+<li id="fn2" class="footnote-item"><p>paper: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.04958">Analyzing and Improving the Image Quality of StyleGAN</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn3" class="footnote-item"><p><a href="https://github.com/NVlabs/stylegan2/blob/master/training/networks_stylegan2.py#L261" target="_blank" rel="noopener">mapping network code</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+<li id="fn3" class="footnote-item"><p><a target="_blank" rel="noopener" href="https://github.com/NVlabs/stylegan2/blob/master/training/networks_stylegan2.py#L261">mapping network code</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
 <li id="fn4" class="footnote-item"><p>Someone may argue that feature space could be more straight for W than Z, but considering the highly irregular shape and the relation between <em>ψ</em> and feature intensity, I think it’s an open question. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
 </li>
@@ -418,7 +418,7 @@ gitalk.render('gitalk-container')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 K.L.
+    		&copy; 2023 K.L.
     	</div>
       	<div class="footer-right">
       		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
