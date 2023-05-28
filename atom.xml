@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://k-l-lambda.github.io/"/>
-  <updated>2023-04-22T06:54:59.238Z</updated>
+  <updated>2023-05-28T15:07:46.675Z</updated>
   <id>https://k-l-lambda.github.io/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Contemporary Art Genres and Artists Style Exhibition</title>
+    <link href="https://k-l-lambda.github.io/2023/05/28/ai-art-styles/"/>
+    <id>https://k-l-lambda.github.io/2023/05/28/ai-art-styles/</id>
+    <published>2023-05-28T15:07:46.000Z</published>
+    <updated>2023-05-28T15:07:46.675Z</updated>
+    
+    <content type="html"><![CDATA[<iframe src="/klstudio/art-styles/genres.html" style="border: 0; width: 100%; height: 676px"></iframe><span id="more"></span><iframe src="/klstudio/art-styles/genres2.html" style="border: 0; width: 100%; height: 960px"></iframe><iframe src="/klstudio/art-styles/artists.html" style="border: 0; width: 100%; height: 9066px"></iframe>]]></content>
+    
+    <summary type="html">
+    
+      &lt;iframe src=&quot;/klstudio/art-styles/genres.html&quot; style=&quot;border: 0; width: 100%; height: 676px&quot;&gt;&lt;/iframe&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="deep_learning" scheme="https://k-l-lambda.github.io/tags/deep-learning/"/>
+    
+      <category term="aigc" scheme="https://k-l-lambda.github.io/tags/aigc/"/>
+    
+      <category term="art" scheme="https://k-l-lambda.github.io/tags/art/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[xkcd] 外星举手击掌</title>
+    <link href="https://k-l-lambda.github.io/2023/05/28/xkcd-ExoplanetHigh5/"/>
+    <id>https://k-l-lambda.github.io/2023/05/28/xkcd-ExoplanetHigh5/</id>
+    <published>2023-05-28T06:54:02.000Z</published>
+    <updated>2023-05-28T12:03:37.411Z</updated>
+    
+    <content type="html"><![CDATA[<figure><picture><img src="/images/xkcd-exoplanet_high-5.png" class="figure" width="515" alt="xkcd 2779"></picture><figcaption>原作：<a href="https://xkcd.com/2779/">xkcd/2779</a></figcaption></figure><figure><picture><img src="/images/terminator2-high5.webp" class="figure" width="400"></picture></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure&gt;
+	&lt;picture&gt;
+		&lt;img src=&quot;/images/xkcd-exoplanet_high-5.png&quot; class=&quot;figure&quot; width=&quot;515&quot; alt=&quot;xkcd 2779&quot;&gt;
+	&lt;/picture&gt;
+	&lt;figcaption&gt;原作：&lt;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="中文" scheme="https://k-l-lambda.github.io/tags/%E4%B8%AD%E6%96%87/"/>
+    
+      <category term="translation" scheme="https://k-l-lambda.github.io/tags/translation/"/>
+    
+      <category term="xkcd" scheme="https://k-l-lambda.github.io/tags/xkcd/"/>
+    
+  </entry>
   
   <entry>
     <title>Illustration for Diffusion-Based Generative Model</title>

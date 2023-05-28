@@ -158,6 +158,168 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cube-algebra" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/05/cube-algebra/">Cube Rotation Algebra</a>
+    </h1>
+  
+  
+
+        
+        <a href="/2020/02/05/cube-algebra/" class="archive-article-date">
+  	<time datetime="2020-02-05T09:00:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure>
+	<span class="max600">
+		<span class="fixed-ratio" style="width: 100%; padding-top: 100%">
+			<iframe src="/klstudio/embed.html#/documents/mesh-viewer-demo:quarter-array-4x6"></iframe>
+		</span>
+	</span>
+	<figcaption>In 3D space, an object has 6 &times; 4 = 24 orthogonal orientations in total.</figcaption>
+</figure>
+<h2 id="Motivation">Motivation</h2>
+<p>Canonical Rubik’s Cube solver algorithm<sup><a target="_blank" rel="noopener" href="https://github.com/hkociemba/RubiksCube-TwophaseSolver">1</a></sup> constructs cube state from face colors and a lot of permutation rules. That may waste too many coding :)
+Face color is merely appearance, cubies’ orientation is essential.
+Since Rubik’s Cube seems already been used as the avatar of group theory (check this <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Group_theory">wikipedia entry</a>),
+it’s better to clarify all details of the cube rotation group structure, and construct the whole Rubik’s Cube representations based on cubies’ orientation.</p>
+<p>Regardless of Rubik’s Cube, orthogonal rotation in 3D space is usual and connected with interesting problems. E.g. how to quickly tell if 2 orthogonal <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a> are the same rotation, purely by algebra without experiment?
+<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Quaternion">Quaternion calculus</a> may be a short answer, but when you do that, irrational numbers are inevitable, and that seems wasting and precise problematic.</p>
+<p>Programmers prefer easy implementation, which based on a set of simple representation and rules applied to them. No float numbers, no redundancy.
+All you need is a multiplication table, and the table is highly symmetric, so let’s begin from analyzing the <strong>R</strong><sup>3</sup> orthogonal rotation group structure.</p>
+        
+          <a class="article-more-a" href="/2020/02/05/cube-algebra/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">math</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">algebra</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">group_theory</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">rubiks_cube</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-embed-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/03/embed-test/">Embedding Test</a>
+    </h1>
+  
+  
+
+        
+        <a href="/2020/02/03/embed-test/" class="archive-article-date">
+  	<time datetime="2020-02-03T08:17:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <iframe src="/klstudio/embed.html" style="border: 0; width: 100%; height: calc(min(60vh, 60vw))"></iframe>
+<p><em>This is just a page embedding test. Have fun.</em></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-first-post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
