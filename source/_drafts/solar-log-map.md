@@ -19,6 +19,10 @@ tags:
 <!-- more -->
 
 
+Inner solar system is more dense than outer part, so logarithmic map is popular for universe illustration.
+But there is a common mistake in many logarithmic maps, like this one:
+
+
 <figure>
 	<picture>
 		<img src="/images/solar-log-wrong.jpg" alt="solar-log-wrong" />
@@ -28,6 +32,15 @@ tags:
 	</figcaption>
 </figure>
 
+
+Think about this: where is the right place for a sun probe whose distance from the sun less than 0.1 AU (say, 0.02 AU) in the map?
+
+The key problem is the fact: log(0) = -∞，so maybe we simply cannot plot the sun in the map?
+No, certainly we can.
+And even more, by logarithm we can plot the entire universe into a finite map.
+After all, all quantities in physics are finite.
+
+Let's begin from the planck length.
 
 <figure>
 	<picture>
