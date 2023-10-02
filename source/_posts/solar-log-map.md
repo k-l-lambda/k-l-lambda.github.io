@@ -2,7 +2,9 @@
 title: Solar Centered Logarithmic Map
 tags:
   - comic
+date: 2023-10-02 22:39:48
 ---
+
 
 
 <figure>
