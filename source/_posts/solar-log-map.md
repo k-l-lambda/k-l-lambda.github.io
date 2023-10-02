@@ -35,10 +35,10 @@ But there is a common mistake in many logarithmic maps, like this one:
 </figure>
 
 
-Think about this: where is the right place for a sun probe whose distance from the sun less than 0.1 AU (say, 0.02 AU) in the map?
+Think about this question: where is the right place for a sun probe whose distance from the sun less than 0.1 AU (say, 0.02 AU) in the map?
 
 The key problem is the fact: log(0) = -∞，so maybe we simply cannot plot the sun in the map?
-No, certainly we can.
+Yes, certainly we can.
 And even more, by logarithm we can plot the entire universe into a finite map.
 After all, all quantities in physics are finite.
 
