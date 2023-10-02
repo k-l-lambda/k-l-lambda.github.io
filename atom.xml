@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://k-l-lambda.github.io/"/>
-  <updated>2023-05-28T15:07:46.675Z</updated>
+  <updated>2023-10-02T14:39:48.325Z</updated>
   <id>https://k-l-lambda.github.io/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Solar Centered Logarithmic Map</title>
+    <link href="https://k-l-lambda.github.io/2023/10/02/solar-log-map/"/>
+    <id>https://k-l-lambda.github.io/2023/10/02/solar-log-map/</id>
+    <published>2023-10-02T14:39:48.000Z</published>
+    <updated>2023-10-02T14:39:48.325Z</updated>
+    
+    <content type="html"><![CDATA[<figure><picture><a href="/images/solar-log-scale-horizental.png"><img src="/images/solar-log-scale-thumb.jpg" alt="solar centered logarithmic map thumb" /></a></picture><figcaption>Click to see the original image.</figcaption></figure><span id="more"></span><p>Inner solar system is more dense than outer part, so logarithmic map is popular for universe illustration.But there is a common mistake in many logarithmic maps, like this one:</p><figure><picture><img src="/images/solar-log-wrong.jpg" alt="solar-log-wrong" /></picture><figcaption>an example of logarithmic map with common mistake</figcaption></figure><p>Think about this: where is the right place for a sun probe whose distance from the sun less than 0.1 AU (say, 0.02 AU) in the map?</p><p>The key problem is the fact: log(0) = -∞，so maybe we simply cannot plot the sun in the map?No, certainly we can.And even more, by logarithm we can plot the entire universe into a finite map.After all, all quantities in physics are finite.</p><p>Let’s begin from the planck length.</p><figure><picture><svg xmlns="http://www.w3.org/2000/svg" width="665" height="12600" viewBox="0 0 665 12600" xmlns:xlink="http://www.w3.org/1999/xlink"aria-hidden="true" style="max-width: 100%" preserveAspectRatio="xMinYMin meet"><g transform="rotate(90 332.5 332.5)"><image href="/images/solar-log-scale-horizental.png" x="0" y="0" width="12600" height="665" /></g></svg></picture><figcaption></figcaption></figure><p><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> <sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> <sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> <sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></p><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li id="fn1" class="footnote-item"><p>Considering the <a href="https://en.wikipedia.org/wiki/T-duality">T-duality</a>, space in scale less than 1 planck length may be equal to that greater than 1 planck length (R &lt;=&gt; 1/R). So God may be homeless in that case. <a href="#fnref1" class="footnote-backref">↩︎</a></p></li><li id="fn2" class="footnote-item"><p>The vast blank area hints that the present theory may omit some significant existences. <a href="#fnref2" class="footnote-backref">↩︎</a></p></li><li id="fn3" class="footnote-item"><p>Notice that woman is on the right, so she is taller in fact. <a href="#fnref3" class="footnote-backref">↩︎</a></p></li><li id="fn4" class="footnote-item"><p>I bet you live here now. <a href="#fnref4" class="footnote-backref">↩︎</a></p></li><li id="fn5" class="footnote-item"><p>Here I adopt the theory of <a href="https://en.wikipedia.org/wiki/Eternal_inflation">Eternal inflation</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p></li></ol></section>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure&gt;
+	&lt;picture&gt;
+		&lt;a href=&quot;/images/solar-log-scale-horizental.png&quot;&gt;
+			&lt;img src=&quot;/images/solar-log-scale-thumb.jpg&quot; alt=&quot;solar centered logarithmic map thumb&quot; /&gt;
+		&lt;/a&gt;
+	&lt;/picture&gt;
+	&lt;figcaption&gt;
+		Click to see the original image.
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="comic" scheme="https://k-l-lambda.github.io/tags/comic/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Contemporary Art Genres and Artists Style Exhibition</title>
     <link href="https://k-l-lambda.github.io/2023/05/28/ai-art-styles/"/>
     <id>https://k-l-lambda.github.io/2023/05/28/ai-art-styles/</id>
     <published>2023-05-28T15:07:46.000Z</published>
-    <updated>2023-05-28T15:07:46.675Z</updated>
+    <updated>2023-10-02T05:28:03.677Z</updated>
     
     <content type="html"><![CDATA[<iframe src="/klstudio/art-styles/genres.html" style="border: 0; width: 100%; height: 676px"></iframe><span id="more"></span><iframe src="/klstudio/art-styles/genres2.html" style="border: 0; width: 100%; height: 960px"></iframe><iframe src="/klstudio/art-styles/artists.html" style="border: 0; width: 100%; height: 9066px"></iframe>]]></content>
     
@@ -46,7 +76,7 @@
     <link href="https://k-l-lambda.github.io/2023/05/28/xkcd-ExoplanetHigh5/"/>
     <id>https://k-l-lambda.github.io/2023/05/28/xkcd-ExoplanetHigh5/</id>
     <published>2023-05-28T06:54:02.000Z</published>
-    <updated>2023-05-28T12:03:37.411Z</updated>
+    <updated>2023-10-02T06:02:18.212Z</updated>
     
     <content type="html"><![CDATA[<figure><picture><img src="/images/xkcd-exoplanet_high-5.png" class="figure" width="515" alt="xkcd 2779"></picture><figcaption>原作：<a href="https://xkcd.com/2779/">xkcd/2779</a></figcaption></figure><figure><picture><img src="/images/terminator2-high5.webp" class="figure" width="400"></picture></figure>]]></content>
     
@@ -70,6 +100,8 @@
       <category term="translation" scheme="https://k-l-lambda.github.io/tags/translation/"/>
     
       <category term="xkcd" scheme="https://k-l-lambda.github.io/tags/xkcd/"/>
+    
+      <category term="comic" scheme="https://k-l-lambda.github.io/tags/comic/"/>
     
   </entry>
   
@@ -109,7 +141,7 @@
     <link href="https://k-l-lambda.github.io/2022/09/01/xkcd-UniversePriceTiers/"/>
     <id>https://k-l-lambda.github.io/2022/09/01/xkcd-UniversePriceTiers/</id>
     <published>2022-09-01T15:18:20.000Z</published>
-    <updated>2023-04-22T06:54:59.254Z</updated>
+    <updated>2023-10-02T06:02:22.727Z</updated>
     
     <content type="html"><![CDATA[<p>原作：<a href="https://xkcd.com/2666/">xkcd/2666</a></p><figure><picture><img src="/images/xkcd-universe_price_tiers-zh.png" class="figure" width="646" alt="xkcd 2657"></picture><figcaption>宇宙价格等级</figcaption></figure><p>&quot;Sow the wind, reap the whirlwind&quot;是一句西方谚语，相当于“种瓜得瓜，种豆得豆”，或“善有善报，恶有恶报”。</p>]]></content>
     
@@ -133,6 +165,8 @@
     
       <category term="xkcd" scheme="https://k-l-lambda.github.io/tags/xkcd/"/>
     
+      <category term="comic" scheme="https://k-l-lambda.github.io/tags/comic/"/>
+    
   </entry>
   
   <entry>
@@ -140,7 +174,7 @@
     <link href="https://k-l-lambda.github.io/2022/08/13/xkcd-ComplexVowels/"/>
     <id>https://k-l-lambda.github.io/2022/08/13/xkcd-ComplexVowels/</id>
     <published>2022-08-13T07:55:33.000Z</published>
-    <updated>2023-04-22T06:54:59.254Z</updated>
+    <updated>2023-10-02T06:02:13.517Z</updated>
     
     <content type="html"><![CDATA[<figure><picture><img src="/images/xkcd-complex_vowels.png" class="figure" width="270" alt="xkcd 2657"></picture><figcaption>原作：<a href="https://xkcd.com/2657/">xkcd/2657</a></figcaption></figure><blockquote><p>语言学提示：<br/>沿虚轴扩展国际音标元音平面，由此生成&quot;<strong>复</strong>元音&quot;<br/>——一种凡人无法理解的晦气声音。</p></blockquote><p>国际音标中的元音可以按发音位置(前-后)和口型(闭-开)两个维度分类, 即所谓’<a href="https://en.wikipedia.org/wiki/Vowel_diagram">VOWEL PLANE</a>’.如下图:</p><img src="/images/English_vowel_chart.svg.png" class="figure" width="240" alt="vowel plane"><p>作者借用了数学上的<a href="https://zh.m.wikipedia.org/zh-hans/%E8%A7%A3%E6%9E%90%E5%BB%B6%E6%8B%93">解析延拓</a>概念,设想在元音平面基础上再加上虚轴, 即得到了&quot;复元音&quot;.这里的&quot;复&quot;是复数的复. (双元音的英文是’diphthong’.)</p>]]></content>
     
@@ -165,6 +199,8 @@
     
       <category term="xkcd" scheme="https://k-l-lambda.github.io/tags/xkcd/"/>
     
+      <category term="comic" scheme="https://k-l-lambda.github.io/tags/comic/"/>
+    
   </entry>
   
   <entry>
@@ -172,7 +208,7 @@
     <link href="https://k-l-lambda.github.io/2022/08/13/xkcd-AngularDiameterTurnaround/"/>
     <id>https://k-l-lambda.github.io/2022/08/13/xkcd-AngularDiameterTurnaround/</id>
     <published>2022-08-13T06:46:11.000Z</published>
-    <updated>2023-04-22T06:54:59.254Z</updated>
+    <updated>2023-10-02T06:01:40.498Z</updated>
     
     <content type="html"><![CDATA[<figure><picture><img src="/images/xkcd-angular_diameter_turnaround.png" class="figure" width="740" alt="xkcd 2622"></picture><figcaption>原作：<a href="https://xkcd.com/2622/">xkcd/2622</a></figcaption></figure><blockquote><p><strong>视角直径拐点</strong><br/><em>(图中用手机代替星系，亮度和红移已调整到可见范围)</em><br/><em>近大远小，离我们越远的物体看起来越小，但非常非常远的物体看起来反而会变大！</em><br/><em>因为当它们的光线刚刚发射出来的时候宇宙还很小，当时它们距离我们（现在的空间位置）更近。</em><br/></p></blockquote><p>由于光速有限, 眺望远方其实也是眺望过去(字面意义上的).所以整个夜空其实是展示给我们的一部宇宙历史, 有意思的是这历史的最外层其实是宇宙早期的显微结构(参见<a href="https://wikizh.click/wiki/Decoupling_(cosmology)">解耦</a>).设想, 从地球向外, 把夜空(过去光锥)划分成一圈圈包围我们的天球球层, 在地球附近这些球层半径不断变大, 最后又变得很小, 那么中间一定会经历一个拐点.我有点好奇这拐点具体发生在什么时间, 从这篇xkcd的漫画图中来看, 大概是发生在<a href="https://zh.m.wikipedia.org/zh-hans/%E5%86%8D%E9%9B%BB%E9%9B%A2">再电离</a>事件之前的.</p><hr><p>好久没有更新博客了, 去年至今其实有一些酝酿中的想法, 没时间整理成paper, 只能再往后推了.最近打算先翻译一些有趣的xkcd漫画作品.</p><p>非常怀念过去在科学松鼠会上看<a href="http://www.songshuehu.net/ent.htm">Ent</a><sup><a href="https://www.163.com/dy/article/GBP09SFP055218MP.html">*</a></sup>翻译xkcd等各种科学漫画的时光.</p>]]></content>
     
@@ -196,6 +232,8 @@
       <category term="translation" scheme="https://k-l-lambda.github.io/tags/translation/"/>
     
       <category term="xkcd" scheme="https://k-l-lambda.github.io/tags/xkcd/"/>
+    
+      <category term="comic" scheme="https://k-l-lambda.github.io/tags/comic/"/>
     
   </entry>
   
