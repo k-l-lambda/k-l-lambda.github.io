@@ -2,6 +2,7 @@
 title: '[xkcd] “复”元音'
 tags:
   - translation
+  - comic
   - xkcd
   - 中文
 date: 2022-08-13 15:55:33

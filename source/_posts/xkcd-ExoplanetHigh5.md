@@ -2,6 +2,7 @@
 title: '[xkcd] 外星举手击掌'
 tags:
   - translation
+  - comic
   - xkcd
   - 中文
 date: 2023-05-28 14:54:02

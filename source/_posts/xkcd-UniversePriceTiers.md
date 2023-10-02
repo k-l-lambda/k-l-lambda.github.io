@@ -2,6 +2,7 @@
 title: '[xkcd] 宇宙价格等级'
 tags:
   - translation
+  - comic
   - xkcd
   - 中文
 date: 2022-09-01 23:18:20
