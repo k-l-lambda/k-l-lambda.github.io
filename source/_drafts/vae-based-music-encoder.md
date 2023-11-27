@@ -5,6 +5,8 @@ tags:
 ---
 
 
+<iframe width="800" height="260" src="/klstudio/embed.html#/lotus#/images/mix-score1123_1176-m16-30.json?controls=1"></iframe>
+
 以本篇作为起始，计划写一个算法作曲相关的系列，记录一些音乐算法研发中的想法。
 
 2018年Google发布的[Music Transformer](https://magenta.tensorflow.org/music-transformer)是算法作曲中具有里程碑意义的工作。
