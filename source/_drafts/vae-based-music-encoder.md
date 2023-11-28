@@ -7,7 +7,7 @@ tags:
 
 <figure>
 	<picture>
-		<iframe width="900" height="630" src="/klstudio/embed.html#/lotus#/images/mix-score1123_1176-m16-67.json?controls=1"></iframe>
+		<iframe width="900" height="240" src="/klstudio/embed.html#/lotus#/images/mix-score1123_1176-m16-67.json?controls=1"></iframe>
 	</picture>
 	<figcaption>
 		基于五线谱的AI音乐作品示例
@@ -28,7 +28,24 @@ tags:
 		<img src="/images/paraff-whole-c.svg" />
 	</picture>
 	<figcaption>
-		一个简单的例子，Paraff代码：<em>BOM K0 TN4 TD4 S1 Cg c D1 EOM</em>
+		简单五线谱示例，对应Paraff代码：<em>BOM K0 TN4 TD4 S1 Cg c D1 EOM</em>
 	</figcaption>
 </figure>
 
+<figure>
+	<picture>
+		<img src="/images/reparameterized-vae.png" width="480px" />
+	</picture>
+	<figcaption>
+		VAE基础结构
+	</figcaption>
+</figure>
+
+<figure>
+	<picture>
+		<img src="/images/shared-vae.drawio.svg" />
+	</picture>
+	<figcaption>
+		基于Transformer的shared VAE结构
+	</figcaption>
+</figure>
