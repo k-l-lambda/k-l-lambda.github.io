@@ -5,7 +5,14 @@ tags:
 ---
 
 
-<iframe width="800" height="260" src="/klstudio/embed.html#/lotus#/images/mix-score1123_1176-m16-30.json?controls=1"></iframe>
+<figure>
+	<picture>
+		<iframe width="900" height="630" src="/klstudio/embed.html#/lotus#/images/mix-score1123_1176-m16-67.json?controls=1"></iframe>
+	</picture>
+	<figcaption>
+		基于五线谱的AI音乐作品示例
+	</figcaption>
+</figure>
 
 以本篇作为起始，计划写一个算法作曲相关的系列，记录一些音乐算法研发中的想法。
 
