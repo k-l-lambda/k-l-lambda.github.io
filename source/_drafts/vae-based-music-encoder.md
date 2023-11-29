@@ -16,12 +16,55 @@ tags:
 
 以本篇作为起始，计划写一个算法作曲相关的系列，记录一些音乐算法研发中的想法。
 
+# 起源
+
 2018年Google发布的[Music Transformer](https://magenta.tensorflow.org/music-transformer)是算法作曲中具有里程碑意义的工作。
 它证明了自回归模型在音乐领域中的巨大潜力。
-阅读其[paper](https://arxiv.org/abs/1809.04281)，你会发现它的作者主要贡献是优化了性能。
-（缓解了Transformer二次方复杂度问题）
-不过我觉得paper正文描述的内容只是最后的临门一脚，
-真正值得重视的基础性工作在其附录中，关于如何把MIDI格式编码成易于自回归模型训练和生成的token序列。
+其中一个值得重视的基础性工作在其[paper](https://arxiv.org/abs/1809.04281)附录中，关于如何把MIDI格式编码成易于自回归模型训练和生成的token序列。
+
+后来在我的[OMR](https://en.wikipedia.org/wiki/Optical_music_recognition)项目上线完成后（OMR项目的心得我将另开系列分享），
+我发现借助OMR技术的能力，完全可以另辟蹊径，尝试开发一套基于五线谱的音乐生成模型。
+相对MIDI来说，由于直接来自于作曲家，五线谱的符号系统更接近自然语言。
+从计算机科学角度来说，其编码形式的信息熵密度更大。这是有利于机器学习的。
+当然缺点也很明显，作为音乐格式，五线谱不像MIDI可以直接播放成声音，阅读门槛较高。
+不过这个可以靠开发曲谱演奏模型来解决。
+而反过来，由于五线谱易于表达音乐构思，把音频和MIDI转成曲谱（即扒谱）也是一个有价值的方向。
+无论如何，开发一个可以写作曲谱的AI agent是很诱人的。
+
+<!-- more -->
+
+# 设计一门语言
+
+首选要解决的是选定一个用来表达曲谱的语言。
+就像Music Transformer做的一样，要使用自回归模型生成一种数据格式，就要先处理这种格式的tokenization。
+而选定的这种Token方案需要满足两个条件：
+
+1. **有明确定义的序**，即各token的先后顺序的规则是明确可学习的。
+1. **语法上是鲁棒的**。
+
+对于自然语言和MIDI来说第一条都是天然满足的，但对五线谱来说则是个问题。
+五线谱中每个音乐事件同时存在（时间，声部，音高）三个坐标维度。
+由于存在空间拥挤性，时间上同时发生的多个事件在图像中也没有跟x轴简单对应起来，例如下图：
+
+<figure>
+	<picture>
+		<img src="/images/misleading-staff-example.jpg" width="480px" />
+	</picture>
+	<figcaption>
+		复杂五线谱举例。蓝框中的音符演奏时间相同。
+	</figcaption>
+</figure>
+
+顺理成章地，我们会想到五线谱的标准数字格式语言是一个选择。
+首先要排除掉[Music XML](https://en.wikipedia.org/wiki/MusicXML)和[MEI](https://music-encoding.org/)这类基于XML的格式，太过繁复，破坏了信息熵原则。
+诸如[Lilypond](http://lilypond.org/)和[ABC Notation](https://abcnotation.com/)这样的音乐[DSL](https://en.wikipedia.org/wiki/Domain-specific_language)则可以在考虑之列。
+但这时我们就碰到了第二个问题，DSL通常很复杂，语法是不鲁棒的。
+同时不像MIDI中那样存在简单的累加性时间token，五线谱的时间表达以节拍为基准，是一套复杂的分数系统。
+这就要求我们重新设计一种便利语言生成模型训练的新曲谱语言。
+它应具有简单的上下文无关文法，这样的自回归生成采样时就可以采用简单的技术手段来规避语法错误。
+
+这门新的语言我将之命名为“Paraff”，其名字来源于Lilypond中的[parallel](https://lilypond.org/doc/v2.23/Documentation/notation/multiple-voices#writing-music-in-parallel)记法。
+下面是Paraff的“hello world”：
 
 <figure>
 	<picture>
@@ -31,6 +74,8 @@ tags:
 		简单五线谱示例，对应Paraff代码：<em>BOM K0 TN4 TD4 S1 Cg c D1 EOM</em>
 	</figcaption>
 </figure>
+
+# 自动编码器
 
 <figure>
 	<picture>
