@@ -112,3 +112,12 @@ Music Transformer成功解决的一个问题是优化了Transformer二次方复�
 		基于Transformer的shared VAE结构
 	</figcaption>
 </figure>
+
+x|![0.svg](/images/paraff-vae-experiment/score-0.svg)|![5.svg](/images/paraff-vae-experiment/score-5.svg)|![8.svg](/images/paraff-vae-experiment/score-8.svg)|![15.svg](/images/paraff-vae-experiment/score-15.svg)
+:--	| :--	| :--	| :--	| :--	| :--
+x', σ=0|![0.svg](/images/paraff-vae-experiment/score-0-sigma0.svg)|![5.svg](/images/paraff-vae-experiment/score-5-sigma0.svg)|![8.svg](/images/paraff-vae-experiment/score-8-sigma0.svg)|![15.svg](/images/paraff-vae-experiment/score-15-sigma0.svg)
+x', σ=4|![0.svg](/images/paraff-vae-experiment/score-0-sigma4.svg)|![5.svg](/images/paraff-vae-experiment/score-5-sigma4.svg)|![8.svg](/images/paraff-vae-experiment/score-8-sigma4.svg)|![15.svg](/images/paraff-vae-experiment/score-15-sigma4.svg)
+x', σ=8|![0.svg](/images/paraff-vae-experiment/score-0-sigma8.svg)|![5.svg](/images/paraff-vae-experiment/score-5-sigma8.svg)|![8.svg](/images/paraff-vae-experiment/score-8-sigma8.svg)|![15.svg](/images/paraff-vae-experiment/score-15-sigma8.svg)
+x', σ=16|![0.svg](/images/paraff-vae-experiment/score-0-sigma16.svg)|![5.svg](/images/paraff-vae-experiment/score-5-sigma16.svg)|![8.svg](/images/paraff-vae-experiment/score-8-sigma16.svg)|![15.svg](/images/paraff-vae-experiment/score-15-sigma16.svg)
+x', σ=32|![0.svg](/images/paraff-vae-experiment/score-0-sigma32.svg)|![5.svg](/images/paraff-vae-experiment/score-5-sigma32.svg)|![8.svg](/images/paraff-vae-experiment/score-8-sigma32.svg)|![15.svg](/images/paraff-vae-experiment/score-15-sigma32.svg)
+x', σ=100|![0.svg](/images/paraff-vae-experiment/score-0-sigma100.svg)|![5.svg](/images/paraff-vae-experiment/score-5-sigma100.svg)|![8.svg](/images/paraff-vae-experiment/score-8-sigma100.svg)|![15.svg](/images/paraff-vae-experiment/score-15-sigma100.svg)
