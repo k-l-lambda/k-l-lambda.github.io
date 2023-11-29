@@ -93,16 +93,24 @@ Music Transformer成功解决的一个问题是优化了Transformer二次方复�
 我们目标是把每个样本含有的信息抽象成一个d维（譬如d=256）向量，
 最自然想到的当然是[VAE](https://en.wikipedia.org/wiki/Variational_autoencoder)。
 本文不详述VAE的基本原理（推荐去读科学空间博主的[相关系列](https://spaces.ac.cn/search/%E5%8F%98%E5%88%86%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8/)），
-笔者假定读者已了解相关背景知识，这里仅以下图回顾VAE的基础结构：
+笔者假定读者已了解相关背景知识，这里仅以下图回顾经典VAE的结构：
 
 <figure>
 	<picture>
 		<img src="/images/reparameterized-vae.png" width="480px" />
 	</picture>
 	<figcaption>
-		VAE基础结构
+		VAE经典结构
 	</figcaption>
 </figure>
+
+如果以自回归模型作为VAE的decoder，则decoder在推测阶段是多次运行的，
+并且decoder的输入并不只是z，而通常是一个x'的半成品。
+我们观察到无论encoder还是decoder，其主要任务都是分析理解一个序列，
+区别只在于encoder目标为压缩信息，而decoder目标则是预测下一个词的概率分布。
+
+基于此，笔者大胆的提出一种 encoder和decoder共享大部分权重的新VAE结构，即shared VAE。
+其中encoder和decoder共享的部分为一个transformer的主干网络。如下图：
 
 <figure>
 	<picture>
@@ -113,6 +121,14 @@ Music Transformer成功解决的一个问题是优化了Transformer二次方复�
 	</figcaption>
 </figure>
 
+Encoder的输出经过reparameter之后，附加到一个特殊token `MSUM` （意为Measure Summary）的embedding之上，
+decoder可据此来还原完整的句子。
+从被训练的主干transformer视角来看，它的任务是，如果看到一个中间词（含`BOM`）则预测下一个词，
+如果看到结束符`EOM`(end of measure)则给出全句概括。
+
+最后为了验证这样训练出来的编码器是否能够精确反映原始样本的信息，笔者做了一个试验。
+手工给定不同的reparameter中的σ数值，观察重构样本的变化，结果如下：
+
 x|![0.svg](/images/paraff-vae-experiment/score-0.svg)|![5.svg](/images/paraff-vae-experiment/score-5.svg)|![8.svg](/images/paraff-vae-experiment/score-8.svg)|![15.svg](/images/paraff-vae-experiment/score-15.svg)
 :--	| :--	| :--	| :--	| :--	| :--
 x', σ=0|![0.svg](/images/paraff-vae-experiment/score-0-sigma0.svg)|![5.svg](/images/paraff-vae-experiment/score-5-sigma0.svg)|![8.svg](/images/paraff-vae-experiment/score-8-sigma0.svg)|![15.svg](/images/paraff-vae-experiment/score-15-sigma0.svg)
@@ -121,3 +137,7 @@ x', σ=8|![0.svg](/images/paraff-vae-experiment/score-0-sigma8.svg)|![5.svg](/im
 x', σ=16|![0.svg](/images/paraff-vae-experiment/score-0-sigma16.svg)|![5.svg](/images/paraff-vae-experiment/score-5-sigma16.svg)|![8.svg](/images/paraff-vae-experiment/score-8-sigma16.svg)|![15.svg](/images/paraff-vae-experiment/score-15-sigma16.svg)
 x', σ=32|![0.svg](/images/paraff-vae-experiment/score-0-sigma32.svg)|![5.svg](/images/paraff-vae-experiment/score-5-sigma32.svg)|![8.svg](/images/paraff-vae-experiment/score-8-sigma32.svg)|![15.svg](/images/paraff-vae-experiment/score-15-sigma32.svg)
 x', σ=100|![0.svg](/images/paraff-vae-experiment/score-0-sigma100.svg)|![5.svg](/images/paraff-vae-experiment/score-5-sigma100.svg)|![8.svg](/images/paraff-vae-experiment/score-8-sigma100.svg)|![15.svg](/images/paraff-vae-experiment/score-15-sigma100.svg)
+
+试验结果可见，当σ<8时，重构样本与原始样本几乎没有可观察的区别。
+这表明通过encoder获得的编码不仅精确反映了原始样本的信息，并且对噪声干扰还有很强的鲁棒性。
+
