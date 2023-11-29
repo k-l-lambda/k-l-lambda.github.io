@@ -1,11 +1,13 @@
 ---
 title: 打造音乐创作AI（一）
-subtitle: 基于VAE的音乐编码器
 tags:
   - music_algorithm
   - deep_learning
   - 中文
+subtitle: 基于VAE的音乐编码器
+date: 2023-11-29 22:38:03
 ---
+
 
 
 <figure>
@@ -32,7 +34,7 @@ tags:
 当然缺点也很明显，作为音乐格式，五线谱不像MIDI可以直接播放成声音，阅读门槛较高。
 不过这个可以靠开发曲谱演奏模型来弥补。
 而反过来，由于五线谱易于表达音乐构思，把音频和MIDI转成曲谱（即扒谱）也是一个有价值的方向。
-无论如何，开发一个可以写作曲谱的AI agent是很诱人的。
+无论如何，开发一个可以写作曲谱的AI agent的想法总是很诱人的。
 
 <!-- more -->
 
@@ -76,11 +78,12 @@ tags:
 		<img src="/images/paraff-whole-c.svg" />
 	</picture>
 	<figcaption>
-		简单五线谱示例，对应Paraff代码：<em>BOM K0 TN4 TD4 S1 Cg c D1 EOM</em>
+		简单五线谱示例，对应Paraff代码：<em>BOM K0 TN4 TD4 S1 Cg c D1 EOM</em><br/>
+		对比MusicXML的这个<a target="_blank" href="https://en.wikipedia.org/wiki/MusicXML#Example">例子</a>，你会发现Paraff有多么简洁
 	</figcaption>
 </figure>
 
-Paraff的相关文档，包括词汇表和语法解释器等，之后整理好笔者会发布在Github上。
+Paraff的相关文档，包括词汇表、语法解释器和格式转换工具等，之后整理好笔者会发布在Github上。
 
 # 自动编码器
 
