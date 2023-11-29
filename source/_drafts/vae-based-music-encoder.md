@@ -22,10 +22,10 @@ tags:
 它证明了自回归模型在音乐领域中的巨大潜力。
 其中一个值得重视的基础性工作在其[paper](https://arxiv.org/abs/1809.04281)附录中，关于如何把MIDI格式编码成易于自回归模型训练和生成的token序列。
 
-后来在我的[OMR](https://en.wikipedia.org/wiki/Optical_music_recognition)项目上线完成后（OMR项目的心得我将另开系列分享），
-我发现借助OMR技术的能力，完全可以另辟蹊径，尝试开发一套基于五线谱的音乐生成模型。
+后来在笔者的[OMR](https://en.wikipedia.org/wiki/Optical_music_recognition)项目上线完成后（OMR项目的心得笔者将另开系列分享），
+笔者发现借助OMR技术的能力，完全可以另辟蹊径，尝试开发一套基于五线谱的音乐生成模型。
 相对MIDI来说，由于直接来自于作曲家，五线谱的符号系统更接近自然语言。
-从计算机科学角度来说，其编码形式的信息熵密度更大。这是有利于机器学习的。
+从信息科学角度来说，其编码形式的信息熵密度更大。这是有利于机器学习的。
 当然缺点也很明显，作为音乐格式，五线谱不像MIDI可以直接播放成声音，阅读门槛较高。
 不过这个可以靠开发曲谱演奏模型来解决。
 而反过来，由于五线谱易于表达音乐构思，把音频和MIDI转成曲谱（即扒谱）也是一个有价值的方向。
@@ -63,8 +63,8 @@ tags:
 这就要求我们重新设计一种便利语言生成模型训练的新曲谱语言。
 它应具有简单的上下文无关文法，这样的自回归生成采样时就可以采用简单的技术手段来规避语法错误。
 
-这门新的语言我将之命名为“Paraff”，其名字来源于Lilypond中的[parallel](https://lilypond.org/doc/v2.23/Documentation/notation/multiple-voices#writing-music-in-parallel)记法。
-下面是Paraff的“hello world”：
+这门新的语言笔者将之命名为“Paraff”，其名字来源于Lilypond中的[parallel](https://lilypond.org/doc/v2.23/Documentation/notation/multiple-voices#writing-music-in-parallel)记法。
+下面是Paraff的“Hello World”：
 
 <figure>
 	<picture>
@@ -75,7 +75,25 @@ tags:
 	</figcaption>
 </figure>
 
+Paraff的相关文档，包括词汇表和语法解释器等，之后整理好笔者会发布在Github上。
+
 # 自动编码器
+
+Music Transformer成功解决的一个问题是优化了Transformer二次方复杂度的问题，从而提升了模型处理的序列长度，使得生成的音乐具有超过1分钟的长时间结构。
+而基于五线谱的生成模型则适于从另一个思路来处理序列长度问题。
+与MIDI不同的是，曲谱天然具有良好的分段结构，即小节（measure）。
+因此音乐生成可以自然的建模为两级结构：
+第一级以Paraff的单词作为Token，每句子为一小节曲谱，处理短期注意力；
+第二级以小节的embedding为序列元素，每句子为一首乐曲，处理长期注意力。
+(当然在第二级，embedding不是Token，并不能单独用于自回归，所以两级是结合在一起训练的。)
+
+下文讨论五线谱中一个小节的embedding如何获取，其他问题留待日后再写。
+
+设想现在我们已经有了大量由Paraff语言表达的单小节曲谱样本，
+我们目标是把每个样本含有的信息抽象成一个d维（譬如d=256）向量，
+最自然想到的当然是[VAE](https://en.wikipedia.org/wiki/Variational_autoencoder)。
+本文不详述VAE的基本原理（推荐去读科学空间博主的[相关系列](https://spaces.ac.cn/search/%E5%8F%98%E5%88%86%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8/)），
+笔者假定读者已了解相关背景知识，这里仅以下图回顾VAE的基础结构：
 
 <figure>
 	<picture>
