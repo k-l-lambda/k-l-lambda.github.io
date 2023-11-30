@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://k-l-lambda.github.io/images/paraff-vae-experiment/score-8-sigma100.svg">
 <meta property="og:image" content="https://k-l-lambda.github.io/images/paraff-vae-experiment/score-15-sigma100.svg">
 <meta property="article:published_time" content="2023-11-29T14:38:03.000Z">
-<meta property="article:modified_time" content="2023-11-29T15:10:08.420Z">
+<meta property="article:modified_time" content="2023-11-30T12:34:12.099Z">
 <meta property="article:author" content="K.L.">
 <meta property="article:tag" content="deep_learning">
 <meta property="article:tag" content="中文">
@@ -382,8 +382,23 @@ decoder可据此来还原完整的句子。
 </tbody>
 </table>
 <p>试验中选取的原始样本x全部来自无条件随机生成，不包含于shared VAE训练集。</p>
+<p>分析之前先回顾一下reparameterization公式：
+$$
+z=\mu + \sigma \epsilon
+$$
+其中z, μ, ε都是d维向量，$\epsilon \sim {\mathcal {N}}(0,{\boldsymbol {I}})$。</p>
 <p>从试验结果可见，当σ&lt;8时，重构样本与原始样本几乎没有可观察的差异。
 这表明通过encoder获得的编码不仅精确反映了原始样本的信息，并且对噪声干扰还有很强的鲁棒性。</p>
+<p>这里还有一个问题值得讨论一下。
+试验观察到encoder输出的μ向量模长在1附近（VAE先验loss的要求μ尽量小），
+那么一个特征向量是如何对抗<em>标准差8倍于自身模长的高斯噪声</em>的污染，还能顺利给decoder传达信息呢？
+笔者认为唯一的可能性在于，向量维数d=256的选择带有很大的冗余（当然前提是主干网络得到了充分训练）,
+decoder得以能够从少数污染较轻的向量分量中还原出原始的μ值。
+这类似于QRCode的容错原理——部分遮挡的二维码仍能被识别出来，道理相同。</p>
+<p>换个角度，从几何直观来讲，假如绝大多数曲谱对应的μ分布在d维空间中一个低于d维的超平面M上，
+高维空间中随机选取的噪声向量ε大概率与超平面M垂直（几乎）。
+这样decoder有一个简单策略，把z投影到M上就得到了μ的近似。
+当然实际上μ的分布很可能是个形状复杂的流形，但原理上大致类似。</p>
 <p>至此，我们实现了单个小节五线谱的编码器。其应用于音乐生成的具体细节留待后续文章。</p>
 
       
@@ -509,7 +524,7 @@ decoder可据此来还原完整的句子。
   
 
   
-    <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+    <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
@@ -518,14 +533,14 @@ decoder可据此来还原完整的句子。
 if (true) {
 	var gitalk = new Gitalk({
   	clientID: 'b112cf72545693090bf9',
-  	clientSecret: '',
+  	clientSecret: '060c3fa32fb481ab5771ece842d709658f0c098c',
   	repo: 'k-l-lambda.github.io',
   	owner: 'k-l-lambda',
   	admin: ['k-l-lambda'],
   	id: 'Wed Nov 29 2023 22:38:03',
   	distractionFreeMode: 'true'
 })
-gitalk.render('gitalk-container') 
+gitalk.render('gitalk-container')
 }
 </script>
 
