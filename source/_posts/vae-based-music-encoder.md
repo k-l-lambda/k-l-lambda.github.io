@@ -112,13 +112,6 @@ Music Transformer作者的一个重要贡献是优化了Transformer二次方复�
 	</figcaption>
 </figure>
 
-Reparameterization公式：
-$$
-z=\mu + \sigma \epsilon
-$$
-其中z, μ, σ, ε都是d维向量，$\epsilon \sim {\mathcal {N}}(0,{\boldsymbol {I}})$
-
-
 如果以自回归模型作为VAE的decoder，则decoder在推断阶段是多步运行的，
 并且decoder的输入并不只是z，还伴随一个x'的"半成品"。
 我们观察到无论encoder还是decoder，其主要任务都是分析理解一个序列，
@@ -156,12 +149,18 @@ x'<sub>σ=100</sub>|![0.svg](/images/paraff-vae-experiment/score-0-sigma100.svg)
 
 试验中选取的原始样本x全部来自无条件随机生成，不包含于shared VAE训练集。
 
+分析之前先回顾一下reparameterization公式：
+$$
+z=\mu + \sigma \epsilon
+$$
+其中z, μ, ε都是d维向量，$\epsilon \sim {\mathcal {N}}(0,{\boldsymbol {I}})$。
+
 从试验结果可见，当σ<8时，重构样本与原始样本几乎没有可观察的差异。
 这表明通过encoder获得的编码不仅精确反映了原始样本的信息，并且对噪声干扰还有很强的鲁棒性。
 
 这里还有一个问题值得讨论一下。
-试验观察到encoder输出的μ向量模长在1附近（这是符合预期的，μ=1正是VAE先验loss的要求），
-那么一个特征向量(μ)是如何对抗*标准差8倍于自身模长的高斯噪声*的污染，还能顺利给decoder传达信息呢？
+试验观察到encoder输出的μ向量模长在1附近（VAE先验loss的要求μ尽量小），
+那么一个特征向量是如何对抗*标准差8倍于自身模长的高斯噪声*的污染，还能顺利给decoder传达信息呢？
 笔者认为唯一的可能性在于，向量维数d=256的选择带有很大的冗余（当然前提是主干网络得到了充分训练）,
 decoder得以能够从少数污染较轻的向量分量中还原出原始的μ值。
 这类似于QRCode的容错原理——部分遮挡的二维码仍能被识别出来，道理相同。
