@@ -330,7 +330,7 @@ As all groups, Rubik's cube multiplication obeys associative law, but is not exc
 
 ## Rubik's cube solver
 
-Now, we known this significant fact: **the Rubik's cube solver problem is a matrix decomposition problem**!
+Now, we see this significant fact: **the Rubik's cube solver problem is a matrix decomposition problem**!
 
 Specifically, we have 12 unit quarter twists in matrix form:
 
