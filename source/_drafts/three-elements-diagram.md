@@ -112,3 +112,13 @@ $$
 		条件化扩散模型图示
 	</figcaption>
 </figure>
+
+
+<figure>
+	<picture>
+		<img src="/images/diagrom-transformer-layer.drawio.svg" />
+	</picture>
+	<figcaption>
+		Transformer Encoder Layer图示
+	</figcaption>
+</figure>
