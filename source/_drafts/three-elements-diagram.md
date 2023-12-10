@@ -21,7 +21,7 @@ tags:
 
 ## 简单分类模型
 
-考虑一个拍照识物应用（打开微信扫码即可见），我们可以将其建模为一个简单的分类模型，
+考虑一个拍照识物应用[^1]，我们可以将其建模为一个简单的分类模型，
 用数学语言描述，我们的目标是想获得这样一个函数：
 
 $$
@@ -40,7 +40,7 @@ $$
 
 其中(X, Y)是一个有标注数据集，即特征-标签（图像-类别）集合。
 小写的x,y是来自数据集中的（特征,标签）采样。
-$l$是损失函数，是某种度量*模型输出值与采样标签的距离*的函数，针对不同模态的数据可以有不同的选择。
+$l$是损失函数，是某种度量*模型输出值与标签的距离*的函数，针对不同模态的数据可以有不同的选择。
 argmin代表求解某个&theta;的取值，使得右侧的期望表达式达成最小化。
 
 数学表达式晦涩难读，但却是理解很多论文的最佳途径，因为其精确给出了问题的全景。
@@ -100,7 +100,7 @@ $$
 因此，有向图模型的范式可以概括为：凭借**目标A**，信息由**数据X**注入**权重&theta;**，以此获得智能。
 这里的“智能”指的是某种信息编码/解码能力，类似于人类处理问题的快速反应能力，或者直觉。
 
-以下我们使用三要素分析方法，来考察一下各种常见的有向图结构。
+以下我们使用三要素分析方法，来考察一下各种常见的有向图模型结构。
 这里我们仍把计算图各模块的细节当作黑箱，只关注大框架上各种模型与数据之间的作用方式。
 
 <!-- more -->
@@ -145,15 +145,17 @@ g把任意一个噪声编码z转换成符合原始数据集X分布的样本x'。
 		<img src="/images/diagram-gen-projector.drawio.svg" />
 	</picture>
 	<figcaption>
-		生成网络的反向投影 (<a href="https://richzhang.github.io/PerceptualSimilarity" target="_blank">关于 LPIPS</a>)
+		生成网络的反向投影
 	</figcaption>
 </figure>
 
-梯度反向传播可以直接作用到输入数据z'上。从此我们可以看出，
+[^2]
+
+梯度反向传播可以直接作用到输入数据z'上。从此可以看出，
 当我们写出二元函数$g(\theta, x)$时，两个参数$\theta$和$x$的地位是真正平等的。
 而我们平时思考中往往会忽视这一点。
 
-另外早期的风格迁移模型也是利用了类似的方法。
+另外早期的[风格迁移](https://github.com/xunhuang1995/AdaIN-style)模型也是利用了类似的方法。
 
 
 ## 变分自动编码器 VAE
@@ -167,8 +169,17 @@ g把任意一个噪声编码z转换成符合原始数据集X分布的样本x'。
 	</figcaption>
 </figure>
 
+其中*rp*代表[reparameterization](https://en.wikipedia.org/wiki/Variational_autoencoder#Reparameterization)，
+*KL*处是计算$\mathcal N(\mu, \sigma^2)$与正态分布之间的KL散度：
+
+$$
+KL (\mathcal N(\mu, \sigma^2) \left | \right | \mathcal N(0, 1)) = \frac{1}{2} (-\log \sigma^2 + \mu^2 + \sigma ^2 - 1)
+$$
+
 
 ## 自回归模型 Autoregression
+
+[自回归模型](https://zh.wikipedia.org/zh-cn/%E8%87%AA%E6%88%91%E8%BF%B4%E6%AD%B8%E6%A8%A1%E5%9E%8B)用来迭代地生成一个序列。
 
 <figure>
 	<picture>
@@ -179,6 +190,10 @@ g把任意一个噪声编码z转换成符合原始数据集X分布的样本x'。
 	</figcaption>
 </figure>
 
+可见自回归模型的训练跟一个普通的分类模型没有太大区别。
+巧妙之处在于，利用了序列元素之间的转移概率，输入和输出的数据都从同一个序列上截取获得。
+
+然后是条件化自回归模型：
 
 <figure>
 	<picture>
@@ -189,8 +204,14 @@ g把任意一个噪声编码z转换成符合原始数据集X分布的样本x'。
 	</figcaption>
 </figure>
 
+通常用作两种语言之间的翻译模型，也可以是其他模态转换成序列，如[captioning](https://paperswithcode.com/task/image-captioning)任务。
+无论是[seq2seq](https://dataxujing.github.io/seq2seqlearn/chapter1/)还是transformer都可以概括为这种结构。
+
 
 ## 扩散模型 Diffusion
+
+扩散模型的直观理解可以参考笔者之前的[post](/2023/04/22/diffusion-model-illustration/)。
+其复杂更多在于推测阶段的迭代过程，模型训练本身反倒是比较容易说明，如图：
 
 <figure>
 	<picture>
@@ -201,6 +222,9 @@ g把任意一个噪声编码z转换成符合原始数据集X分布的样本x'。
 	</figcaption>
 </figure>
 
+直白地说，模型是用来从一个被噪声污染样本里鉴别出噪声信号。
+
+我们平时常见的文生图、文生视频模型是条件化的扩散模型，结构也差不多：
 
 <figure>
 	<picture>
@@ -210,6 +234,8 @@ g把任意一个噪声编码z转换成符合原始数据集X分布的样本x'。
 		条件化扩散模型图示
 	</figcaption>
 </figure>
+
+这里C是生成样本X对应的一个提示，C和X共享部分相同的信息内容，但模态或编码形式不同。
 
 
 ## Transformer的单层结构分析
@@ -227,5 +253,10 @@ g把任意一个噪声编码z转换成符合原始数据集X分布的样本x'。
 </figure>
 
 这里有个重要的观察是，transformer的核心机制“多头注意力”和“缩放点乘注意力”其实是纯解析模块，
-其中并没有任何可训练权重。
+其中并没有任何可训练权重。[^3]
 这种分析会提醒我们思考模型的能力源泉来自哪里。
+
+
+[^1]: 打开微信扫码即可见。
+[^2]: 关于 [LPIPS](https://richzhang.github.io/PerceptualSimilarity)
+[^3]: 意外不意外？
