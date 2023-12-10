@@ -155,7 +155,7 @@ g把任意一个噪声编码z转换成符合原始数据集X分布的样本x'。
 [^4]
 
 梯度反向传播可以直接作用到输入数据z'上。由此可以看出，
-当我们写出二元函数$g(\theta, x)$时，两个参数$\theta$和$x$的地位是真正平等的。
+当我们写出二元函数$g(\theta, x)$时，两个参数权重$\theta$和数据$x$的地位是真正平等的。
 而我们平时思考中往往会忽视这一点。
 
 另外早期的[风格迁移](https://github.com/xunhuang1995/AdaIN-style)模型也是利用了类似的方法。
@@ -208,7 +208,7 @@ $$
 </figure>
 
 通常用作两种语言之间的翻译模型，也可以是其他模态转换成序列，如[captioning](https://paperswithcode.com/task/image-captioning)任务。
-无论是[seq2seq](https://dataxujing.github.io/seq2seqlearn/chapter1/)还是transformer都可以概括为这种结构。
+无论是[seq2seq](https://dataxujing.github.io/seq2seqlearn/chapter1/)还是transformer encoder+decoder都可以概括为这种结构。
 
 
 ## 扩散模型 Diffusion
