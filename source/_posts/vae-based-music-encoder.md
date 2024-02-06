@@ -153,7 +153,7 @@ x'<sub>σ=100</sub>|![0.svg](/images/paraff-vae-experiment/score-0-sigma100.svg)
 $$
 z=\mu + \sigma \epsilon
 $$
-其中z, μ, ε都是d维向量，$\epsilon \sim {\mathcal {N}}(0,{\boldsymbol {I}})$。
+其中z, μ, ε都是d维向量，$\epsilon \sim {\mathcal {N}}(0,1)$。
 
 从试验结果可见，当σ<8时，重构样本与原始样本几乎没有可观察的差异。
 这表明通过encoder获得的编码不仅精确反映了原始样本的信息，并且对噪声干扰还有很强的鲁棒性。
