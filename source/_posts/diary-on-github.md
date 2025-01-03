@@ -4,7 +4,9 @@ tags:
   - 中文
   - essay
   - promotion
+date: 2025-01-03 23:15:41
 ---
+
 
 
 众所周知，写博客或日记有两种方式，一种是使用Web2.0时代的[UGC](https://zh.wikipedia.org/wiki/用户生成内容)平台网站（如豆瓣、新浪博客等），另一种是自己搭建个人网站。
