@@ -12,11 +12,72 @@ tags:
 
 本文提供了一种折中的选择，即直接把Github当作UGC平台，兼取两者优点，可谓懒人良方。
 
+<figure>
+	<picture>
+		<img src="/images/github-diary-demo.png" />
+	</picture>
+	<figcaption>
+		Github作为一个极佳的写作网站
+	</figcaption>
+</figure>
+
 <!-- more -->
 
-看到这里可能你已经猜到了，无非就是建一个叫做“我的日记”的github仓库，然后每天以日期作文件名在里面建一个markdown文件，记录当天的事项，最后变成一个文档合集。
-然而想把这群文档维护的好用，还是可以下点功夫的。
+看到这里可能你已经猜到了，无非就是建一个叫做“我的日记”的github仓库，然后每天以日期作文件名，新建一个markdown文件，记录当天的事项，最后整个仓库变成一个文档合集。
+然而想把这群文档维护得好用，还是可以下点功夫的。
 
-一种是聚合索引。
+首先可以给日记建个日历索引视图，用来快速定位到某一天的日记。
+把个视图直接放在项目的 `README` 文件中，这样从仓库主页就能看到。
+就像这样：
 
-一种是日历视图。
+<figure>
+	<picture>
+		<img src="/images/github-diary-calendar.png" />
+	</picture>
+	<figcaption>
+		日历视图
+	</figcaption>
+</figure>
+
+鼠标悬停在某一天，还能看到当天的日记大纲(即#开头的那些header行内容)。
+
+[自动化生成日历视图逻辑](https://github.com/k-l-lambda/diary-one/blob/main/tools/buildCalendar.js)非常简单，用不了100行代码。
+
+然后是同类内容的聚合整理，比如说读书笔记、论文阅读、背单词的生词本、健身记录、乐器练习记录等等。
+
+<figure>
+	<picture>
+		<img src="/images/github-diary-vocab.png" width="480" />
+	</picture>
+	<figcaption>
+		生词表
+	</figcaption>
+</figure>
+
+<figure>
+	<picture>
+		<img src="/images/github-diary-reading.png" width="480" />
+	</picture>
+	<figcaption>
+		读书笔记
+	</figcaption>
+</figure>
+
+<figure>
+	<picture>
+		<img src="/images/github-diary-arxiv.png" width="480" />
+	</picture>
+	<figcaption>
+		论文阅读
+	</figcaption>
+</figure>
+
+这部分我写了一些脚本插件，小伙伴们可以根据需要自行[开启](https://github.com/k-l-lambda/diary-one/blob/main/tools/buildStatistics.js)，或者自己扩展一些新的脚本。
+
+另外为了方便连续地翻看日记，加了一个[导航栏功能](https://github.com/k-l-lambda/diary-one/blob/main/tools/cowriter.js#L11)，每天会自动给新日记加上前后链接。
+而且考虑到有人觉得每天手工建一个新文件也很麻烦，[这里](https://github.com/k-l-lambda/diary-one/blob/main/tools/cowriter.js#L5)还有一个每日自动创建日记文件的可选功能，新文件效果大约是这样的：
+
+> # &#x1f437;
+> 我今天犯了个懒，啥也没写……
+
+如果哪天没写日记，这个可爱的“猪猪声明”就会作为当天的默认记录。
