@@ -23,11 +23,11 @@ tags:
 
 <!-- more -->
 
-看到这里可能你已经猜到了，无非就是建一个叫做“我的日记”的github仓库，然后每天以日期作文件名，新建一个markdown文件，记录当天的事项，最后整个仓库变成一个文档合集。
+看到这里你可能已经猜到了，无非就是建一个叫做“我的日记”的GitHub仓库，然后每天以日期作文件名，新建一个Markdown文件，记录当天的点滴，最后整个仓库变成一个文档合集。
 然而想把这群文档维护得好用，还是可以下点功夫的。
 
-首先可以给日记建个日历索引视图，用来快速定位到某一天的日记。
-把个视图直接放在项目的 `README` 文件中，这样从仓库主页就能看到。
+首先，可以给日记建个日历索引视图，用来快速定位到某一天的日记。
+把这个视图直接放在项目的 `README` 文件中，这样从仓库主页就能看到。
 就像这样：
 
 <figure>
@@ -39,7 +39,7 @@ tags:
 	</figcaption>
 </figure>
 
-鼠标悬停在某一天，还能看到当天的日记大纲(即#开头的那些header行内容)。
+鼠标悬停在某一天，还能看到当天的日记大纲（即#开头的那些header行内容）。
 
 [自动化生成日历视图逻辑](https://github.com/k-l-lambda/diary-one/blob/main/tools/buildCalendar.js)非常简单，用不了100行代码。
 
@@ -74,10 +74,16 @@ tags:
 
 这部分我写了一些脚本插件，小伙伴们可以根据需要自行[开启](https://github.com/k-l-lambda/diary-one/blob/main/tools/buildStatistics.js)，或者自己扩展一些新的脚本。
 
-另外为了方便连续地翻看日记，加了一个[导航栏功能](https://github.com/k-l-lambda/diary-one/blob/main/tools/cowriter.js#L11)，每天会自动给新日记加上前后链接。
-而且考虑到有人觉得每天手工建一个新文件也很麻烦，[这里](https://github.com/k-l-lambda/diary-one/blob/main/tools/cowriter.js#L5)还有一个每日自动创建日记文件的可选功能，新文件效果大约是这样的：
+另外，为了方便连续地翻看日记，加了一个[导航栏功能](https://github.com/k-l-lambda/diary-one/blob/main/tools/cowriter.js#L11)，每天会自动给新日记加上前后链接。
+考虑到有人觉得每天手工建一个新文件也很麻烦，[这里](https://github.com/k-l-lambda/diary-one/blob/main/tools/cowriter.js#L5)还有一个每日自动创建日记文件的可选功能，新文件默认内容效果大约是这样的：
 
 > # &#x1f437;
 > 我今天犯了个懒，啥也没写……
 
-如果哪天没写日记，这个可爱的“猪猪声明”就会作为当天的默认记录。
+如果哪天没写日记，这个可爱的“猪猪声明”就会作为当天的系统默认记录。
+
+欢迎小伙伴们Fork我这个[示例仓库](https://github.com/k-l-lambda/diary-one)。
+这个仓库有两个用意，其[initial](https://github.com/k-l-lambda/diary-one/tree/initial)分支是一个空白的日记模板，Fork之后可以直接拿来用；
+main分支作为示例，同时也当作所有人的集体日记，谁想记点什么都可以提交PR，或直接成为项目成员，欢迎加入。
+
+余生短暂，最后借用《黑暗森林》和帕斯卡的名言，给岁月以文明，给时光以日记。
