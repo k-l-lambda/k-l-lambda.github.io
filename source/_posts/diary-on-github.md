@@ -17,10 +17,11 @@ date: 2025-01-03 23:15:41
 
 <figure>
 	<picture>
-		<a href="https://github.com/k-l-lambda/diary-one" target="_blank"><img src="/images/github-diary-demo.png" /></a>
+		<img src="/images/github-diary-demo.png" />
 	</picture>
 	<figcaption>
 		Github作为一个极佳的写作网站
+		<a href="https://github.com/k-l-lambda/diary-one" target="_blank">diary-one</a>
 	</figcaption>
 </figure>
 
