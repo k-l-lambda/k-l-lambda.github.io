@@ -15,7 +15,7 @@ tags:
 
 <figure>
 	<picture>
-		<img src="/images/github-diary-demo.png" />
+		<a href="https://github.com/k-l-lambda/diary-one" target="_blank"><img src="/images/github-diary-demo.png" /></a>
 	</picture>
 	<figcaption>
 		Github作为一个极佳的写作网站
@@ -33,22 +33,25 @@ tags:
 
 <figure>
 	<picture>
-		<img src="/images/github-diary-calendar.png" />
+		<img src="/images/github-diary-calendar.png" width="458" />
 	</picture>
 	<figcaption>
 		日历视图
 	</figcaption>
 </figure>
 
-鼠标悬停在某一天，还能看到当天的日记大纲（即#开头的那些header行内容）。
+鼠标悬停在某一天，还能看到当天的日记大纲（即#开头的那些title内容）。
 
-[自动化生成日历视图逻辑](https://github.com/k-l-lambda/diary-one/blob/main/tools/buildCalendar.js)非常简单，用不了100行代码。
+自动化[生成日历视图逻辑](https://github.com/k-l-lambda/diary-one/blob/main/tools/buildCalendar.js)非常简单，用不了100行代码。
 
-然后是同类内容的聚合整理，比如说读书笔记、论文阅读、背单词的生词本、健身记录、乐器练习记录等等。
+然后是同类内容的聚合整理。
+比如说每日记录的读书笔记、论文阅读、背单词的生词本、健身记录、乐器练习记录等等，
+每种内容都聚合整理到一个单独的文件中，方便查阅。
+例如：
 
 <figure>
 	<picture>
-		<img src="/images/github-diary-vocab.png" width="480" />
+		<img src="/images/github-diary-vocab.png" width="465" />
 	</picture>
 	<figcaption>
 		生词表
@@ -57,10 +60,10 @@ tags:
 
 <figure>
 	<picture>
-		<img src="/images/github-diary-reading.png" width="480" />
+		<img src="/images/github-diary-reading.png" width="482" />
 	</picture>
 	<figcaption>
-		读书笔记
+		读书笔记汇总
 	</figcaption>
 </figure>
 
@@ -69,7 +72,7 @@ tags:
 		<img src="/images/github-diary-arxiv.png" width="480" />
 	</picture>
 	<figcaption>
-		论文阅读
+		arxiv论文列表
 	</figcaption>
 </figure>
 
