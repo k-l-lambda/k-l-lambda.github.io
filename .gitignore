@@ -9,3 +9,4 @@ public/
 footages/
 .npmrc
 *.local
+.vscode/
