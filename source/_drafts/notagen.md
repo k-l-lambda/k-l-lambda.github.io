@@ -31,7 +31,7 @@ subtitle: NotaGen
 TODO:
 
 
-依据paper和源代码这些可观察到的内容，笔者以下从三个要点来简要介绍一下NotaGen的工作。
+依据paper和源代码这些可观察到的内容，以下从三个要点来简要介绍一下NotaGen的工作。
 
 
 <!-- more -->
@@ -71,8 +71,17 @@ Interleaved ABC Notation最早可能是MuPT[^11]的作者提出的，
 不过NotaGen和CLaMP的团队解决了ABC Notation to MusicXML的转换问题，并使用了MuseScore作为曲谱渲染器及各种媒体格式的转换工具。
 这使得ABC Notation的确成为一个不错的选择，不过对于复杂曲谱，如复调的键盘作品，ABC Notation的表达能力还有待观察。
 
+MuseScore是商业级曲谱软件中唯一开源的，类似的方案还有[Verovio](https://www.verovio.org/)。
+不过MuseScore开源的时候笔者已经有了自己的[Lotus](https://github.com/k-l-lambda/lotus)项目了，一旦转型需要做大量额外的前端工作，所以没有深入使用。
+
 
 ## 2 levels decoder
+
+使用ABC Notation来做符号音乐生成，可能最早的是MuPT[^11]。
+去看他的paper，除了数据表示就没有太多音乐方面的内容了，主要在探讨数据集相关的Scaling Law。
+给我类似印象的还有Music Transformer[^2]，实现了MIDI数据的tokenization之外，其他主要是提出了一种transformer二次方计算复杂度的优化方案。
+不过NotaGen的团队在模型架构方面是有追求的。
+确切地说，是第二作者（或者应该叫同等贡献作者之一）*Shangda Wu*再次应用了他之前提出的一种2级解码架构。
 
 <figure>
 	<picture>
@@ -91,7 +100,40 @@ Interleaved ABC Notation最早可能是MuPT[^11]的作者提出的，
 	<figcaption>
 		Figure 2 from NotaGen
 	</figcaption>
-</figure>
+</figure>[^15]
+
+笔者第一次看到这里马上联想到之前的一篇MegaByte[^7]:
+
+<figure>
+	<picture>
+		<img src="/images/arxiv2305.07185-figure1.png" />
+	</picture>
+	<figcaption>
+		Figure 1 from MegaByte
+	</figcaption>
+</figure>[^7]
+
+不过查看发表日期，*WU*的*TunesFormer*[^5]还是在MegaByte[^7]之前的。
+但是在bGPT[^10]的paper中，作者又亲自提到是受了MegaByte的启发。
+所以究竟是独立提出的想法还是来自更早工作的借鉴笔者还下不了定论。
+
+不过两级解码器的思路起源是清晰的，就是为了缓解注意力机制中的序列长度问题。
+当然即使按照*MuPT*[^11]的路线，有了目前推理加速领域的技术支持（诸如FlashAttetion），一首音乐的长度感觉也不成大问题了。
+但是在符号音乐领域，有一个先成可以利用的结构，就是音乐中周期性的强弱节奏构成的小节————
+使得音乐先天就具有了二级结构，不加以利用就浪费了。
+
+笔者[前一篇](/2023/11/29/vae-based-music-encoder/)中构造的单小节曲谱编/解码器也是这么一种思路。
+不过这里的区别在于，笔者之前还是把网络参数的重头放在token这级（对应NotaGen的byte level），
+bar-level在最终解码时只作为前情提要式的信息辅助，训练时其只关注单个小节，token level训练时bar-level的小节编码器作为预训练模块加载。
+而在NotaGen这里，bar-level解码器才是作曲的主角，byte-level解码器只关注单个小节信息，而完全不看上下文。
+
+这里的一个重点还在于，并不是说两级结合起来训练的思路想不到，而是这样做其实有代价，往往权衡各种解法利弊的时候就直接忽略了。
+就好像下棋的时候，最优的一步有时候是在看似不可能的地方出现。
+这里的代价指的是，为了高效率地同时训练两级解码器，byte-level的输入数据长度需要强制对齐，会牺牲一部分很长的小节（比如很长一串的快速短音符，或是连续多组复杂和弦）。
+从结果来看，NotaGen的设计很可能是做出了正确的取舍。
+
+顺便一提，这个两级解码器结构在*WU*的工作中更多是用在音乐信息检索(MIR)领域，见于*CLaMP*1-3[^6][^12][^14]。
+并且在*bGPT*[^10]中，还尝试了使用该架构生成图像音频，以及CPU状态预测。
 
 
 ## CLaMP-DPO
@@ -131,7 +173,7 @@ References:
 [^7]: MegaByte: [arxiv2305.07185](https://arxiv.org/abs/2305.07185)
 [^8]: Mamba: [arxiv2312.00752](https://arxiv.org/abs/2312.00752)
 [^9]: MambaByte: [arxiv2401.13660](https://arxiv.org/abs/2401.13660)
-[^10]: ByteGPT: [arxiv2402.19155](https://arxiv.org/abs/2402.19155)
+[^10]: bGPT: [arxiv2402.19155](https://arxiv.org/abs/2402.19155)
 [^11]: MuPT: [arxiv2404.06393](https://arxiv.org/abs/2404.06393)
 [^12]: CLaMP 2: [arxiv2410.13267](https://arxiv.org/abs/2410.13267)
 [^13]: Music Event Transformer (MET): https://github.com/SkyTNT/midi-model
