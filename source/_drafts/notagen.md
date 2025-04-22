@@ -39,20 +39,20 @@ TODO:
 
 ## Interleaved ABC Notation
 
-音乐作为一种时序的模态，用自回归模型来生成始终是首选。
-这种方法本质上就是训练一个文字接龙的语言模型，只要构造一种语言来描述想要生成的模态（术语叫做tokenize），
-剩下的就交给transformer等主干模型就可以了。
-如今连图像生成都有向自回归模型靠拢的趋势，不过也确实看到反其道而行之，[用扩散模型来搞语言模型](https://arxiv.org/pdf/2502.05171)的。
+音乐作为一种时序模态，自回归模型始终是生成的首选方法。
+这种方法的本质是训练一个“文字接龙”式的语言模型，只需构造一种语言来描述目标模态（术语称为tokenize），
+剩下的工作就可以交给transformer等主干模型完成。
+如今，甚至连图像生成也逐渐向自回归模型靠拢，不过也有反其道而行之的尝试，[用扩散模型来处理自然语言](https://arxiv.org/pdf/2502.05171)。
 
 常见的五线谱数字化语言有MusicXML、MEI、ABC Notation、Lilypond、Humdrum这么几种。
-其中MusicXML，MEI基于XML，文本冗余太高。ABC Notation和Lilypond是专用语言，
-其中Lilypond语法有点像Latex，灵活度较大，描述能力强但表达方式多变，不利于模型学习。
-笔者在[上一篇](/2023/11/29/vae-based-music-encoder/)中介绍了自己基于Lilypond发明的变种语言[Paraff](https://github.com/findlab-org/paraff)，这里不赘述。
+其中，MusicXML和MEI基于XML，文本冗余度较高。ABC Notation和Lilypond是专用语言，
+Lilypond的语法类似于Latex，灵活性较高，描述能力强但表达方式多变，不利于模型学习。
+笔者在[上一篇](/2023/11/29/vae-based-music-encoder/)中介绍了自己基于Lilypond发明的变种语言[Paraff](https://github.com/findlab-org/paraff)，此处不再赘述。
 剩下的ABC Notation和Humdrum两种语言都有人用来做符号音乐算法的数据表示。
 
-NotaGen使用的是[ABC Notation](https://notabc.app/abc/basics/)的一个变种Interleaved ABC Notation。
-Interleaved ABC Notation最早可能是MuPT[^11]的作者提出的，
-不过也可能是CLaMP 2[^12]的作者独立作出的，毕竟思路很清晰，就是相当于把曲谱从part-wise变成了time-wise。
+NotaGen使用的是[ABC Notation](https://notabc.app/abc/basics/)的一种变种——Interleaved ABC Notation。
+Interleaved ABC Notation可能最早由MuPT[^11]的作者提出，
+也可能是CLaMP 2[^12]的作者*WU*独立设计的。毕竟思路很简单，即将曲谱从part-wise表示转换为time-wise表示。
 笔者的[Paraff]也遵循同样的设计。
 见下图：
 
@@ -67,21 +67,22 @@ Interleaved ABC Notation最早可能是MuPT[^11]的作者提出的，
 </figure>
 
 笔者之前没有采用ABC Notation的原因是，其自带的曲谱渲染器太过于简陋。
-而笔者之前的一个主要工作领域是OMR，需要高质量的曲谱图像数据，从生成数据的角度，Lilypond显著优于ABC Notation。
-不过NotaGen和CLaMP的团队解决了ABC Notation to MusicXML的转换问题，并使用了MuseScore作为曲谱渲染器及各种媒体格式的转换工具。
-这使得ABC Notation的确成为一个不错的选择，不过对于复杂曲谱，如复调的键盘作品，ABC Notation的表达能力还有待观察。
+而笔者的主要工作领域之一是OMR，需要高质量的曲谱图像数据。从生成数据的角度看，Lilypond显著优于ABC Notation。
+不过，NotaGen和CLaMP团队解决了ABC Notation到MusicXML的转换问题，并使用MuseScore作为曲谱渲染器及多种媒体格式的转换工具。
+这使得ABC Notation成为一个不错的选择，但对于复杂曲谱（如复调键盘作品），ABC Notation的表达能力仍有待观察。
 
 MuseScore是商业级曲谱软件中唯一开源的，类似的方案还有[Verovio](https://www.verovio.org/)。
-不过MuseScore开源的时候笔者已经有了自己的[Lotus](https://github.com/k-l-lambda/lotus)项目了，一旦转型需要做大量额外的前端工作，所以没有深入使用。
+不过，当MuseScore开源时，笔者已经开发了自己的[Lotus](https://github.com/k-l-lambda/lotus)项目。
+一旦转型需要进行大量额外的前端工作，因此没有深入使用。
 
 
 ## 2 levels decoder
 
 使用ABC Notation来做符号音乐生成，可能最早的是MuPT[^11]。
-去看他的paper，除了数据表示就没有太多音乐方面的内容了，主要在探讨数据集相关的Scaling Law。
-给我类似印象的还有Music Transformer[^2]，实现了MIDI数据的tokenization之外，其他主要是提出了一种transformer二次方计算复杂度的优化方案。
-不过NotaGen的团队在模型架构方面是有追求的。
-确切地说，是第二作者（或者应该叫同等贡献作者之一）*Shangda Wu*再次应用了他之前提出的一种2级解码架构。
+查看其论文，除了数据表示外，几乎没有太多关于音乐方面的内容，主要探讨的是数据集相关的Scaling Law。
+给我类似印象的还有Music Transformer[^2]，除了实现了MIDI数据的tokenization，其他主要是提出了一种优化transformer二次方计算复杂度的方法。
+不过，NotaGen团队在模型架构方面显然更有追求。
+确切地说，是第二作者（或者应该称为同等贡献作者之一）*Shangda Wu*再次应用了他之前提出的一种两级解码架构。
 
 <figure>
 	<picture>
@@ -113,40 +114,44 @@ MuseScore是商业级曲谱软件中唯一开源的，类似的方案还有[Vero
 	</figcaption>
 </figure>[^7]
 
-不过查看发表日期，*WU*的*TunesFormer*[^5]还是在MegaByte[^7]之前的。
-但是在bGPT[^10]的paper中，作者又亲自提到是受了MegaByte的启发。
-所以究竟是独立提出的想法还是来自更早工作的借鉴笔者还下不了定论。
+不过查看发表日期，*WU*的*TunesFormer*[^5]还是在MegaByte[^7]之前。
+但是在bGPT[^10]的论文中，作者又亲自提到是受了MegaByte的启发。
+所以究竟是独立提出的想法还是借鉴了更早的工作，笔者还无法下定论。
 
-不过两级解码器的思路起源是清晰的，就是为了缓解注意力机制中的序列长度问题。
-当然即使按照*MuPT*[^11]的路线，有了目前推理加速领域的技术支持（诸如FlashAttetion），一首音乐的长度感觉也不成大问题了。
-但是在符号音乐领域，有一个先成可以利用的结构，就是音乐中周期性的强弱节奏构成的小节————
-使得音乐先天就具有了二级结构，不加以利用就浪费了。
+两级解码器的思路起源是清晰的，其目的是缓解注意力机制中的序列长度问题。
+即使按照*MuPT*[^11]的路线，有了目前推理加速领域的技术支持（如FlashAttention），一首音乐的长度似乎也不再是问题。
+然而在符号音乐领域，有一个天然可以利用的结构——音乐中周期性的强弱节奏构成的小节——
+使得音乐天生具有二级结构，不加以利用就显得浪费了。
 
-笔者[前一篇](/2023/11/29/vae-based-music-encoder/)中构造的单小节曲谱编/解码器也是这么一种思路。
-不过这里的区别在于，笔者之前还是把网络参数的重头放在token这级（对应NotaGen的byte level），
-bar-level在最终解码时只作为前情提要式的信息辅助，训练时其只关注单个小节，token level训练时bar-level的小节编码器作为预训练模块加载。
-而在NotaGen这里，bar-level解码器才是作曲的主角，byte-level解码器只关注单个小节信息，而完全不看上下文。
+笔者在[前一篇](/2023/11/29/vae-based-music-encoder/)中构造的单小节曲谱编/解码器也是基于类似的思路。
+不过这里的区别在于，笔者之前的设计将网络参数的重点放在token这一级（对应NotaGen的byte level），
+而bar-level在最终解码时仅作为前情提要式的信息辅助。训练时，bar-level的小节编码器只关注单个小节，
+并作为token-level训练的预训练模块加载。
+而在NotaGen中，bar-level解码器才是作曲的主角，byte-level解码器仅关注单个小节信息，完全不看上下文。
 
-这里的一个重点还在于，并不是说两级结合起来训练的思路想不到，而是这样做其实有代价，往往权衡各种解法利弊的时候就直接忽略了。
-就好像下棋的时候，最优的一步有时候是在看似不可能的地方出现。
-这里的代价指的是，为了高效率地同时训练两级解码器，byte-level的输入数据长度需要强制对齐，会牺牲一部分很长的小节（比如很长一串的快速短音符，或是连续多组复杂和弦）。
+这里的一个关键点在于，并不是说两级结合训练的思路难以想到，而是这样做其实有代价。
+在权衡各种解法利弊时，这种方法往往会被直接忽略。
+就像下棋时，最优的一步有时会出现在看似不可能的地方。
+这里的代价是，为了高效地同时训练两级解码器，byte-level的输入数据长度需要强制对齐，
+这会牺牲一部分很长的小节（例如一长串快速短音符或连续多组复杂和弦）。
 从结果来看，NotaGen的设计很可能是做出了正确的取舍。
 
-顺便一提，这个两级解码器结构在*WU*的工作中更多是用在音乐信息检索(MIR)领域，见于*CLaMP*1-3[^6][^12][^14]。
-并且在*bGPT*[^10]中，还尝试了使用该架构生成图像音频，以及CPU状态预测。
+顺便一提，这个两级解码器结构在*WU*的工作中更多用于音乐信息检索(MIR)领域，见于*CLaMP*1-3[^6][^12][^14]。
+在*bGPT*[^10]中，还尝试了使用该架构生成图像、音频以及CPU状态预测。
 
 
 ## CLaMP-DPO
 
 在模型训练方面，NotaGen也沿袭了目前LLM主流的pretrain-finetune-RL的路线范式。
 
-从源代码来看，每个阶段都是全量参数的训练，也没有使用LoRA等其他附加参数的方法，除了数据集和损失函数，只是在不同阶段使用了不同的学习率。
+从源代码来看，每个阶段都是全量参数的训练，没有使用LoRA等附加参数方法。除了数据集和损失函数的变化，不同阶段仅调整了学习率。
 
 值得说一下的是强化学习阶段，作者再次复用了自己之前的工作CLaMP 2[^12]作为评估模型。
-CLaMP 2本来是用来做MIR的，提取了每首曲子的音乐特征。
-在这里相当于RLHF中的打分模型，用来比较finetune之后模型生成作品，与相同提示下的参考作品之间在语义特征上的相似度。
-最优相似度排序中的前10%进入接受集，末尾10%进入拒绝集。
-训练时从接受集和拒绝集中各采样一个样本组成正负样本对$\{pw, pl\}$，然后计算DPO-Positive损失函数：
+CLaMP 2原本用于MIR任务，提取每首曲子的音乐特征。
+在这里相当于RLHF中的打分模型，用于比较finetune后模型生成的作品与相同提示下参考作品在语义特征上的相似度。
+这里生成时使用的提示是一个三元组：（时代，作曲家，体裁）。
+在每一种提示组合下，把所有生成作品按最优相似度排序，其中前10%进入接受集，末尾10%进入拒绝集。
+训练时，从接受集和拒绝集中各采样一个样本组成正负样本对$\{pw, pl\}$，然后计算DPO-Positive损失函数：
 
 $$
 \mathcal{L}_{\text{DPOP}}(\pi_\theta; \pi_{\text{ref}}) = -\mathbb{E}_{(p, x_{pw}, x_{pl}) \sim \mathcal{D}} \left[ \log \sigma \left( \underbrace{ \beta \log \frac{\pi_\theta(x_{pw} | p)}{\pi_{\text{ref}}(x_{pw} | p)} - \beta \log \frac{\pi_\theta(x_{pl} | p)}{\pi_{\text{ref}}(x_{pl} | p)} }_{\text{DPO items}} - \underbrace{ \beta \lambda \cdot \max \left( 0, \log \frac{\pi_{\text{ref}}(x_{pw} | p)}{\pi_\theta(x_{pw} | p)} \right) }_{\text{DPOP item}} \right) \right]
@@ -158,6 +163,8 @@ $$
 笔者最初训练曲谱生成模型其实是用来做OMR的数据来源，获得符合真实分布的曲谱数据以用来合成有标注的曲谱图像。
 反之，更好地识别曲谱中的各种模式则有利于条件化地控制音乐生成。
 
+
+## 其他
 
 除了以上三点，想必还有大量工作隐藏在数据集的制备中，包括清洗、格式转换工具开发等。
 尤其是其中数据来源表格中的*Internal Sources*一项，想必是中央音乐学院得天独厚的资源。
