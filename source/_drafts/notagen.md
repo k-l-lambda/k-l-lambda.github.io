@@ -138,9 +138,25 @@ bar-level在最终解码时只作为前情提要式的信息辅助，训练时�
 
 ## CLaMP-DPO
 
+在模型训练方面，NotaGen也沿袭了目前LLM主流的pretrain-finetune-RL的路线范式。
+
+从源代码来看，每个阶段都是全量参数的训练，也没有使用LoRA等其他附加参数的方法，除了数据集和损失函数，只是在不同阶段使用了不同的学习率。
+
+值得说一下的是强化学习阶段，作者再次复用了自己之前的工作CLaMP 2[^12]作为评估模型。
+CLaMP 2本来是用来做MIR的，提取了每首曲子的音乐特征。
+在这里相当于RLHF中的打分模型，用来比较finetune之后模型生成作品，与相同提示下的参考作品之间在语义特征上的相似度。
+最优相似度排序中的前10%进入接受集，末尾10%进入拒绝集。
+训练时从接受集和拒绝集中各采样一个样本组成正负样本对$\{pw, pl\}$，然后计算DPO-Positive损失函数：
+
 $$
 \mathcal{L}_{\text{DPOP}}(\pi_\theta; \pi_{\text{ref}}) = -\mathbb{E}_{(p, x_{pw}, x_{pl}) \sim \mathcal{D}} \left[ \log \sigma \left( \underbrace{ \beta \log \frac{\pi_\theta(x_{pw} | p)}{\pi_{\text{ref}}(x_{pw} | p)} - \beta \log \frac{\pi_\theta(x_{pl} | p)}{\pi_{\text{ref}}(x_{pl} | p)} }_{\text{DPO items}} - \underbrace{ \beta \lambda \cdot \max \left( 0, \log \frac{\pi_{\text{ref}}(x_{pw} | p)}{\pi_\theta(x_{pw} | p)} \right) }_{\text{DPOP item}} \right) \right]
 $$
+
+补充说两句，笔者很早就有一种体会，分析模型和生成模型的训练是相辅相成的。
+这里分析模型指输入数据的熵高于输出数据，生成模型则反过来。
+分析模型在于排除噪声干扰，识别数据中存在的某种潜在模式，而生成模型则在于不断混入噪声，并把噪声引向符合目标分布内的多样性维度。
+笔者最初训练曲谱生成模型其实是用来做OMR的数据来源，获得符合真实分布的曲谱数据以用来合成有标注的曲谱图像。
+反之，更好地识别曲谱中的各种模式则有利于条件化地控制音乐生成。
 
 
 除了以上三点，想必还有大量工作隐藏在数据集的制备中，包括清洗、格式转换工具开发等。
