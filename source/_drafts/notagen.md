@@ -28,6 +28,11 @@ subtitle: NotaGen
 
 除了官方Demo，这里给出一些我自己使用NotaGen生成的键盘作品：
 
+<audio src="/images/notagenx/20250409_162246.mp3" controls></audio>
+<figcaption>
+	轻快的音节跑动
+</figcaption>
+
 TODO:
 
 
