@@ -120,6 +120,8 @@ subtitle: NotaGen
 剩下的工作就可以交给transformer等主干模型完成。
 如今，甚至连图像生成也逐渐向自回归模型靠拢，不过也有反其道而行之的尝试，[用扩散模型来处理自然语言](https://arxiv.org/pdf/2502.05171)。
 
+与音频生成任务不同，符号音乐生成的主要难度不在算法层面，而是数据表示和高质量的数据来源。
+
 常见的五线谱数字化语言有MusicXML、MEI、ABC Notation、Lilypond、Humdrum这么几种。
 其中，MusicXML和MEI基于XML，文本冗余度较高。ABC Notation和Lilypond是专用语言，
 Lilypond的语法类似于Latex，灵活性较高，描述能力强但表达方式多变，不利于模型学习。
