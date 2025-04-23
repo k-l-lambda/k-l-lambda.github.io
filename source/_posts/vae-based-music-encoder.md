@@ -83,7 +83,7 @@ date: 2023-11-29 22:38:03
 	</figcaption>
 </figure>
 
-Paraff的相关文档，包括词汇表、语法解释器和格式转换工具等，之后整理好笔者会发布在Github上。
+Paraff的相关文档，包括词汇表、语法解释器和格式转换工具等，之后整理好笔者会发布在[Github](https://github.com/findlab-org/paraff)上。
 
 # 自动编码器
 
