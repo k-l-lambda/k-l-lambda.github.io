@@ -16,6 +16,8 @@ subtitle: NotaGen
 	</figcaption>
 </figure>
 
+[^1][^2][^3][^4][^5][^6][^7][^8][^9][^10][^11][^12][^13][^14][^15]
+
 距离上一篇[打造音乐创作AI（一）](/2023/11/29/vae-based-music-encoder/)已经过去一年多了，
 一直忙于工作和家庭，音乐算法研究进展甚微。
 最近看到了NotaGen[^15]的发表，堪称符号算法作曲领域的里程碑式工作。
@@ -158,9 +160,11 @@ CLaMP 2原本用于MIR任务，提取每首曲子的音乐特征。
 在每一种提示组合下，把所有生成作品按最优相似度排序，其中前10%进入接受集，末尾10%进入拒绝集。
 训练时，从接受集和拒绝集中各采样一个样本组成正负样本对$\{pw, pl\}$，然后计算DPO-Positive损失函数：
 
+{% raw %}
 $$
 \mathcal{L}_{\text{DPOP}}(\pi_\theta; \pi_{\text{ref}}) = -\mathbb{E}_{(p, x_{pw}, x_{pl}) \sim \mathcal{D}} \left[ \log \sigma \left( \underbrace{ \beta \log \frac{\pi_\theta(x_{pw} | p)}{\pi_{\text{ref}}(x_{pw} | p)} - \beta \log \frac{\pi_\theta(x_{pl} | p)}{\pi_{\text{ref}}(x_{pl} | p)} }_{\text{DPO items}} - \underbrace{ \beta \lambda \cdot \max \left( 0, \log \frac{\pi_{\text{ref}}(x_{pw} | p)}{\pi_\theta(x_{pw} | p)} \right) }_{\text{DPOP item}} \right) \right]
 $$
+{% endraw %}
 
 补充说两句，笔者很早就有一种体会，分析模型和生成模型的训练是相辅相成的。
 这里分析模型指输入数据的熵高于输出数据，生成模型则反过来。
