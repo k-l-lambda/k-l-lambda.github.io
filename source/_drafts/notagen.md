@@ -22,7 +22,7 @@ subtitle: NotaGen
 一直忙于工作和家庭，音乐算法研究进展甚微。
 最近看到了NotaGen[^15]的发表，堪称符号算法作曲领域的里程碑式工作。
 不得不承认，自己还在半山腰磨蹭，别人已经把旗子插上山顶了。
-索性第二篇就介绍一下NotaGen，自己这边的思路以后再说吧。
+索性第二篇就介绍一下NotaGen，自己这边的思路以后再整理吧。
 
 这篇由中央音乐学院与多所大学联合团队发表的工作，无论从算法路线和数据来源都做得非常完备。
 不仅发表了[论文](https://arxiv.org/pdf/2502.18008)，也开放了[源代码](https://github.com/ElectricAlexis/NotaGen)和[Demo](https://electricalexis.github.io/notagen-demo/)。
@@ -56,7 +56,7 @@ subtitle: NotaGen
 		</p>
 	</picture>
 	<figcaption>
-		李斯特式的富于想象力的奔放旋律，可惜曲式结构写成古典主义的多段反复
+		李斯特式的富于想象力的奔放旋律，可惜曲式结构写成了古典主义的回旋曲式
 	</figcaption>
 </figure>
 
@@ -129,7 +129,7 @@ Lilypond的语法类似于Latex，灵活性较高，描述能力强但表达方�
 NotaGen使用的是[ABC Notation](https://notabc.app/abc/basics/)的一种变种——Interleaved ABC Notation。
 Interleaved ABC Notation可能最早由MuPT[^11]的作者提出，
 也可能是CLaMP 2[^12]的作者*WU*独立设计的。毕竟思路很简单，即将曲谱从part-wise表示转换为time-wise表示。
-笔者的[Paraff]也遵循同样的设计。
+笔者的[Paraff](https://github.com/findlab-org/paraff)也遵循同样的设计。
 见下图：
 
 <figure>
@@ -156,7 +156,7 @@ MuseScore是商业级曲谱软件中唯一开源的，类似的方案还有[Vero
 
 使用ABC Notation来做符号音乐生成，可能最早的是MuPT[^11]。
 查看其论文，除了数据表示外，几乎没有太多关于音乐方面的内容，主要探讨的是数据集相关的Scaling Law。
-给我类似印象的还有Music Transformer[^2]，除了实现了MIDI数据的tokenization，其他主要是提出了一种优化transformer二次方计算复杂度的方法。
+给我类似印象的还有Music Transformer[^2]，除了实现了MIDI数据的tokenization，其他主要是提出了一种优化transformer二次方复杂度的方法。
 不过，NotaGen团队在模型架构方面显然更有追求。
 确切地说，是第二作者（或者应该称为同等贡献作者之一）*Shangda Wu*再次应用了他之前提出的一种两级解码架构。
 
@@ -166,7 +166,7 @@ MuseScore是商业级曲谱软件中唯一开源的，类似的方案还有[Vero
 	</picture>
 	<figcaption>
 		Figure 1 from TunesFormer
-		最早提出2 levels decoder的工作
+		这里是能找到的WU的2 levels decoder架构的最早出处
 	</figcaption>
 </figure>
 
@@ -200,7 +200,7 @@ MuseScore是商业级曲谱软件中唯一开源的，类似的方案还有[Vero
 但是在bGPT[^10]的论文中，作者又亲自提到是受了MegaByte的启发。
 所以究竟是独立提出的想法还是借鉴了更早的工作，笔者还无法下定论。
 
-两级解码器的思路起源是清晰的，其目的是缓解注意力机制中的序列长度问题。
+两级解码器的思路来源是清晰的，其目的是缓解注意力机制中的序列长度问题。
 即使按照*MuPT*[^11]的路线，有了目前推理加速领域的技术支持（如FlashAttention），一首音乐的长度似乎也不再是问题。
 然而在符号音乐领域，有一个天然可以利用的结构——音乐中周期性的强弱节奏构成的小节——
 使得音乐天生具有二级结构，不加以利用就显得浪费了。
@@ -210,6 +210,7 @@ MuseScore是商业级曲谱软件中唯一开源的，类似的方案还有[Vero
 而bar-level在最终解码时仅作为前情提要式的信息辅助。训练时，bar-level的小节编码器只关注单个小节，
 并作为token-level训练的预训练模块加载。
 而在NotaGen中，bar-level解码器才是作曲的主角，byte-level解码器仅关注单个小节信息，完全不看上下文。
+缩小关注范围带来的另一个好处是，连BPE tokenizer也省去了。
 
 这里的一个关键点在于，并不是说两级结合训练的思路难以想到，而是这样做其实有代价。
 在权衡各种解法利弊时，这种方法往往会被直接忽略。
@@ -233,13 +234,15 @@ CLaMP 2原本用于MIR任务，提取每首曲子的音乐特征。
 在这里相当于RLHF中的打分模型，用于比较finetune后模型生成的作品与相同提示下参考作品在语义特征上的相似度。
 这里生成时使用的提示是一个三元组：（时代，作曲家，体裁）。
 在每一种提示组合下，把所有生成作品按最优相似度排序，其中前10%进入接受集，末尾10%进入拒绝集。
-训练时，从接受集和拒绝集中各采样一个样本组成正负样本对$\{pw, pl\}$，然后计算DPO-Positive损失函数：
+训练时，从接受集和拒绝集中各采样一个样本组成正负样本对$\{pw, pl\}$，然后计算DPO-Positive[^17]损失函数：
 
 {% raw %}
 $$
 \mathcal{L}_{\text{DPOP}}(\pi_\theta; \pi_{\text{ref}}) = -\mathbb{E}_{(p, x_{pw}, x_{pl}) \sim \mathcal{D}} \left[ \log \sigma \left( \underbrace{ \beta \log \frac{\pi_\theta(x_{pw} | p)}{\pi_{\text{ref}}(x_{pw} | p)} - \beta \log \frac{\pi_\theta(x_{pl} | p)}{\pi_{\text{ref}}(x_{pl} | p)} }_{\text{DPO items}} - \underbrace{ \beta \lambda \cdot \max \left( 0, \log \frac{\pi_{\text{ref}}(x_{pw} | p)}{\pi_\theta(x_{pw} | p)} \right) }_{\text{DPOP item}} \right) \right]
 $$
 {% endraw %}
+
+[^16][^17]
 
 补充说两句，笔者很早就有一种体会，分析模型和生成模型的训练是相辅相成的。
 这里分析模型指输入数据的熵高于输出数据，生成模型则反过来。
@@ -263,16 +266,18 @@ $$
 | *Internal Sources*                | 6,436  |
 | **Total**                         | **8,948** |
 <figcaption>
-Table 1 from *arxiv2502.18008*: Data sources and the respective amounts for fine-tuning
+Table 1 from <em>arxiv2502.18008</em>: Data sources and the respective amounts for fine-tuning
 </figcaption>
 
-当然，NotaGen目前仍存在一些不足之处。
-一是伴奏声部的编曲平均来看偏于简单，缺乏富于浪漫主义时期那种复杂多声部的编排。
-这个只从听感上感觉不明显，但是是基于五线谱的算法作曲方向所追求的特色之一。
+[^15]
 
-另外一点是NotaGen模型可以观察到一定过拟合的现象。
-也就是把训练集中的曲谱直接背下来了。
-比如这两首：
+当然，NotaGen目前仍存在一些不足之处。
+一是伴奏声部的编曲整体来看偏于简单，缺乏浪漫主义时期那种复杂多声部的丰富编排。
+这一点从听感上可能不太明显，但对于基于五线谱的算法作曲方向来说，这正是其追求的特色之一。
+
+另外，NotaGen模型还可以观察到一定程度的过拟合现象。
+也就是说，它可能直接记住了训练集中的部分曲谱。
+例如以下这两首：
 
 <figure>
 	<audio src="/images/notagenx/20250408_213249.mp3" controls></audio>
@@ -288,9 +293,9 @@ Table 1 from *arxiv2502.18008*: Data sources and the respective amounts for fine
 	</figcaption>
 </figure>
 
-过拟合有的时候是一种好的信号，意味着继续扩大数据集可以带来更多收益。
-目前一个潜在的曲谱数据来源是国际音乐库[IMSLP](https://imslp.org)，
-有朝一日，把IMSLP上近7万部名家名作的PDF曲谱数字化，可用的数据量至少还能上升一到两个数量级。
+过拟合有的时候是一种积极的信号，意味着通过继续扩大数据集可以获得更多收益。
+目前，一个潜在的曲谱数据来源是国际音乐库[IMSLP](https://imslp.org)。
+有朝一日能够将IMSLP上近7万部名家名作的PDF曲谱数字化，可用的数据量至少还能增加一到两个数量级。
 
 
 ---
@@ -310,3 +315,5 @@ References:
 [^13]: Music Event Transformer (MET): https://github.com/SkyTNT/midi-model
 [^14]: CLaMP 3: [arxiv2502.10362](https://arxiv.org/abs/2502.10362)
 [^15]: NotaGen: [arxiv2502.18008](https://arxiv.org/abs/2502.18008)
+[^16]: DPO: [arxiv2305.18290](https://arxiv.org/abs/2305.18290)
+[^17]: DPO-Positive: [arxiv2402.13228](https://arxiv.org/abs/2402.13228)
