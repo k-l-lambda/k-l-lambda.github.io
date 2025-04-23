@@ -30,12 +30,81 @@ subtitle: NotaGen
 
 除了官方Demo，这里给出一些我自己使用NotaGen生成的键盘作品：
 
-<audio src="/images/notagenx/20250409_162246.mp3" controls></audio>
-<figcaption>
-	轻快的音节跑动
-</figcaption>
+<figure>
+	<picture>
+		<audio src="/images/notagenx/20250409_162246.mp3" controls></audio>
+		<p>
+			<img src="/images/notagenx/20250409_162246_1.png" width="64px" />
+			<img src="/images/notagenx/20250409_162246_2.png" width="64px" />
+			<img src="/images/notagenx/20250409_162246_3.png" width="64px" />
+			<img src="/images/notagenx/20250409_162246_4.png" width="64px" />
+		</p>
+	</picture>
+	<figcaption>
+		轻快的音阶跑动，旋律多变，没有过多重复
+	</figcaption>
+</figure>
 
-TODO:
+<figure>
+	<picture>
+		<audio src="/images/notagenx/20250408_220949.mp3" controls></audio>
+		<p>
+			<img src="/images/notagenx/20250408_220949_1.png" width="64px" />
+			<img src="/images/notagenx/20250408_220949_2.png" width="64px" />
+			<img src="/images/notagenx/20250408_220949_3.png" width="64px" />
+			<img src="/images/notagenx/20250408_220949_4.png" width="64px" />
+		</p>
+	</picture>
+	<figcaption>
+		李斯特式的富于想象力的奔放旋律，可惜曲式结构写成古典主义的多段反复
+	</figcaption>
+</figure>
+
+<figure>
+	<picture>
+		<audio src="/images/notagenx/20250408_221059.mp3" controls></audio>
+		<p>
+			<img src="/images/notagenx/20250408_221059_1.png" width="64px" />
+			<img src="/images/notagenx/20250408_221059_2.png" width="64px" />
+			<img src="/images/notagenx/20250408_221059_3.png" width="64px" />
+			<img src="/images/notagenx/20250408_221059_4.png" width="64px" />
+			<img src="/images/notagenx/20250408_221059_5.png" width="64px" />
+		</p>
+	</picture>
+	<figcaption>
+		诙谐、轻松的圆舞曲
+	</figcaption>
+</figure>
+
+<figure>
+	<picture>
+		<audio src="/images/notagenx/20250408_222034.mp3" controls></audio>
+		<p>
+			<img src="/images/notagenx/20250408_222034_1.png" width="64px" />
+			<img src="/images/notagenx/20250408_222034_2.png" width="64px" />
+			<img src="/images/notagenx/20250408_222034_3.png" width="64px" />
+			<img src="/images/notagenx/20250408_222034_4.png" width="64px" />
+		</p>
+	</picture>
+	<figcaption>
+		像一首练习曲（肖邦那种难度的）
+	</figcaption>
+</figure>
+
+<figure>
+	<picture>
+		<audio src="/images/notagenx/20250409_112628.mp3" controls></audio>
+		<p>
+			<img src="/images/notagenx/20250409_112628_1.png" width="64px" />
+			<img src="/images/notagenx/20250409_112628_2.png" width="64px" />
+			<img src="/images/notagenx/20250409_112628_3.png" width="64px" />
+			<img src="/images/notagenx/20250409_112628_4.png" width="64px" />
+		</p>
+	</picture>
+	<figcaption>
+		一首有趣的AI作品，风格不落于俗套，bass声部居然用钢琴音色制造了一种打击乐的效果
+	</figcaption>
+</figure>
 
 
 依据paper和源代码这些可观察到的内容，以下从三个要点来简要介绍一下NotaGen的工作。
@@ -65,7 +134,7 @@ Interleaved ABC Notation可能最早由MuPT[^11]的作者提出，
 
 <figure>
 	<picture>
-		<img src="/images/arxiv2410.13267-figure6.png" />
+		<img src="/images/arxiv2410.13267-figure6.png" width="400px" />
 	</picture>
 	<figcaption>
 		Figure 6 from CLaMP 2
@@ -93,33 +162,39 @@ MuseScore是商业级曲谱软件中唯一开源的，类似的方案还有[Vero
 
 <figure>
 	<picture>
-		<img src="/images/arxiv2301.02884-figure1.png" />
+		<img src="/images/arxiv2301.02884-figure1.png" width="480px" />
 	</picture>
 	<figcaption>
 		Figure 1 from TunesFormer
 		最早提出2 levels decoder的工作
 	</figcaption>
-</figure>[^5]
+</figure>
+
+[^5]
 
 <figure>
 	<picture>
-		<img src="/images/arxiv2502.18008-figure2.png" />
+		<img src="/images/arxiv2502.18008-figure2.png" width="480px" />
 	</picture>
 	<figcaption>
 		Figure 2 from NotaGen
 	</figcaption>
-</figure>[^15]
+</figure>
+
+[^15]
 
 笔者第一次看到这里马上联想到之前的一篇MegaByte[^7]:
 
 <figure>
 	<picture>
-		<img src="/images/arxiv2305.07185-figure1.png" />
+		<img src="/images/arxiv2305.07185-figure1.png" width="480px" />
 	</picture>
 	<figcaption>
 		Figure 1 from MegaByte
 	</figcaption>
-</figure>[^7]
+</figure>
+
+[^7]
 
 不过查看发表日期，*WU*的*TunesFormer*[^5]还是在MegaByte[^7]之前。
 但是在bGPT[^10]的论文中，作者又亲自提到是受了MegaByte的启发。
@@ -191,7 +266,31 @@ $$
 Table 1 from *arxiv2502.18008*: Data sources and the respective amounts for fine-tuning
 </figcaption>
 
-不过，有朝一日，把[IMSLP](https://imslp.org)上7万多部名家名作的PDF曲谱数字化，可用的数据量至少还能上升一到两个数量级。
+当然，NotaGen目前仍存在一些不足之处。
+一是伴奏声部的编曲平均来看偏于简单，缺乏富于浪漫主义时期那种复杂多声部的编排。
+这个只从听感上感觉不明显，但是是基于五线谱的算法作曲方向所追求的特色之一。
+
+另外一点是NotaGen模型可以观察到一定过拟合的现象。
+也就是把训练集中的曲谱直接背下来了。
+比如这两首：
+
+<figure>
+	<audio src="/images/notagenx/20250408_213249.mp3" controls></audio>
+	<figcaption>
+		开头明显“剽窃”了舒伯特的<a href="https://www.youtube.com/watch?v=0XlUsEfcKB0" target="_blank">中速的快板</a>，后面做了有趣的变奏
+	</figcaption>
+</figure>
+
+<figure>
+	<audio src="/images/notagenx/20250409_163916.mp3" controls></audio>
+	<figcaption>
+		这一首几乎完整复现了柴可夫斯基《天鹅湖》的旋律
+	</figcaption>
+</figure>
+
+过拟合有的时候是一种好的信号，意味着继续扩大数据集可以带来更多收益。
+目前一个潜在的曲谱数据来源是国际音乐库[IMSLP](https://imslp.org)，
+有朝一日，把IMSLP上近7万部名家名作的PDF曲谱数字化，可用的数据量至少还能上升一到两个数量级。
 
 
 ---
