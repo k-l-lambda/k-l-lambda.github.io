@@ -158,6 +158,180 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-notagen" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2025/04/23/notagen/">打造音乐创作AI（二）</a>
+    </h1>
+  
+  
+    <p class="subtitle">
+      NotaGen
+    </p>
+  
+
+        
+        <a href="/2025/04/23/notagen/" class="archive-article-date">
+  	<time datetime="2025-04-23T23:59:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure>
+	<picture>
+		<img src="/images/symbolic-music-models2025.drawio.svg" />
+	</picture>
+	<figcaption>
+		截至2025年4月，主要的符号音乐算法作曲工作
+	</figcaption>
+</figure>
+<p><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup><sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup><sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup><sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup><sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup><sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup><sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup><sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup><sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup><sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup><sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup><sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup><sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup><sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup></p>
+<p>距离上一篇<a href="/2023/11/29/vae-based-music-encoder/">打造音乐创作AI（一）</a>已经过去一年多了，
+一直忙于工作和家庭，音乐算法研究进展甚微。
+最近看到了NotaGen<sup class="footnote-ref"><a href="#fn15" id="fnref15:1">[15:1]</a></sup>的发表，堪称符号算法作曲领域的里程碑式工作。
+不得不承认，自己还在半山腰磨蹭，别人已经把旗子插上山顶了。
+索性第二篇就介绍一下NotaGen，自己这边的思路以后再整理吧。</p>
+<p>这篇由中央音乐学院与多所大学联合团队发表的工作，无论从算法路线和数据来源都做得非常完备。
+不仅发表了<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2502.18008">论文</a>，也开放了<a target="_blank" rel="noopener" href="https://github.com/ElectricAlexis/NotaGen">源代码</a>和<a target="_blank" rel="noopener" href="https://electricalexis.github.io/notagen-demo/">Demo</a>。
+当然最宝贵的数据集并没有放出（可能是考虑版权问题）。</p>
+<p>除了官方Demo，这里给出一些我自己使用NotaGen生成的键盘作品（曲谱图片可点开大图）：</p>
+<figure>
+	<picture>
+		<audio src="/images/notagenx/20250409_162246.mp3" controls></audio>
+		<p>
+			<img src="/images/notagenx/20250409_162246_1.png" width="64px" />
+			<img src="/images/notagenx/20250409_162246_2.png" width="64px" />
+			<img src="/images/notagenx/20250409_162246_3.png" width="64px" />
+			<img src="/images/notagenx/20250409_162246_4.png" width="64px" />
+		</p>
+	</picture>
+	<figcaption>
+		轻快的音阶跑动，旋律多变，没有过多重复
+	</figcaption>
+</figure>
+<figure>
+	<picture>
+		<audio src="/images/notagenx/20250408_220949.mp3" controls></audio>
+		<p>
+			<img src="/images/notagenx/20250408_220949_1.png" width="64px" />
+			<img src="/images/notagenx/20250408_220949_2.png" width="64px" />
+			<img src="/images/notagenx/20250408_220949_3.png" width="64px" />
+			<img src="/images/notagenx/20250408_220949_4.png" width="64px" />
+		</p>
+	</picture>
+	<figcaption>
+		李斯特式的富于想象力的奔放旋律，可惜曲式结构写成了古典主义的回旋曲式
+	</figcaption>
+</figure>
+<figure>
+	<picture>
+		<audio src="/images/notagenx/20250408_221059.mp3" controls></audio>
+		<p>
+			<img src="/images/notagenx/20250408_221059_1.png" width="64px" />
+			<img src="/images/notagenx/20250408_221059_2.png" width="64px" />
+			<img src="/images/notagenx/20250408_221059_3.png" width="64px" />
+			<img src="/images/notagenx/20250408_221059_4.png" width="64px" />
+			<img src="/images/notagenx/20250408_221059_5.png" width="64px" />
+		</p>
+	</picture>
+	<figcaption>
+		诙谐、轻松的圆舞曲
+	</figcaption>
+</figure>
+<figure>
+	<picture>
+		<audio src="/images/notagenx/20250408_222034.mp3" controls></audio>
+		<p>
+			<img src="/images/notagenx/20250408_222034_1.png" width="64px" />
+			<img src="/images/notagenx/20250408_222034_2.png" width="64px" />
+			<img src="/images/notagenx/20250408_222034_3.png" width="64px" />
+			<img src="/images/notagenx/20250408_222034_4.png" width="64px" />
+		</p>
+	</picture>
+	<figcaption>
+		像一首练习曲（肖邦级难度的）
+	</figcaption>
+</figure>
+<figure>
+	<picture>
+		<audio src="/images/notagenx/20250409_112628.mp3" controls></audio>
+		<p>
+			<img src="/images/notagenx/20250409_112628_1.png" width="64px" />
+			<img src="/images/notagenx/20250409_112628_2.png" width="64px" />
+			<img src="/images/notagenx/20250409_112628_3.png" width="64px" />
+			<img src="/images/notagenx/20250409_112628_4.png" width="64px" />
+		</p>
+	</picture>
+	<figcaption>
+		一首有趣的AI作品，风格不落于俗套，bass声部居然用钢琴音色制造了一种打击乐的效果
+	</figcaption>
+</figure>
+<p>依据paper和源代码这些可观察到的内容，以下从三个要点来简要介绍一下NotaGen的工作。</p>
+        
+          <a class="article-more-a" href="/2025/04/23/notagen/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">deep_learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">中文</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">music_algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-diary-on-github" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -970,108 +1144,6 @@ $$</p>
 <p>作者借用了数学上的<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-hans/%E8%A7%A3%E6%9E%90%E5%BB%B6%E6%8B%93">解析延拓</a>概念,
 设想在元音平面基础上再加上虚轴, 即得到了&quot;复元音&quot;.
 这里的&quot;复&quot;是复数的复. (双元音的英文是’diphthong’.)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">中文</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">comic</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">translation</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">xkcd</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-xkcd-AngularDiameterTurnaround" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/13/xkcd-AngularDiameterTurnaround/">[xkcd] 视角直径拐点</a>
-    </h1>
-  
-  
-
-        
-        <a href="/2022/08/13/xkcd-AngularDiameterTurnaround/" class="archive-article-date">
-  	<time datetime="2022-08-13T14:46:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure>
-	<picture>
-		<img src="/images/xkcd-angular_diameter_turnaround.png" class="figure" width="740" alt="xkcd 2622">
-	</picture>
-	<figcaption>原作：<a target="_blank" rel="noopener" href="https://xkcd.com/2622/">xkcd/2622</a></figcaption>
-</figure>
-<blockquote>
-<p><strong>视角直径拐点</strong><br/>
-<em>(图中用手机代替星系，亮度和红移已调整到可见范围)</em><br/>
-<em>近大远小，离我们越远的物体看起来越小，但非常非常远的物体看起来反而会变大！</em><br/>
-<em>因为当它们的光线刚刚发射出来的时候宇宙还很小，当时它们距离我们（现在的空间位置）更近。</em><br/></p>
-</blockquote>
-<p>由于光速有限, 眺望远方其实也是眺望过去(字面意义上的).
-所以整个夜空其实是展示给我们的一部宇宙历史, 有意思的是这历史的最外层其实是宇宙早期的显微结构(参见<a target="_blank" rel="noopener" href="https://wikizh.click/wiki/Decoupling_(cosmology)">解耦</a>).
-设想, 从地球向外, 把夜空(过去光锥)划分成一圈圈包围我们的天球球层, 在地球附近这些球层半径不断变大, 最后又变得很小, 那么中间一定会经历一个拐点.
-我有点好奇这拐点具体发生在什么时间, 从这篇xkcd的漫画图中来看, 大概是发生在<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-hans/%E5%86%8D%E9%9B%BB%E9%9B%A2">再电离</a>事件之前的.</p>
-<hr>
-<p>好久没有更新博客了, 去年至今其实有一些酝酿中的想法, 没时间整理成paper, 只能再往后推了.
-最近打算先翻译一些有趣的xkcd漫画作品.</p>
-<p>非常怀念过去在科学松鼠会上看<a target="_blank" rel="noopener" href="http://www.songshuehu.net/ent.htm">Ent</a><sup><a target="_blank" rel="noopener" href="https://www.163.com/dy/article/GBP09SFP055218MP.html">*</a></sup>翻译xkcd等各种科学漫画的时光.</p>
 
       
 
