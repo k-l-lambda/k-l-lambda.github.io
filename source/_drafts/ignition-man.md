@@ -77,7 +77,8 @@ tags:
 		</p>
 	</picture>
 	<figcaption>
-		点击查看大图
+		<p>点击查看大图</p>
+		<p><a href="/images/ignition-man/ignition-man-booklet.pdf" target="_blank">下载绘本装订打印版</a>（注意需要双面打印，共10张纸）</p>
 	</figcaption>
 </figure>
 
