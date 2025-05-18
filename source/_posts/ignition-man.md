@@ -12,7 +12,7 @@ date: 2025-05-18 13:41:58
 
 <figure>
 	<picture>
-		<img src="/images/ignition-man/0.webp" width="400px" />
+		<img src="/images/ignition-man/0.webp" width="400" />
 	</picture>
 </figure>
 
@@ -163,6 +163,7 @@ date: 2025-05-18 13:41:58
 
 <script>
 	document.addEventListener("DOMContentLoaded", async (event) => {
+		await new Promise(r => setTimeout(r, 5000));
 		const imgs = document.querySelectorAll("#book-pages img");
 		//console.log("DOMContentLoaded.", pages);
 		let i = 1;
