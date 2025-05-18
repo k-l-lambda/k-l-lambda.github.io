@@ -40,42 +40,42 @@ date: 2025-05-18 13:41:58
 
 <figure>
 	<picture>
-		<p>
-			<img src="/images/ignition-man/1.webp" width="32px" />
-			<img src="/images/ignition-man/2.webp" width="32px" />
-			<img src="/images/ignition-man/3.webp" width="32px" />
-			<img src="/images/ignition-man/4.webp" width="32px" />
-			<img src="/images/ignition-man/5.webp" width="32px" />
-			<img src="/images/ignition-man/6.webp" width="32px" />
-			<img src="/images/ignition-man/7.webp" width="32px" />
-			<img src="/images/ignition-man/8.webp" width="32px" />
-			<img src="/images/ignition-man/9.webp" width="32px" />
-			<img src="/images/ignition-man/10.webp" width="32px" />
-			<img src="/images/ignition-man/11.webp" width="32px" />
-			<img src="/images/ignition-man/12.webp" width="32px" />
-			<img src="/images/ignition-man/13.webp" width="32px" />
-			<img src="/images/ignition-man/14.webp" width="32px" />
-			<img src="/images/ignition-man/15.webp" width="32px" />
-			<img src="/images/ignition-man/16.webp" width="32px" />
-			<img src="/images/ignition-man/17.webp" width="32px" />
-			<img src="/images/ignition-man/18.webp" width="32px" />
-			<img src="/images/ignition-man/19.webp" width="32px" />
-			<img src="/images/ignition-man/20.webp" width="32px" />
-			<img src="/images/ignition-man/21.webp" width="32px" />
-			<img src="/images/ignition-man/22.webp" width="32px" />
-			<img src="/images/ignition-man/23.webp" width="32px" />
-			<img src="/images/ignition-man/24.webp" width="32px" />
-			<img src="/images/ignition-man/25.webp" width="32px" />
-			<img src="/images/ignition-man/26.webp" width="32px" />
-			<img src="/images/ignition-man/27.webp" width="32px" />
-			<img src="/images/ignition-man/28.webp" width="32px" />
-			<img src="/images/ignition-man/29.webp" width="32px" />
-			<img src="/images/ignition-man/30.webp" width="32px" />
-			<img src="/images/ignition-man/31.webp" width="32px" />
-			<img src="/images/ignition-man/32.webp" width="32px" />
-			<img src="/images/ignition-man/33.webp" width="32px" />
-			<img src="/images/ignition-man/34.webp" width="32px" />
-			<img src="/images/ignition-man/35.webp" width="32px" />
+		<p id="book-pages">
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
+			<img width="32" />
 		</p>
 	</picture>
 	<figcaption>
@@ -159,3 +159,17 @@ date: 2025-05-18 13:41:58
 
 不过如果你真的了解刘慈欣你就明白，这些也不过是构造好故事的一些技巧和手法罢了，都不能太当真的。
 就像有人告诫的那样，千万别把歌词当真——为了押韵，作词的什么都能写得出来。
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", async (event) => {
+		const imgs = document.querySelectorAll("#book-pages img");
+		//console.log("DOMContentLoaded.", pages);
+		let i = 1;
+		for (const img of imgs) {
+			await new Promise(r => setTimeout(r, 100));
+			img.src = `/images/ignition-man/${i}.webp`;
+			++i;
+		}
+	});
+</script>
