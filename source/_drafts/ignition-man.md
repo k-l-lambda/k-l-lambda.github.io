@@ -33,6 +33,54 @@ tags:
 受限于目前技术水平，图画之间的角色一致性方面还有很大问题，敬请见谅。
 因此也仅作为个人业余爱好之作，没有任何商业企图。
 
+<!-- more -->
+
+
+<figure>
+	<picture>
+		<p>
+			<img src="/images/ignition-man/1.webp" width="32px" />
+			<img src="/images/ignition-man/2.webp" width="32px" />
+			<img src="/images/ignition-man/3.webp" width="32px" />
+			<img src="/images/ignition-man/4.webp" width="32px" />
+			<img src="/images/ignition-man/5.webp" width="32px" />
+			<img src="/images/ignition-man/6.webp" width="32px" />
+			<img src="/images/ignition-man/7.webp" width="32px" />
+			<img src="/images/ignition-man/8.webp" width="32px" />
+			<img src="/images/ignition-man/9.webp" width="32px" />
+			<img src="/images/ignition-man/10.webp" width="32px" />
+			<img src="/images/ignition-man/11.webp" width="32px" />
+			<img src="/images/ignition-man/12.webp" width="32px" />
+			<img src="/images/ignition-man/13.webp" width="32px" />
+			<img src="/images/ignition-man/14.webp" width="32px" />
+			<img src="/images/ignition-man/15.webp" width="32px" />
+			<img src="/images/ignition-man/16.webp" width="32px" />
+			<img src="/images/ignition-man/17.webp" width="32px" />
+			<img src="/images/ignition-man/18.webp" width="32px" />
+			<img src="/images/ignition-man/19.webp" width="32px" />
+			<img src="/images/ignition-man/20.webp" width="32px" />
+			<img src="/images/ignition-man/21.webp" width="32px" />
+			<img src="/images/ignition-man/22.webp" width="32px" />
+			<img src="/images/ignition-man/23.webp" width="32px" />
+			<img src="/images/ignition-man/24.webp" width="32px" />
+			<img src="/images/ignition-man/25.webp" width="32px" />
+			<img src="/images/ignition-man/26.webp" width="32px" />
+			<img src="/images/ignition-man/27.webp" width="32px" />
+			<img src="/images/ignition-man/28.webp" width="32px" />
+			<img src="/images/ignition-man/29.webp" width="32px" />
+			<img src="/images/ignition-man/30.webp" width="32px" />
+			<img src="/images/ignition-man/31.webp" width="32px" />
+			<img src="/images/ignition-man/32.webp" width="32px" />
+			<img src="/images/ignition-man/33.webp" width="32px" />
+			<img src="/images/ignition-man/34.webp" width="32px" />
+			<img src="/images/ignition-man/35.webp" width="32px" />
+		</p>
+	</picture>
+	<figcaption>
+		点击查看大图
+	</figcaption>
+</figure>
+
 顺便继续聊一聊刘慈欣。
 刘慈欣多次表示自己是一个科学狂热分子，他的科幻创作完全源于对科学的崇拜。
 然而《烧火工》的出现让我们看清了一个事实，大刘真正的拿手好戏其实不是对科学概念的理解，甚至也不是对科学思想的信仰，
