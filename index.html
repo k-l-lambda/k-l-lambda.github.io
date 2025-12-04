@@ -158,6 +158,107 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-agentic-development-paradigm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2025/12/04/agentic-development-paradigm/">软件开发新范式探索</a>
+    </h1>
+  
+  
+    <p class="subtitle">
+      智能体驱动实践的一些思路
+    </p>
+  
+
+        
+        <a href="/2025/12/04/agentic-development-paradigm/" class="archive-article-date">
+  	<time datetime="2025-12-04T18:10:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-12-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在如果你不计较为LLM API付费，那么理论上今天所有新的软件服务需求可以使用一个通用的agent service来实现。
+你可以如常定义所有功能API，后台由一个LLM驱动的智能体接受用户发送来的数据，然后由他决定做出什么样的合理响应。
+好比放一个人蹲守在自动售货机的里面，他检查用户的按键和投币，然后把对应商品塞到出口。
+除了慢一点，贵一点，完全可行是不是？</p>
+<p>你说不对呀，现在的 Agent 还有很多事做不好，不堪大用啊？
+没关系，咱们 Agent 会写代码，只要是你传统软件能做到的事，我 Agent 都能开发出来，大不了我现场开发一个呗。
+当然了，现实中如果真的这么做可能会慢到不可忍受，不过这给我们提供了软件开发范式的一种新思路。</p>
+<h2 id="1-从通用智能体开始">1. 从通用智能体开始</h2>
+<p>首先，我们搭建一个基础的 Agent 脚手架，并赋予它一套基础的通用工具，比如shell命令执行器（咦？好像一个就够了）。
+这就像给一个智能体配备了万能工具箱，让它能够在各种需求下先跑起来。</p>
+<h2 id="2-通过持续互动，让智能体“长出”专用能力">2. 通过持续互动，让智能体“长出”专用能力</h2>
+<p>之后，我们通过需求驱动与 Agent 反复互动，让它尝试实现各种功能。
+在这个过程中，你会自然观察到哪些操作被频繁调用、重复性高、对系统至关重要。
+于是，你可以从这些“使用痕迹”中抽象出更稳固的专用模块，让 Agent 使用更高效的版本。</p>
+<h2 id="3-开发是一种从“液态”到“固态”的固化过程">3. 开发是一种从“液态”到“固态”的固化过程</h2>
+<p>整个模式可以理解为一种演化：</p>
+<ul>
+<li>一开始，工具与逻辑是灵活的、临时的，液态的。</li>
+<li>随着需求稳定，你将关键逻辑固化成结构化、可复用的模块，“凝固”为固态。</li>
+<li>最终，Agent 的工具变得越来越鲁棒且高效，而 Agent 则站在这个不断进化的基础设施之上继续工作。</li>
+</ul>
+<p>既然我们未来大概率也要往系统中塞进一个 Agent 与用户交互（越来越多的App已经在这样做了），
+不如转而以智能体协作为核心，通过对话与反馈循环，让系统逐步自我沉淀与强化。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">agent</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">software_development</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ignition-man" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1090,96 +1191,6 @@ $$</p>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">diffusion_model</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-xkcd-UniversePriceTiers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/01/xkcd-UniversePriceTiers/">[xkcd] 宇宙价格等级</a>
-    </h1>
-  
-  
-
-        
-        <a href="/2022/09/01/xkcd-UniversePriceTiers/" class="archive-article-date">
-  	<time datetime="2022-09-01T23:18:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原作：<a target="_blank" rel="noopener" href="https://xkcd.com/2666/">xkcd/2666</a></p>
-<figure>
-	<picture>
-		<img src="/images/xkcd-universe_price_tiers-zh.png" class="figure" width="646" alt="xkcd 2657">
-	</picture>
-	<figcaption>宇宙价格等级</figcaption>
-</figure>
-<p>&quot;Sow the wind, reap the whirlwind&quot;是一句西方谚语，相当于“种瓜得瓜，种豆得豆”，或“善有善报，恶有恶报”。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">中文</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">comic</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">translation</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">xkcd</a>
         		</li>
       		
 		</ul>

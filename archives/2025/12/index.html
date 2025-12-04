@@ -6,26 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://k-l-lambda.github.io">
-  <title>How to represent a Rubik&#39;s cube state in a calculable form? | K.L.</title>
+  <title>Archives: 2025/12 | K.L.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Guess what this is? See the answer here. 	  To describe a chess game state, you don’t need to mention every chess piece’s details. Essentially, a chess piece is just a symbol. Ignoring app">
-<meta property="og:type" content="article">
-<meta property="og:title" content="How to represent a Rubik&#39;s cube state in a calculable form?">
-<meta property="og:url" content="https://k-l-lambda.github.io/2020/12/14/rubik-cube-notation/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="K.L.">
+<meta property="og:url" content="https://k-l-lambda.github.io/archives/2025/12/index.html">
 <meta property="og:site_name" content="K.L.">
-<meta property="og:description" content="Guess what this is? See the answer here. 	  To describe a chess game state, you don’t need to mention every chess piece’s details. Essentially, a chess piece is just a symbol. Ignoring app">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://k-l-lambda.github.io/images/cube3-matrix-tetris.svg">
-<meta property="og:image" content="https://k-l-lambda.github.io/images/cube3-expand-graph-original.png">
-<meta property="og:image" content="https://k-l-lambda.github.io/images/rect2x2-permutation.drawio.svg">
-<meta property="og:image" content="https://k-l-lambda.github.io/images/cube3-matrix-illustration.drawio.svg">
-<meta property="article:published_time" content="2020-12-14T21:37:33.000Z">
-<meta property="article:modified_time" content="2025-12-04T10:19:14.459Z">
 <meta property="article:author" content="K.L.">
-<meta property="article:tag" content="algebra">
-<meta property="article:tag" content="rubiks_cube">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://k-l-lambda.github.io/images/cube3-matrix-tetris.svg">
   
     <link rel="alternative" href="/atom.xml" title="K.L." type="application/atom+xml">
   
@@ -167,556 +156,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-rubik-cube-notation" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      How to represent a Rubik&#39;s cube state in a calculable form?
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2025" class="archive-year">2025</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2025/12/04/agentic-development-paradigm/" class="archive-article-date">
+  	<time datetime="2025-12-04T18:10:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-12-04</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2025/12/04/agentic-development-paradigm/">软件开发新范式探索</a>
     </h1>
   
   
+    <p class="subtitle">
+      智能体驱动实践的一些思路
+    </p>
+  
 
-        
-        <a href="/2020/12/14/rubik-cube-notation/" class="archive-article-date">
-  	<time datetime="2020-12-14T21:37:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure>
-	<picture>
-		<img src="/images/cube3-matrix-tetris.svg" alt="a cube3 matrix samle #LKONLKONLOKNLKONKLNOGCAAFD" />
-	</picture>
-	<figcaption>
-		Guess what this is? <a target="_blank" href="/klstudio/#/documents/dynamic-labeled-cube3#LKONLKONLOKNLKONKLNOGCAAFD">See the answer here.</a>
-	</figcaption>
-</figure>
-<p>To describe a chess game state, you don’t need to mention every chess piece’s details.
-Essentially, a chess piece is just a symbol. Ignoring appearance detail helps us to grab the game gist.
-Till now, a popular way to represent a Rubik’s cube state is the facelets expanding graph, like this:</p>
-<p><img src="/images/cube3-expand-graph-original.png" alt="a cube3 expanding graph sample"></p>
-<p>By this way, you can’t tell which facelets are adjacent each other straightway, also it’s hard to imagine what the cube will change into after a twist applied.
-That because it comes from the appearance, but not the essential.
-Furtherly, as <a href="/2020/02/05/cube-algebra/#Motivation">my preivous blog</a> wrote, Rubik’s Cube solver programs who construct cube state from facelet color is clumsy.
-Rubik’s Cube is a game about cubes’s <strong>rotation</strong> and <strong>permutation</strong> (but not painting color), <strong>matrix</strong> is the most proper math tool here.</p>
-<p>However, the fact revealed by this method is not easy to see through, and that is just what I will tell you in this blog.</p>
-<span id="more"></span>
-<h2 id="Cube-orientation-representation">Cube orientation representation</h2>
-<p>Let’s begin with a simple case, the <em>1-order Rubik’s cube</em>, i.e. a single cube.
-How to restore a rotated cube to the original orientation, in a shorttest way?
-That’s just <a href="/2020/02/05/cube-algebra/">Cube Rotation Algebra</a>’s topic.
-Now let’s symbolize them in a new way.</p>
-<p>Recently, I found 2 lucky things, this is the first:</p>
-<figure>
-	<span class="max600">
-		<span class="fixed-ratio" style="width: 100%; padding-top: 100%">
-			<iframe src="/klstudio/embed.html#/documents/mesh-viewer-demo:quarter-array-4x6-greek"></iframe>
-		</span>
-	</span>
-	<figcaption>Representing 24 orthogonal orientations by lowercase Greek letters.</figcaption>
-</figure>
-<p>You will be familiar with this figure if you have read <a href="/2020/02/05/cube-algebra/">Cube Rotation Algebra</a>.
-The lucky is that we have exact 24 modern Greek letters in total coincidentally.</p>
-<p>I have explained cube rotation algebra in <a href="/2020/02/05/cube-algebra/">the preivous blog</a> in details,
-now I just show you what the relationship looks like between Greek letters and colored cubes.</p>
-<figure>
-	<span style="display: inline-block; width: 400px;">
-		<span class="fixed-ratio" style="width: 100%; padding-top: 100%">
-			<iframe src="/klstudio/embed.html#/documents/flipping-cube-demo"></iframe>
-		</span>
-	</span>
-</figure>
-<p>Mathematically, they can be defined in quaternions:</p>
-<p>$$
-\begin{aligned}
-&amp; \alpha = 1 \\
-&amp; \beta = i \\
-&amp; \gamma = j \\
-&amp; \delta = k \\
-&amp; \epsilon = \sqrt{i} = \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} i \\
-&amp; … \\
-&amp; \omega = i\sqrt[-]{k} = \frac{\sqrt{2}}{2} i - \frac{\sqrt{2}}{2} j
-\end{aligned}
-$$</p>
-<p>These 24 elements make up a group <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Octahedral_symmetry#Full_octahedral_symmetry">$O_{h}$</a>,
-that means they are closed for multiplication, and the multiplication satisfys the associative law.</p>
-<p>And this is the group multiplication table:</p>
-<p>$
-\begin{matrix}
-\times &amp; \boldsymbol{\alpha} &amp; \boldsymbol{\beta} &amp; \boldsymbol{\gamma} &amp; \boldsymbol{\delta} &amp; \boldsymbol{\epsilon} &amp; \boldsymbol{\zeta} &amp; \boldsymbol{\eta} &amp; \boldsymbol{\theta} &amp; \boldsymbol{\iota} &amp; \boldsymbol{\kappa} &amp; \boldsymbol{\lambda} &amp; \boldsymbol{\mu} &amp; \boldsymbol{\nu} &amp; \boldsymbol{\xi} &amp; \boldsymbol{\omicron} &amp; \boldsymbol{\pi} &amp; \boldsymbol{\rho} &amp; \boldsymbol{\sigma} &amp; \boldsymbol{\tau} &amp; \boldsymbol{\upsilon} &amp; \boldsymbol{\phi} &amp; \boldsymbol{\chi} &amp; \boldsymbol{\psi} &amp; \boldsymbol{\omega} \\
-\boldsymbol{\alpha} &amp; \alpha &amp; \beta &amp; \gamma &amp; \delta &amp; \epsilon &amp; \zeta &amp; \eta &amp; \theta &amp; \iota &amp; \kappa &amp; \lambda &amp; \mu &amp; \nu &amp; \xi &amp; \omicron &amp; \pi &amp; \rho &amp; \sigma &amp; \tau &amp; \upsilon &amp; \phi &amp; \chi &amp; \psi &amp; \omega \\
-\boldsymbol{\beta} &amp; \beta &amp; \alpha &amp; \delta &amp; \gamma &amp; \theta &amp; \chi &amp; \omega &amp; \epsilon &amp; \phi &amp; \psi &amp; \pi &amp; \omicron &amp; \sigma &amp; \rho &amp; \mu &amp; \lambda &amp; \xi &amp; \nu &amp; \upsilon &amp; \tau &amp; \iota &amp; \zeta &amp; \kappa &amp; \eta \\
-\boldsymbol{\gamma} &amp; \gamma &amp; \delta &amp; \alpha &amp; \beta &amp; \tau &amp; \iota &amp; \psi &amp; \upsilon &amp; \zeta &amp; \omega &amp; \mu &amp; \lambda &amp; \rho &amp; \sigma &amp; \pi &amp; \omicron &amp; \nu &amp; \xi &amp; \epsilon &amp; \theta &amp; \chi &amp; \phi &amp; \eta &amp; \kappa \\
-\boldsymbol{\delta} &amp; \delta &amp; \gamma &amp; \beta &amp; \alpha &amp; \upsilon &amp; \phi &amp; \kappa &amp; \tau &amp; \chi &amp; \eta &amp; \omicron &amp; \pi &amp; \xi &amp; \nu &amp; \lambda &amp; \mu &amp; \sigma &amp; \rho &amp; \theta &amp; \epsilon &amp; \zeta &amp; \iota &amp; \omega &amp; \psi \\
-\boldsymbol{\epsilon} &amp; \epsilon &amp; \theta &amp; \upsilon &amp; \tau &amp; \beta &amp; \xi &amp; \lambda &amp; \alpha &amp; \nu &amp; \mu &amp; \omega &amp; \psi &amp; \phi &amp; \chi &amp; \kappa &amp; \eta &amp; \zeta &amp; \iota &amp; \gamma &amp; \delta &amp; \sigma &amp; \rho &amp; \omicron &amp; \pi \\
-\boldsymbol{\zeta} &amp; \zeta &amp; \phi &amp; \iota &amp; \chi &amp; \lambda &amp; \gamma &amp; \rho &amp; \omicron &amp; \alpha &amp; \xi &amp; \tau &amp; \epsilon &amp; \eta &amp; \omega &amp; \upsilon &amp; \theta &amp; \psi &amp; \kappa &amp; \mu &amp; \pi &amp; \delta &amp; \beta &amp; \nu &amp; \sigma \\
-\boldsymbol{\eta} &amp; \eta &amp; \psi &amp; \omega &amp; \kappa &amp; \nu &amp; \lambda &amp; \delta &amp; \rho &amp; \pi &amp; \alpha &amp; \phi &amp; \iota &amp; \upsilon &amp; \epsilon &amp; \zeta &amp; \chi &amp; \tau &amp; \theta &amp; \sigma &amp; \xi &amp; \omicron &amp; \mu &amp; \gamma &amp; \beta \\
-\boldsymbol{\theta} &amp; \theta &amp; \epsilon &amp; \tau &amp; \upsilon &amp; \alpha &amp; \rho &amp; \pi &amp; \beta &amp; \sigma &amp; \omicron &amp; \eta &amp; \kappa &amp; \iota &amp; \zeta &amp; \psi &amp; \omega &amp; \chi &amp; \phi &amp; \delta &amp; \gamma &amp; \nu &amp; \xi &amp; \mu &amp; \lambda \\
-\boldsymbol{\iota} &amp; \iota &amp; \chi &amp; \zeta &amp; \phi &amp; \mu &amp; \alpha &amp; \nu &amp; \pi &amp; \gamma &amp; \sigma &amp; \epsilon &amp; \tau &amp; \psi &amp; \kappa &amp; \theta &amp; \upsilon &amp; \eta &amp; \omega &amp; \lambda &amp; \omicron &amp; \beta &amp; \delta &amp; \rho &amp; \xi \\
-\boldsymbol{\kappa} &amp; \kappa &amp; \omega &amp; \psi &amp; \eta &amp; \xi &amp; \omicron &amp; \alpha &amp; \sigma &amp; \mu &amp; \delta &amp; \zeta &amp; \chi &amp; \epsilon &amp; \upsilon &amp; \phi &amp; \iota &amp; \theta &amp; \tau &amp; \rho &amp; \nu &amp; \lambda &amp; \pi &amp; \beta &amp; \gamma \\
-\boldsymbol{\lambda} &amp; \lambda &amp; \omicron &amp; \pi &amp; \mu &amp; \phi &amp; \omega &amp; \tau &amp; \zeta &amp; \eta &amp; \epsilon &amp; \sigma &amp; \nu &amp; \delta &amp; \beta &amp; \xi &amp; \rho &amp; \gamma &amp; \alpha &amp; \iota &amp; \chi &amp; \kappa &amp; \psi &amp; \upsilon &amp; \theta \\
-\boldsymbol{\mu} &amp; \mu &amp; \pi &amp; \omicron &amp; \lambda &amp; \chi &amp; \kappa &amp; \epsilon &amp; \iota &amp; \psi &amp; \tau &amp; \xi &amp; \rho &amp; \beta &amp; \delta &amp; \sigma &amp; \nu &amp; \alpha &amp; \gamma &amp; \zeta &amp; \phi &amp; \omega &amp; \eta &amp; \theta &amp; \upsilon \\
-\boldsymbol{\nu} &amp; \nu &amp; \rho &amp; \xi &amp; \sigma &amp; \psi &amp; \epsilon &amp; \phi &amp; \eta &amp; \upsilon &amp; \iota &amp; \beta &amp; \gamma &amp; \omicron &amp; \mu &amp; \alpha &amp; \delta &amp; \lambda &amp; \pi &amp; \omega &amp; \kappa &amp; \theta &amp; \tau &amp; \zeta &amp; \chi \\
-\boldsymbol{\xi} &amp; \xi &amp; \sigma &amp; \nu &amp; \rho &amp; \omega &amp; \upsilon &amp; \zeta &amp; \kappa &amp; \epsilon &amp; \chi &amp; \gamma &amp; \beta &amp; \lambda &amp; \pi &amp; \delta &amp; \alpha &amp; \omicron &amp; \mu &amp; \psi &amp; \eta &amp; \tau &amp; \theta &amp; \phi &amp; \iota \\
-\boldsymbol{\omicron} &amp; \omicron &amp; \lambda &amp; \mu &amp; \pi &amp; \zeta &amp; \psi &amp; \theta &amp; \phi &amp; \kappa &amp; \upsilon &amp; \rho &amp; \xi &amp; \alpha &amp; \gamma &amp; \nu &amp; \sigma &amp; \beta &amp; \delta &amp; \chi &amp; \iota &amp; \eta &amp; \omega &amp; \epsilon &amp; \tau \\
-\boldsymbol{\pi} &amp; \pi &amp; \mu &amp; \lambda &amp; \omicron &amp; \iota &amp; \eta &amp; \upsilon &amp; \chi &amp; \omega &amp; \theta &amp; \nu &amp; \sigma &amp; \gamma &amp; \alpha &amp; \rho &amp; \xi &amp; \delta &amp; \beta &amp; \phi &amp; \zeta &amp; \psi &amp; \kappa &amp; \tau &amp; \epsilon \\
-\boldsymbol{\rho} &amp; \rho &amp; \nu &amp; \sigma &amp; \xi &amp; \eta &amp; \tau &amp; \chi &amp; \psi &amp; \theta &amp; \zeta &amp; \delta &amp; \alpha &amp; \pi &amp; \lambda &amp; \gamma &amp; \beta &amp; \mu &amp; \omicron &amp; \kappa &amp; \omega &amp; \upsilon &amp; \epsilon &amp; \iota &amp; \phi \\
-\boldsymbol{\sigma} &amp; \sigma &amp; \xi &amp; \rho &amp; \nu &amp; \kappa &amp; \theta &amp; \iota &amp; \omega &amp; \tau &amp; \phi &amp; \alpha &amp; \delta &amp; \mu &amp; \omicron &amp; \beta &amp; \gamma &amp; \pi &amp; \lambda &amp; \eta &amp; \psi &amp; \epsilon &amp; \upsilon &amp; \chi &amp; \zeta \\
-\boldsymbol{\tau} &amp; \tau &amp; \upsilon &amp; \theta &amp; \epsilon &amp; \delta &amp; \sigma &amp; \mu &amp; \gamma &amp; \rho &amp; \lambda &amp; \kappa &amp; \eta &amp; \chi &amp; \phi &amp; \omega &amp; \psi &amp; \iota &amp; \zeta &amp; \alpha &amp; \beta &amp; \xi &amp; \nu &amp; \pi &amp; \omicron \\
-\boldsymbol{\upsilon} &amp; \upsilon &amp; \tau &amp; \epsilon &amp; \theta &amp; \gamma &amp; \nu &amp; \omicron &amp; \delta &amp; \xi &amp; \pi &amp; \psi &amp; \omega &amp; \zeta &amp; \iota &amp; \eta &amp; \kappa &amp; \phi &amp; \chi &amp; \beta &amp; \alpha &amp; \rho &amp; \sigma &amp; \lambda &amp; \mu \\
-\boldsymbol{\phi} &amp; \phi &amp; \zeta &amp; \chi &amp; \iota &amp; \omicron &amp; \beta &amp; \sigma &amp; \lambda &amp; \delta &amp; \nu &amp; \theta &amp; \upsilon &amp; \kappa &amp; \psi &amp; \epsilon &amp; \tau &amp; \omega &amp; \eta &amp; \pi &amp; \mu &amp; \alpha &amp; \gamma &amp; \xi &amp; \rho \\
-\boldsymbol{\chi} &amp; \chi &amp; \iota &amp; \phi &amp; \zeta &amp; \pi &amp; \delta &amp; \xi &amp; \mu &amp; \beta &amp; \rho &amp; \upsilon &amp; \theta &amp; \omega &amp; \eta &amp; \tau &amp; \epsilon &amp; \kappa &amp; \psi &amp; \omicron &amp; \lambda &amp; \gamma &amp; \alpha &amp; \sigma &amp; \nu \\
-\boldsymbol{\psi} &amp; \psi &amp; \eta &amp; \kappa &amp; \omega &amp; \rho &amp; \mu &amp; \beta &amp; \nu &amp; \omicron &amp; \gamma &amp; \chi &amp; \zeta &amp; \theta &amp; \tau &amp; \iota &amp; \phi &amp; \epsilon &amp; \upsilon &amp; \xi &amp; \sigma &amp; \pi &amp; \lambda &amp; \alpha &amp; \delta \\
-\boldsymbol{\omega} &amp; \omega &amp; \kappa &amp; \eta &amp; \psi &amp; \sigma &amp; \pi &amp; \gamma &amp; \xi &amp; \lambda &amp; \beta &amp; \iota &amp; \phi &amp; \tau &amp; \theta &amp; \chi &amp; \zeta &amp; \upsilon &amp; \epsilon &amp; \nu &amp; \rho &amp; \mu &amp; \omicron &amp; \delta &amp; \alpha
-\end{matrix}
-$</p>
-<p>This is the multiplication visualization:</p>
-<figure>
-	<iframe src="/klstudio/embed.html#/documents/cube-multiplication-demo" width="600" height="280"></iframe>
-</figure>
-<h2 id="Cubies’-position-representation">Cubies’ position representation</h2>
-<p>In 3-order Rubik’s cube, we have $3^3-1=26$ cubies.
-And this is the second lucky thing: there are 26 Latin letters in total.
-So we can labeled 26 cubie positions by A-Z. It looks like this:</p>
-<figure>
-	<span class="max600">
-		<span class="fixed-ratio" style="width: 100%; padding-top: 100%">
-			<iframe src="/klstudio/embed.html#/documents/static-labeled-cube3-demo"></iframe>
-		</span>
-	</span>
-	<figcaption>Rubik's cube with labels on cubies</figcaption>
-</figure>
-<p>Mathematically, we define 26 one-hot vectors:</p>
-<p>$$
-\boldsymbol{A} = (\mathbf{1}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) \\
-\boldsymbol{B} = (0, \mathbf{1}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) \\
-\boldsymbol{C} = (0, 0, \mathbf{1}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) \\
-… \\
-\boldsymbol{Z} = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \mathbf{1})
-$$</p>
-<p>This form is convenient for constructing matrices, e.g. a 26×26 identity matrix can be represented as:</p>
-<p>$$
-\begin{bmatrix}
-\boldsymbol{A}^T &amp; \boldsymbol{B}^T &amp; \boldsymbol{C}^T &amp; … &amp; \boldsymbol{X}^T &amp; \boldsymbol{Y}^T &amp; \boldsymbol{Z}^T
-\end{bmatrix}^T
-$$</p>
-<h2 id="Cube-rotation-and-position-permutation">Cube rotation and position permutation</h2>
-<p>Rotation causes displacement, it’s a kind of linear transformation. We can see this clearly in matrix.
-Take this simple example firstly:</p>
-<figure>
-	<picture>
-		<img src="/images/rect2x2-permutation.drawio.svg" />
-	</picture>
-</figure>
-<style>
-	.red
-	{
-		color: red;
-	}
-</style>
-<p>We have 4 (2×2) boxes labeled by red <em class="red">A</em> <em class="red">B</em> <em class="red">C</em> <em class="red">D</em>,
-and we have 4 fixed cells labeled by black <em>A</em> <em>B</em> <em>C</em> <em>D</em>.</p>
-<p>Before and after a 90° rotation, we record boxes’ position in a 4×4 table:</p>
-<style>
-	table td
-	{
-		text-align: center;
-	}
-
-	table.no-border
-	{
-		border: 0;
-	}
-
-	table.no-border > tbody > tr > td
-	{
-		border: 0;
-	}
-
-	table strong
-	{
-		color: red;
-	}
-</style>
-<table class="no-border">
-<tr><td>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><strong>A</strong></td>
-<td style="text-align:center">1</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>B</strong></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">1</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>C</strong></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">1</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>D</strong></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">1</td>
-</tr>
-</tbody>
-</table>
-</td>
-<td style="font-size: 400%">&#x21e8;</td>
-<td>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><strong>A</strong></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">1</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>B</strong></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>C</strong></td>
-<td style="text-align:center">1</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>D</strong></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">1</td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-</td>
-</table>
-<p>So this is the matrix’s meaning, every row tells us which cell the box is at.</p>
-<p>$$
-\alpha
-\begin{bmatrix}
-1 &amp;  &amp;  &amp; \\
-&amp; 1 &amp;  &amp; \\
-&amp;  &amp; 1 &amp; \\
-&amp;  &amp;  &amp;1
-\end{bmatrix} \to \eta \begin{bmatrix}
-&amp; 1 &amp;  &amp; \\
-&amp;  &amp;  &amp; 1 \\
-1 &amp;  &amp;  &amp; \\
-&amp;  &amp; 1 &amp;
-\end{bmatrix} = \begin{bmatrix}
-&amp; \eta &amp;  &amp; \\
-&amp;  &amp;  &amp; \eta \\
-\eta &amp;  &amp;  &amp; \\
-&amp;  &amp; \eta &amp;
-\end{bmatrix}
-$$</p>
-<p>And plused an orientation scalar in Greek letters.
-(Why <em>η</em>? Try to look up what <em>η</em> stands for in the 24 knights figure.)</p>
-<p>Now let’s extend 2×2 into 26×26:</p>
-<figure>
-	<iframe src="/klstudio/embed.html#/documents/dynamic-labeled-cube3-demo" width="960" height="600"></iframe>
-</figure>
-<p>For the matrix you see above, I arranged the cubies’ order as this:</p>
-<figure>
-	<picture>
-		<img src="/images/cube3-matrix-illustration.drawio.svg" style="max-width: 600px" />
-	</picture>
-</figure>
-<p>A state matrix can be decomposed into 2 parts: orientations and position permutation.
-And position permutation is determined by orientations, so to present a Rubik’s cube state we only need to record a vector of orientation symbols.
-Mathematically, we have a state vector:</p>
-<p>$$
-S=o_i | _{i=1,…,26}
-$$</p>
-<p>while</p>
-<p>$$
-o_i \in \left \{ \alpha, \beta, \gamma, …, \omega \right \}
-$$</p>
-<p>then the state matrix is:</p>
-<p>$$
-mat(S)=diag(S) \cdot displace(o_i, P_i)^T|_{i=1,…,26}
-$$</p>
-<p>$$
-P_i = \boldsymbol{A}, \boldsymbol{B}, \boldsymbol{C}, …, \boldsymbol{Z} |_{\text{when } i=1,…,26}
-$$</p>
-<p>while <em>diag</em> stands for diagonal matrix, <em>displace</em> is a position mapping by a specific orientation, from a one-hot position vector to another.
-This is the dispacement table:</p>
-<p>$$
-\begin{matrix}
-\text{displace} &amp; \alpha &amp; \beta &amp; \gamma &amp; … \\
-\color{red} A &amp; \boldsymbol{A} &amp; \boldsymbol{G} &amp; \boldsymbol{F} &amp; … \\
-\color{red} B &amp; \boldsymbol{B} &amp; \boldsymbol{H} &amp; \boldsymbol{E} &amp; … \\
-\color{red} C &amp; \boldsymbol{C} &amp; \boldsymbol{E} &amp; \boldsymbol{H} &amp; … \\
-… &amp; &amp; &amp; &amp;
-\end{matrix}
-$$</p>
-<p>The whole table is 26×24, what shows here is a part, and you can imagine the rest.</p>
-<p>Let’s take the top matrix in this blog (<a href="/klstudio/embed.html#/documents/dynamic-labeled-cube3#LKONLKONLOKNLKONKLNOGCAAFD">the tetris pattern</a>) as an example:</p>
-<p>$
-\begin{aligned}
-&amp; mat(\omicron, \lambda, \pi, \mu, \omicron, \lambda, \pi, \mu, \lambda, \omicron, \omicron, \lambda, \pi, \mu, \pi, \mu, \omicron, \mu, \lambda, \pi, \eta, \kappa, \iota, \zeta, \alpha, \alpha) \\
-= &amp; diag(\omicron, \lambda, \pi, \mu, \omicron, \lambda, \pi, \mu, \lambda, \omicron, \omicron, \lambda, \pi, \mu, \pi, \mu, \omicron, \mu, \lambda, \pi, \eta, \kappa, \iota, \zeta, \alpha, \alpha) \cdot \left [ F^T C^T B^T G^T H^T A^T D^T E^T O^T P^T S^T Q^T L^T K^T R^T T^T J^T N^T I^T M^T U^T V^T W^T X^T Y^T Z^T \right ]
-\end{aligned}
-$</p>
-<p>For short, I will refer it as:</p>
-<p>$$
-\left \langle \omicron \lambda \pi \mu \omicron \lambda \pi \mu \lambda \omicron \omicron \lambda \pi \mu \pi \mu \omicron \mu \lambda \pi \eta \kappa \iota \zeta \alpha \alpha \right \rangle
-$$</p>
-<h3 id="State-space-capacity">State space capacity</h3>
-<p>3D object has 3 degrees of freedom in rotation, but the most convenient method to represent it is using 4 fields, i.e. quaternion.
-So a proper state space redundancy is necessary for the sake of calculation.</p>
-<p>A valid 3-order Rubik’s cube’s total variation is:</p>
-<p>$$
-\frac{8! \times 3^8 \times 12! \times 2^{12}}{2 \times 2 \times 3} = 43252003274489856000 \approx 4.33 \times 10^{19}
-$$</p>
-<p>If allowing disassembly, the number becomes twelve times larger:</p>
-<p>$$
-8! \times 3^8 \times 12! \times 2^{12} = 519024039293878272000 \approx 5.19 \times 10^{20}
-$$</p>
-<p>Besides that, representing a Rubik’s cube state in orientation vector ignores cubies’ position conflicting. The total variation is:</p>
-<p>$$
-24^{20} = 4019988717840603673710821376 \approx 4.02 \times 10^{28}
-$$</p>
-<p>(For equality, I ignored 6 axes cubies here.)</p>
-<p>And above all these, the facet color scheme allow painting abitrary color in 6 kinds for every facet. Its total variation is:</p>
-<p>$$
-6^{48} = 22452257707354557240087211123792674816 \approx 2.25 \times 10^{38}
-$$</p>
-<p>As a Rubik’s cube computer implementation, I’m afraid the redundancy of this scheme is beyond necessary, and is waste and misleading.</p>
-<h2 id="Calculation-of-Rubik’s-cube">Calculation of Rubik’s cube</h2>
-<p>Once we represent a Rubik’s cube state by a matrix, we can calculate it purely by algebra.
-This is an example to show what the Rubik’s cube multiplication looks like:</p>
-<figure>
-	<iframe src="/klstudio/embed.html#/documents/cube3-multiplication-demo" width="800" height="400"></iframe>
-</figure>
-<p>As all groups, Rubik’s cube multiplication obeys associative law, but is not exchangeable.</p>
-<h2 id="Rubik’s-cube-solver">Rubik’s cube solver</h2>
-<p>Now, we see this significant fact: <strong>the Rubik’s cube solver problem is a matrix decomposition problem</strong>!</p>
-<p>Specifically, we have 12 unit quarter twists in matrix form:</p>
-<p>$$
-\begin{aligned}
-&amp; U = \left \langle  \alpha \alpha \zeta \zeta \alpha \alpha \zeta \zeta  \alpha \alpha \alpha \alpha \zeta \zeta \zeta \zeta \alpha \alpha \alpha \alpha  \alpha \alpha \zeta \alpha \alpha \alpha  \right \rangle \\
-&amp; U’ = \left \langle  \alpha \alpha \iota \iota \alpha \alpha \iota \iota  \alpha \alpha \alpha \alpha \iota \iota \iota \iota \alpha \alpha \alpha \alpha  \alpha \alpha \iota \alpha \alpha \alpha  \right \rangle \\
-&amp; D = \left \langle  \iota \iota \alpha \alpha \iota \iota \alpha \alpha  \iota \iota \iota \iota \alpha \alpha \alpha \alpha \alpha \alpha \alpha \alpha  \alpha \alpha \alpha \iota \alpha \alpha  \right \rangle \\
-&amp; D’ = \left \langle  \zeta \zeta \alpha \alpha \zeta \zeta \alpha \alpha  \zeta \zeta \zeta \zeta \alpha \alpha \alpha \alpha \alpha \alpha \alpha \alpha  \alpha \alpha \alpha \zeta \alpha \alpha  \right \rangle \\
-&amp; L = \left \langle  \theta \alpha \theta \alpha \theta \alpha \theta \alpha  \alpha \alpha \theta \alpha \alpha \alpha \theta \alpha \theta \alpha \alpha \theta  \alpha \alpha \alpha \alpha \theta \alpha  \right \rangle \\
-&amp; L’ = \left \langle  \epsilon \alpha \epsilon \alpha \epsilon \alpha \epsilon \alpha  \alpha \alpha \epsilon \alpha \alpha \alpha \epsilon \alpha \epsilon \alpha \alpha \epsilon  \alpha \alpha \alpha \alpha \epsilon \alpha  \right \rangle \\
-&amp; R = \left \langle  \alpha \epsilon \alpha \epsilon \alpha \epsilon \alpha \epsilon  \alpha \alpha \alpha \epsilon \alpha \alpha \alpha \epsilon \alpha \epsilon \alpha \epsilon  \alpha \alpha \alpha \alpha \alpha \epsilon  \right \rangle \\
-&amp; R’ = \left \langle  \alpha \theta \alpha \theta \alpha \theta \alpha \theta  \alpha \alpha \alpha \theta \alpha \alpha \alpha \theta \alpha \theta \alpha \theta  \alpha \alpha \alpha \alpha \alpha \theta  \right \rangle \\
-&amp; F = \left \langle  \eta \eta \eta \eta \alpha \alpha \alpha \alpha  \eta \alpha \alpha \alpha \eta \alpha \alpha \alpha \eta \eta \alpha \alpha  \eta \alpha \alpha \alpha \alpha \alpha  \right \rangle \\
-&amp; F’ = \left \langle  \kappa \kappa \kappa \kappa \alpha \alpha \alpha \alpha  \kappa \alpha \alpha \alpha \kappa \alpha \alpha \alpha \kappa \kappa \alpha \alpha  \kappa \alpha \alpha \alpha \alpha \alpha  \right \rangle \\
-&amp; B = \left \langle  \alpha \alpha \alpha \alpha \kappa \kappa \kappa \kappa  \alpha \kappa \alpha \alpha \alpha \kappa \alpha \alpha \alpha \alpha \kappa \kappa  \alpha \kappa \alpha \alpha \alpha \alpha  \right \rangle \\
-&amp; B’ = \left \langle  \alpha \alpha \alpha \alpha \eta \eta \eta \eta  \alpha \eta \alpha \alpha \alpha \eta \alpha \alpha \alpha \alpha \eta \eta  \alpha \eta \alpha \alpha \alpha \alpha  \right \rangle \\
-\end{aligned}
-$$</p>
-<p>To find a path from the solved state to an arbitrary state, is just finding a multiplication decomposition in unit twists for the specific state matrix.</p>
-<p>We known that any 3-order Rubik’s cube state can be solved in 26 quarter twists in most<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.
-But finding the shortest solution is still a pending problem.
-I hope the matrix representation can provide some new approaches for this problem. After all, linear algebra is a highly developed domain already.</p>
-<h2 id="Try-it-youself">Try it youself</h2>
-<figure>
-	<iframe src="/klstudio/embed.html#/documents/dynamic-labeled-cube3" width="960" height="600"></iframe>
-	<figcaption>Twist this Rubik's cube and see its matrix. <a target="_blank" href="/klstudio/#/documents/dynamic-labeled-cube3">Open in new tab &#x1f855;</a></figcaption>
-</figure>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p><a target="_blank" rel="noopener" href="http://www.cube20.org/qtm/">God’s Number is 26 in the Quarter-Turn Metric</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">algebra</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">agent</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">rubiks_cube</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">software_development</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://qr.liantu.com/api.php?text=https://k-l-lambda.github.io/2020/12/14/rubik-cube-notation/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2021/06/24/what-is-knowledge/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          [转载] 梁文道：聊聊知识是什么
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/04/25/stylegan-mapping-tsne/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">A Postscript for StyleGAN Mapping Network Geometry Visualization</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
+    
 
-  
-
-  
-
-  
-    <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if (true) {
-	var gitalk = new Gitalk({
-  	clientID: 'b112cf72545693090bf9',
-  	clientSecret: '060c3fa32fb481ab5771ece842d709658f0c098c',
-  	repo: 'k-l-lambda.github.io',
-  	owner: 'k-l-lambda',
-  	admin: ['k-l-lambda'],
-  	id: 'Mon Dec 14 2020 21:37:33',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-
-  
 
 
           </div>
@@ -739,8 +242,8 @@ gitalk.render('gitalk-container')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
