@@ -1,10 +1,12 @@
 ---
 title: 软件开发新范式探索
-subtitle: 智能体驱动实践的一些思路
 tags:
-	- agent
-	- software_development
+  - agent
+  - software_development
+subtitle: 智能体驱动实践的一些思路
+date: 2025-12-04 18:10:49
 ---
+
 
 
 现在如果你不计较为LLM API付费，那么理论上今天所有新的软件服务需求可以使用一个通用的agent service来实现。
