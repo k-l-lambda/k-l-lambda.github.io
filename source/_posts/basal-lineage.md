@@ -18,6 +18,8 @@ Her appearance differed almost not at all from the people of my own era—limbs,
 
 I had expected a future beyond recognition: alien cities, unfamiliar forms of life, humanity rewritten beyond recall. But nothing seemed changed. Streets were still streets. The sky remained blue. The Sun rose along its ancient orbit.
 
+<!-- more -->
+
 Only the people were different.
 
 They were friendly with an unsettling uniformity. There were no arguments, no competition, no variation in tone or volume. Every exchange resembled synchronization between cooperative systems—precise, efficient, without redundancy.

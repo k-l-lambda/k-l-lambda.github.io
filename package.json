@@ -10,7 +10,7 @@
     "serve:draft": "hexo server --draft"
   },
   "hexo": {
-    "version": "5.4.2"
+    "version": "7.2.0"
   },
   "dependencies": {
     "hexo": "7.2.0",
