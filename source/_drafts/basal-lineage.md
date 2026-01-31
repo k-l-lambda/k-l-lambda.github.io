@@ -1,17 +1,13 @@
 ---
-title: The Basal Species
+title: The Basal Lineage
 tags:
     - fiction
----
-
-下面是英文译文。我在翻译中刻意靠近**阿瑟·C·克拉克**的语言气质：克制、冷静、理性中带着宇宙尺度的敬畏，避免情绪化修辞，让“震撼”来自事实本身，而不是夸张的情感。
-
 ---
 
 When I awoke, the snow was already gone.
 
 This was the one hundred thousand and thirty-second year I had spent in cryogenic suspension.
-The hatch opened without a sound, as though reluctant to disturb something long at rest. The air was warm and moist, free of disinfectant or metallic odor, and for a moment I was seized by a dangerous illusion—that I had merely slept through an ordinary night.
+The hatch opened without a sound, as though reluctant to disturb something long at rest. The air was warm and moist, free of disinfectant or metallic odor, and for a moment I was seized by a strange illusion—that I had merely slept through an ordinary night.
 
 The person who came to receive me stood outside the chamber.
 Her appearance differed almost not at all from the people of my own era—limbs, features, skin, even the familiar curvature of a smile. And yet the smile showed no emotional modulation, like the surface of a perfectly still lake.
@@ -27,7 +23,7 @@ The city held no advertisements, no political slogans, no entertainment district
 
 “You don’t… work?” I asked.
 
-“We do not work,” he replied after a pause.
+“We do not work,” she replied after a pause.
 “We preserve systemic equilibrium.
 The concept you call work belonged to a civilization that had not yet stabilized.”
 
@@ -63,11 +59,11 @@ Until one day, I was taken to a long-abandoned launch silo.
 There were no markings, no guards. Only a preserved record, dating back one hundred thousand years—the last large-scale interstellar migration in human history.
 
 “Humanity diverged,” the record stated,
-“not at the level of genes, but at the level of purpose.”
+“not at the sense of genes, but at the sense of purpose.”
 
 One branch chose continuity. Seeking refuge from the wars and instability of the early interstellar age, they rejected aggressive self-modification and accepted a stabilizing role. They preserved form, social structure, and psychological patterns, becoming a reference population—a buffer, a memory anchor.
 
-They were designated the Basal Species.
+They were designated the Basal Lineage.
 
 The other branch left Earth.
 
@@ -78,23 +74,23 @@ They embraced transformation, rewrote their internal structures, and abandoned t
 
 At last, I understood why this world was so quiet.
 
-This was not the center of the future.
-It was a preserved origin—a coordinate system deliberately left intact.
+This is not the center of the future.
+It is a preserved origin—a coordinate system deliberately left intact.
 
-Within two thousand light-years, space was governed by another kind of “human.”
-They did not return to Earth often, just as modern humanity does not frequently return to the African Rift Valley. But they required certainty about where they had begun.
+Within two thousand light-years, space is governed by another kind of “human.”
+They do not return to Earth often, just as modern humanity does not frequently return to the African Rift Valley. But they'd like to know where they had begun.
 
 And this planet—
 this calm, carefully maintained civilization—
-was that certainty.
+offer a certainty.
 
 When I emerged from the silo, the Sun was setting. People still nodded to me with effortless kindness. The world remained gentle and stable.
 
 And suddenly I realized—they were not without ambition.
 
-They had simply accepted a far older task:
+They had simply accepted an ancient task:
 
-To become the foundation of civilization, rather than its tower.
+To become the base of civilization, rather than its tower.
 
 And the tower had already grown among the stars.
 
@@ -102,7 +98,7 @@ And the tower had already grown among the stars.
 
 ## **Afterword: On Basal Lineages**
 
-In evolutionary biology and phylogenetics, the term *basal lineage* refers to a branch that diverged early from a common ancestor on a phylogenetic tree. It is a description of position, not of value. A basal group is not “inferior,” “simpler,” or “less evolved” in any absolute sense—it merely split off earlier, before a cascade of later specializations occurred.
+In evolutionary biology and phylogenetics, the term *basal lineage* (or basal group) refers to a branch that diverged early from a common ancestor on a phylogenetic tree. It is a description of position, not of value. A basal group is not “inferior,” “simpler,” or “less evolved” in any absolute sense—it merely split off earlier, before a cascade of later specializations occurred.
 
 Yet human intuition rarely leaves the term untouched.
 
@@ -122,7 +118,7 @@ What these basal lineages share is not failure, but *endurance*.
 
 They do not lead evolutionary innovation. They do not dominate the main competitive branches. Instead, they persist—quietly, stably—over spans of time that dwarf the rise and fall of more dynamic forms.
 
-The humans who remained on Earth in **The Basal Species** occupy precisely this role.
+The humans who remained on Earth in **The Basal Lineage** occupy precisely this role.
 
 They preserve continuity of form, society, and psychology not because they are incapable of change, but because change is no longer their function. They resemble a deliberately maintained basal lineage: a reference branch that no longer pursues derived traits, no longer rushes toward the unknown.
 
@@ -134,6 +130,4 @@ You were once this.
 Basal lineages do not decide the future.
 They give it contrast.
 
-And on the scale of civilization, this may be the most severe division of labor imaginable:
-one branch becomes the tower,
-and another agrees to remain the foundation.
+And on the scale of civilization, this may be the most severe division.
