@@ -5,6 +5,7 @@ tags:
 date: 2026-01-31 13:07:19
 ---
 
+{% img /images/basal-lineage-lookup.jpg %}
 
 When I awoke, the snow was already gone.
 
