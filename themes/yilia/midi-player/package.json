@@ -1,0 +1,14 @@
+{
+  "name": "yilia-midi-player",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.mjs",
+    "build:check": "node build.mjs --check",
+    "test": "node tests/midi.cjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.21.5",
+    "js-synthesizer": "1.11.0"
+  }
+}
