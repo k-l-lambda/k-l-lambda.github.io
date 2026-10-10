@@ -58,6 +58,11 @@ HTTPS or localhost and a browser supporting AudioWorklet are required.
 
 ## Build and test
 
+The SoundFont is tracked with Git LFS. Install Git LFS before cloning, or run
+`git lfs install` and `git lfs pull` at the blog root after an existing checkout.
+The deployment workflow checks out LFS objects before generating the site, so
+published assets contain the actual SoundFont rather than its pointer file.
+
 Install the blog's normal dependencies at its root first. In this directory:
 
 ```sh
