@@ -5,6 +5,27 @@ title and paths containing spaces should be quoted. The theme registers the tag
 and publishes the precompiled files from `../source/midi-player/`. Normal Hexo
 builds do not install this package or run its build toolchain.
 
+## Size options
+
+```text
+{% midi /images/example.mid %}
+{% midi /images/example.mid "Piano" width=80% height=450 %}
+{% midi /images/example.mid width=640px height=auto %}
+{% midi /images/example.mid height=60vh %}
+```
+
+Both dimensions default to `auto`: width fills the article container, and the
+iframe height follows the actual player content, including wrapped titles and
+errors. The piano roll's natural height scales with its width (180–320 px).
+A specified height applies to the entire player; the roll fills the remaining
+space. Very small heights may scroll to preserve usable controls (280 px minimum
+content height). Zoom changes the visible time range, not the player dimensions.
+
+Bare numbers mean pixels. Both options accept `auto`, `px`, `rem`, `em`, `vw`, and
+`vh`; width also accepts `%`. Width is capped at the available article width.
+Percentage heights are rejected because article containers have no fixed height.
+Automatic iframe height requires the normal same-origin theme embed.
+
 ## Shared audio and loading
 
 Each player draws its own piano roll and keeps its own position, speed, and zoom.
@@ -59,6 +80,7 @@ The example is the blog's `source/_drafts/midi-test.md`. Generate with
 MIDI_TEST_URL=http://localhost:4000 python tests/browser-midi.py
 python tests/browser-midi-cache.py
 MIDI_TEST_URL=http://localhost:4000 python tests/browser-midi-viewport.py
+MIDI_TEST_URL=http://localhost:4000 python tests/browser-midi-size.py
 ```
 
 Install Python Playwright and Chromium separately; `CHROMIUM_EXECUTABLE` selects
@@ -68,5 +90,6 @@ transport controls, sharing the same engine, and removal of an owning player.
 The cache test starts a local server with HTTP caching disabled and checks
 preloading without a click, concurrent players, cache reuse, version changes,
 retry, and unavailable browser storage. The viewport test checks offscreen
-deferral and the compact mobile layout. See [NOTICE.md](NOTICE.md) for licenses
+deferral and the compact mobile layout. The size test covers responsive automatic
+height, explicit dimensions, title wrapping, and canvas resizing. See [NOTICE.md](NOTICE.md) for licenses
 and source attribution.

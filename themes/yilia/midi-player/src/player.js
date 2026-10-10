@@ -9,6 +9,7 @@ const canvas = $('.roll'), ctx = canvas.getContext('2d');
 const background = document.createElement('canvas'), bg = background.getContext('2d');
 const play = $('.play'), seek = $('.seek');
 const params = new URLSearchParams(location.search);
+root.dataset.fit = params.get('fit') === 'height' ? 'height' : 'auto';
 $('.title').textContent = params.get('title') || 'MIDI piano roll';
 const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
 const format = n => `${Math.floor(n / 60)}:${Math.floor(n % 60).toString().padStart(2, '0')}`;
@@ -106,7 +107,8 @@ function follow() {
   }
 }
 function resize() {
-  width = Math.max(180, canvas.clientWidth);
+  width = Math.max(1, canvas.clientWidth);
+  height = Math.max(1, canvas.clientHeight);
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   for (const c of [canvas, background]) {c.width = width * dpr; c.height = height * dpr; c.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);}
   dirty = true; draw();
@@ -200,9 +202,19 @@ $('.zoom').addEventListener('input', e => {zoom = Number(e.target.value); offset
 canvas.addEventListener('click', e => {const x = e.clientX - canvas.getBoundingClientRect().left; if (x >= left) seekTo(offset + (x - left) / (width - left) * span());});
 canvas.addEventListener('keydown', e => {if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {e.preventDefault(); seekTo(position + (e.key === 'ArrowRight' ? 1 : -1));}});
 const observer = new ResizeObserver(resize); observer.observe(canvas);
+// The article and player are same-origin; resize only our own auto-height embed.
+// Natural content height depends on width, never on the iframe's current height.
+const layoutObserver = new ResizeObserver(() => {
+  const frame = window.frameElement;
+  if (frame?.dataset.midiHeight === 'auto') {
+    const value = `${Math.ceil(root.getBoundingClientRect().height)}px`;
+    if (frame.style.height !== value) frame.style.height = value;
+  }
+});
+layoutObserver.observe(root);
 window.addEventListener('pagehide', event => {
   if (event.persisted) {pause(); return;}
-  dead = true; clearTimeout(timer); observer.disconnect(); visibility.disconnect(); unsubscribe?.(); engine?.release(client);
+  dead = true; clearTimeout(timer); observer.disconnect(); layoutObserver.disconnect(); visibility.disconnect(); unsubscribe?.(); engine?.release(client);
 });
 document.addEventListener('visibilitychange', () => {if (document.hidden && playing) pause();});
 resize();

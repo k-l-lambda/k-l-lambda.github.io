@@ -35,6 +35,20 @@ async function main() {
   const url = new URL(html.match(/src="([^"]+)"/)[1].replace(/&amp;/g, '&'), 'https://example.test');
   assert.equal(url.pathname, '/blog/midi-player/player.html');
   assert.equal(decodeURI(url.searchParams.get('src')), '/blog/media/琴伤 & demo.mid');
+  assert.match(html, /data-midi-height="auto"/);
+  assert.match(html, /width:100%/);
+  assert.equal(url.searchParams.get('fit'), null);
+  const sized = await hexo.extend.tag.render('{% midi /test.mid "Custom title" width=80% height=450 %}');
+  assert.match(sized, /width:80%;max-width:100%;height:450px/);
+  assert.match(sized, /data-midi-height="fixed"/);
+  assert.match(sized, /fit=height/);
+  assert.match(sized, /title="Custom title"/);
+  const mixed = await hexo.extend.tag.render('{% midi /test.mid width=640px height=auto %}');
+  assert.match(mixed, /width:640px/);
+  assert.match(mixed, /data-midi-height="auto"/);
+  for (const option of ['width=0', 'height=-1', 'width=calc(100%)', 'width=100%;color:red', 'height=50%']) {
+    await assert.rejects(() => hexo.extend.tag.render(`{% midi /test.mid ${option} %}`));
+  }
   await assert.rejects(() => hexo.extend.tag.render('{% midi javascript:alert(1) %}'));
   await assert.rejects(() => hexo.extend.tag.render('{% midi %}'));
   await hexo.exit();
