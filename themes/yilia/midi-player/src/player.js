@@ -1,9 +1,7 @@
 // Piano-roll interaction adapted from hf-speaking-midi/ui/player.js.
 // MIDI playback runs inside FluidSynth's AudioWorklet, not a main-thread note scheduler.
-import {AudioWorkletNodeSynthesizer, Constants} from 'js-synthesizer';
 import {timeline} from './timeline.cjs';
-import {ensureAssetCache, assetURL, loadSoundfont} from './asset-cache';
-const {PlayerSetTempoType} = Constants;
+import {sharedEngine} from './shared-engine';
 
 const root = document.querySelector('.player');
 const $ = s => root.querySelector(s);
@@ -14,48 +12,37 @@ const params = new URLSearchParams(location.search);
 $('.title').textContent = params.get('title') || 'MIDI piano roll';
 const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
 const format = n => `${Math.floor(n / 60)}:${Math.floor(n % 60).toString().padStart(2, '0')}`;
-let data, bytes, synth, audio, node, loading, timer, started = false, playing = false;
+let data, bytes, engine, unsubscribe, initializing, timer, started = false, playing = false;
 let position = 0, offset = 0, zoom = 1, width = 600, height = 270, low = 36, high = 84;
 let longest = 0, dirty = true, generation = 0, dead = false;
 let busy = false;
-function showLoading(title, detail, progress) {
-  busy = true;
-  root.setAttribute('aria-busy', 'true');
-  root.dataset.state = 'loading';
-  $('.loading').hidden = false; $('.loading').dataset.phase = 'loading';
-  $('.loading-title').textContent = title; $('.loading-detail').textContent = detail;
-  $('.loading-retry').hidden = true;
-  const bar = $('.loading-progress'); bar.hidden = false;
-  if (progress?.total > 0) bar.value = clamp(progress.loaded / progress.total, 0, 1);
-  else bar.removeAttribute('value');
-  const mb = n => (n / 1e6).toFixed(1) + ' MB';
-  $('.loading-amount').textContent = progress && !progress.cached && !progress.waiting
-    ? progress.total > 0 ? `${Math.round(clamp(progress.loaded / progress.total, 0, 1) * 100)}% · ${mb(progress.loaded)} / ${mb(progress.total)}` : mb(progress.loaded)
-    : '';
-  play.disabled = true; play.textContent = 'Loading…'; play.setAttribute('aria-label', title);
+function statusLabel(label) {
+  const status = $('.loading');
+  status.title = label; status.setAttribute('aria-label', label);
+}
+function showLoading(label, progress, stage = 'soundfont') {
+  busy = true; root.setAttribute('aria-busy', 'true'); root.dataset.state = 'loading';
+  const status = $('.loading'); status.dataset.phase = 'loading';
+  status.dataset.stage = stage;
+  const percent = progress && !progress.cached && progress.total > 0
+    ? ` · ${Math.round(clamp(progress.loaded / progress.total, 0, 1) * 100)}%` : '';
+  statusLabel(label + percent);
+  play.disabled = true;
 }
 function hideLoading() {
+  $('.error').textContent = '';
   busy = false; root.setAttribute('aria-busy', 'false');
-  $('.loading').hidden = true; play.disabled = false; controls(); draw();
+  $('.loading').dataset.phase = 'ready'; statusLabel('Piano ready'); play.disabled = false; controls(); draw();
 }
 const left = 46, top = 23, bottom = 10;
 const span = () => Math.max((data?.duration || 8) / zoom, .1);
-const channel = typeof BroadcastChannel === 'function' ? new BroadcastChannel('klblog-midi-player') : null;
-if (channel) channel.onmessage = () => {
-  // Articles can contain many players: release the inactive worklet and SoundFont.
-  if (!audio || busy) return;
-  playing = false; generation++; clearTimeout(timer);
-  node?.disconnect(); audio.close(); audio = null; synth = null; node = null; started = false;
-  controls(); draw();
-};
+const client = {deactivate() {
+  playing = false; started = false; generation++; clearTimeout(timer); controls(); draw();
+}};
 function fail(error) {
   busy = false; root.setAttribute('aria-busy', 'false'); root.dataset.state = 'error';
   $('.error').textContent = error instanceof Error ? error.message : String(error);
-  $('.loading').hidden = false; $('.loading').dataset.phase = 'error';
-  $('.loading-title').textContent = 'Couldn’t load the music';
-  $('.loading-detail').textContent = 'Check your connection or the file, then try again.';
-  $('.loading-progress').hidden = true; $('.loading-amount').textContent = '';
-  $('.loading-retry').hidden = false; play.disabled = false; play.textContent = 'Retry';
+  $('.loading').dataset.phase = 'error'; statusLabel('Load failed — click Retry'); play.disabled = false; play.textContent = 'Retry';
   play.setAttribute('aria-label', 'Retry loading MIDI');
 }
 function lowerBound(time) {
@@ -131,8 +118,8 @@ function controls() {
 async function poll(token) {
   if (!playing || dead || token !== generation) return;
   try {
-    const tick = await synth.retrievePlayerCurrentTick();
-    if (!playing || token !== generation) return;
+    const tick = await engine.tick(client);
+    if (!playing || token !== generation || tick === null) return;
     position = clamp(data.tickToTime(tick), 0, data.duration); follow(); draw();
     if (tick >= data.ticks) {started = false; await pause(); return;}
     timer = setTimeout(() => poll(token), 40);
@@ -140,18 +127,14 @@ async function poll(token) {
 }
 async function pause() {
   playing = false; generation++; clearTimeout(timer);
-  if (audio?.state === 'running') await audio.suspend();
+  await engine?.pause(client);
   controls(); draw();
 }
 function seekTo(time) {
   if (!data) return;
   position = clamp(time, 0, data.duration);
   generation++; clearTimeout(timer);
-  if (synth) {
-    // Clear ringing voices before the native MIDI player chases channel state.
-    for (let ch = 0; ch < 16; ch++) synth.midiAllSoundsOff(ch);
-    synth.seekPlayer(data.timeToTick(position));
-  }
+  engine?.seek(client, data.timeToTick(position));
   follow(); draw();
   if (playing) timer = setTimeout(() => poll(generation), 50);
 }
@@ -161,7 +144,7 @@ async function fetchBytes(url) {
   return response.arrayBuffer();
 }
 async function loadMidi() {
-  showLoading('Opening your MIDI', 'Getting the notes ready…');
+  showLoading('Loading MIDI');
   const raw = params.get('src');
   if (!raw) throw new Error('No MIDI file specified.');
   const url = new URL(raw, location.origin);
@@ -174,71 +157,59 @@ async function loadMidi() {
   low = Math.max(0, low - 2); high = Math.min(127, high + 2);
   seek.max = String(data.duration); seek.disabled = false; $('.restart').disabled = false;
   $('.note-count').textContent = `${data.notes.length.toLocaleString()} notes`;
-  dirty = true; hideLoading();
+  dirty = true; draw();
 }
-async function prepare() {
-  if (synth) return;
-  if (loading) return loading;
-  if (!window.AudioContext || !window.isSecureContext) throw new Error('MIDI playback requires HTTPS or localhost and Web Audio support.');
-  // Open/resume in the click handler, before the first network await (mobile autoplay).
-  audio = new AudioContext({sampleRate: 24000});
-  const resumed = audio.resume();
-  showLoading('Getting the piano ready', 'Checking for a saved piano…');
-  loading = (async () => {
-    await resumed;
-    await ensureAssetCache();
-    const soundfont = await loadSoundfont(progress => {
-      if (progress.waiting) showLoading('Getting the piano ready', 'Sharing the piano with your other players…');
-      else if (progress.cached) showLoading('Using your saved piano', 'No download needed. Almost ready…');
-      else showLoading('Downloading the piano', 'Just once — other tracks will use this piano too.', progress);
+function initialize() {
+  if (initializing) return initializing;
+  initializing = (async () => {
+    $('.error').textContent = '';
+    if (!data) await loadMidi();
+    if (dead) return;
+    engine = await sharedEngine();
+    if (dead) return;
+    if (!unsubscribe) unsubscribe = engine.subscribe(state => {
+      if (dead) return;
+      if (state.phase === 'error') fail(new Error(state.label));
+      else if (state.phase === 'ready') hideLoading();
+      else showLoading(state.label, state.progress, state.stage);
     });
-    showLoading('Preparing playback', 'The piano is ready. Warming up the sound…');
-    await audio.audioWorklet.addModule(assetURL('libfluidsynth.js'));
-    await audio.audioWorklet.addModule(assetURL('js-synthesizer.worklet.js'));
-    const instance = new AudioWorkletNodeSynthesizer();
-    instance.init(audio.sampleRate, {initialGain: .8, polyphony: 512, chorusActive: false, reverbActive: false});
-    node = instance.createAudioNode(audio); node.connect(audio.destination);
-    await instance.loadSFont(soundfont);
-    synth = instance;
-  })();
-  try {await loading;} catch (e) {await audio.close(); audio = null; synth = null; throw e;}
-  finally {loading = null;}
+    await engine.prepare();
+    if (!dead) hideLoading();
+  })().finally(() => {initializing = null;});
+  return initializing;
 }
 play.addEventListener('click', async () => {
   if (playing) {await pause(); return;}
+  if ($('.loading').dataset.phase === 'error') {initialize().catch(fail); return;}
   play.disabled = true; $('.error').textContent = '';
   try {
-    if (!data) await loadMidi();
-    await prepare();
-    showLoading('Preparing playback', 'Starting your music…');
-    await audio.resume();
-    if (position >= data.duration) position = 0;
-    if (!started) {
-      await synth.resetPlayer();
-      await synth.addSMFDataToPlayer(bytes.slice(0));
-      synth.setPlayerTempo(PlayerSetTempoType.Internal, Number($('.speed').value));
-      synth.seekPlayer(data.timeToTick(position));
-      await synth.playPlayer(); started = true;
+    if (position >= data.duration) {position = 0; started = false;}
+    playing = await engine.play(client, bytes, data.timeToTick(position), Number($('.speed').value), !started);
+    started = playing; controls(); draw();
+    if (playing) {
+      const token = ++generation;
+      timer = setTimeout(() => poll(token), 60);
     }
-    playing = true; hideLoading(); channel?.postMessage('play');
-    // Allow the worklet to apply a seek before reading its current tick.
-    const token = ++generation;
-    timer = setTimeout(() => poll(token), 60);
   } catch (e) {fail(e);}
   finally {play.disabled = false;}
 });
-$('.loading-retry').addEventListener('click', () => play.click());
 $('.restart').addEventListener('click', () => seekTo(0));
 seek.addEventListener('input', () => seekTo(Number(seek.value)));
-$('.speed').addEventListener('change', e => synth?.setPlayerTempo(PlayerSetTempoType.Internal, Number(e.target.value)));
+$('.speed').addEventListener('change', e => engine?.speed(client, Number(e.target.value)));
 $('.zoom').addEventListener('input', e => {zoom = Number(e.target.value); offset = clamp(position - span() * .4, 0, Math.max(0, (data?.duration || 0) - span())); dirty = true; draw();});
 canvas.addEventListener('click', e => {const x = e.clientX - canvas.getBoundingClientRect().left; if (x >= left) seekTo(offset + (x - left) / (width - left) * span());});
 canvas.addEventListener('keydown', e => {if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {e.preventDefault(); seekTo(position + (e.key === 'ArrowRight' ? 1 : -1));}});
 const observer = new ResizeObserver(resize); observer.observe(canvas);
 window.addEventListener('pagehide', event => {
   if (event.persisted) {pause(); return;}
-  dead = true; clearTimeout(timer); observer.disconnect(); channel?.close(); audio?.close();
+  dead = true; clearTimeout(timer); observer.disconnect(); visibility.disconnect(); unsubscribe?.(); engine?.release(client);
 });
 document.addEventListener('visibilitychange', () => {if (document.hidden && playing) pause();});
 resize();
-loadMidi().catch(fail);
+// IntersectionObserver accounts for clipping by an embedding iframe and viewport.
+const visibility = new IntersectionObserver(entries => {
+  if (entries.some(entry => entry.isIntersecting)) {
+    visibility.disconnect(); initialize().catch(fail);
+  }
+});
+visibility.observe(root);

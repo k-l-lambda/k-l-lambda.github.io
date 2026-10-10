@@ -22,13 +22,16 @@ for (const file of [path.join(output, 'gm.sf3'), ...Object.values(runtime).slice
   hash.update(await fs.readFile(file));
 }
 const version = hash.digest('hex').slice(0, 20);
-const built = await build({entryPoints: [path.join(source, 'player.js')], bundle: true,
-  write: false, minify: true, format: 'iife', platform: 'browser', target: ['es2020'],
-  define: {__MIDI_ASSET_VERSION__: JSON.stringify(version)}});
-const files = new Map([['player.js', Buffer.from(built.outputFiles[0].contents)]]);
+const files = new Map();
+for (const name of ['player.js', 'engine.js']) {
+  const built = await build({entryPoints: [path.join(source, name)], bundle: true,
+    write: false, minify: true, format: 'iife', platform: 'browser', target: ['es2020'],
+    define: {__MIDI_ASSET_VERSION__: JSON.stringify(version)}});
+  files.set(name, Buffer.from(built.outputFiles[0].contents));
+}
 files.set('asset-cache-sw.js', Buffer.from((await fs.readFile(path.join(source, 'asset-cache-sw.js'), 'utf8'))
   .replace('__MIDI_ASSET_VERSION__', version)));
-for (const name of ['player.html', 'player.css']) files.set(name, await fs.readFile(path.join(source, name)));
+for (const name of ['player.html', 'player.css', 'engine.html']) files.set(name, await fs.readFile(path.join(source, name)));
 for (const [name, file] of Object.entries(runtime)) files.set(name, await fs.readFile(path.join(synth, file)));
 const check = process.argv.includes('--check');
 const stale = [];

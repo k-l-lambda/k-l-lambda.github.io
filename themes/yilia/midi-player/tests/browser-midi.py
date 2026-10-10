@@ -11,12 +11,15 @@ with sync_playwright() as p:
  requests=[];page.on('request',lambda r:requests.append(r.url))
  page.goto(base+'/midi-player/player.html?src=/images/example.mid&title=Test',wait_until='networkidle')
  page.wait_for_function("document.querySelector('.note-count').textContent.includes('8 notes')")
- assert not any('gm.sf3' in u for u in requests)
+ page.locator('.loading[data-phase=ready]').wait_for(timeout=60000)
+ host=page.locator('iframe[data-midi-engine]').element_handle().content_frame()
+ assert host.evaluate('midiEngine.context.state')=='suspended'
+ assert any('gm.sf3' in u for u in requests)
  page.locator('.play').click()
  try:page.wait_for_function("Number(document.querySelector('canvas').dataset.time)>0.3",timeout=30000)
  except:
   print('ERROR TEXT',page.locator('.error').inner_text());print('ERRORS',errors);raise
- rms=page.evaluate('''()=>{const a=new Float32Array(__monitor.fftSize);__monitor.getFloatTimeDomainData(a);return Math.sqrt(a.reduce((s,x)=>s+x*x,0)/a.length)}''')
+ rms=host.evaluate('''()=>{const a=new Float32Array(__monitor.fftSize);__monitor.getFloatTimeDomainData(a);return Math.sqrt(a.reduce((s,x)=>s+x*x,0)/a.length)}''')
  assert rms>1e-5,rms
  page.locator('.speed').select_option('0.5');page.wait_for_timeout(150)
  slow_start=float(page.locator('canvas').get_attribute('data-time'));page.wait_for_timeout(600)
@@ -36,17 +39,20 @@ with sync_playwright() as p:
  assert page.evaluate('document.documentElement.scrollWidth')==360
  print(json.dumps({'rms':rms,'errors':errors,'state':page.locator('.player').get_attribute('data-state')}))
  assert not errors,errors
- # Exercise the tag inside a real theme page, including switching back to a released engine.
+ # Exercise the tag inside a real theme page, reusing the exact same warm engine.
  demo_path = os.environ.get('MIDI_DEMO_PATH')
  if not demo_path:
   demo_file = next(public.glob('**/midi-test/index.html'), None)
   assert demo_file, 'Generate with --draft, or set MIDI_DEMO_PATH to a two-player article.'
   demo_path = '/' + demo_file.parent.relative_to(public).as_posix() + '/'
  page.goto(base+demo_path,wait_until='domcontentloaded')
- embeds=page.locator('iframe');assert embeds.count()==2
+ embeds=page.locator('iframe[src*="player.html"]');assert embeds.count()==2
  embeds.nth(1).scroll_into_view_if_needed()
  frames=[embeds.nth(i).element_handle().content_frame() for i in range(2)]
- for f in frames:f.wait_for_function("document.querySelector('.note-count').textContent.includes('8 notes')",polling=100)
+ for f in frames:
+  f.locator('.loading[data-phase=ready]').wait_for(timeout=60000)
+ host=page.locator('iframe[data-midi-engine]').element_handle().content_frame()
+ host.evaluate('window.originalSynth=midiEngine.synth;window.originalContext=midiEngine.context')
  frames[0].locator('.speed').select_option('0.5')
  frames[0].locator('.play').click()
  frames[0].wait_for_function("document.querySelector('.player').dataset.state==='playing'",polling=100)
@@ -59,8 +65,14 @@ with sync_playwright() as p:
  frames[0].wait_for_function("document.querySelector('.player').dataset.state==='playing'",polling=100)
  frames[1].wait_for_function("document.querySelector('.player').dataset.state==='paused'",polling=100)
  assert all(not f.locator('.error').inner_text() for f in frames)
+ assert host.evaluate('midiEngine.synth===originalSynth && midiEngine.context===originalContext')
+ # The audio host outlives even the player that first requested it.
+ embeds.nth(0).evaluate('e=>e.remove()')
+ frames[1].locator('.play').click()
+ frames[1].wait_for_function("document.querySelector('.player').dataset.state==='playing'",polling=100)
+ assert host.evaluate('midiEngine.synth===originalSynth && midiEngine.context===originalContext')
  page.goto(base+'/midi-player/player.html?src=/missing.mid',wait_until='networkidle')
  page.wait_for_function("document.querySelector('.error').textContent.includes('404')")
  assert page.locator('.play').inner_text()=='Retry'
- print('Embedded players, engine recreation, and missing-file handling passed.')
+ print('Embedded players, shared warm engine, player removal, and missing-file handling passed.')
  browser.close()

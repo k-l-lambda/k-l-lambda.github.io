@@ -5,21 +5,17 @@
   <div class="transport">
     <button class="play" disabled aria-label="Play piano MIDI">▶ Play</button>
     <button class="restart" disabled aria-label="Restart playback">↺</button>
+    <span class="loading" data-phase="loading" data-stage="soundfont" role="status" aria-live="polite" aria-label="Waiting for view" title="Waiting for view" tabindex="0">
+      <svg class="status-icon icon-soundfont" viewBox="0 0 24 24" aria-hidden="true"><path class="download-arrow" d="M12 3v11m-4-4 4 4 4-4"/><path d="M4 16v4h16v-4"/></svg>
+      <svg class="status-icon icon-warmup" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6"/><path d="M12 4v16"/><path d="M19 7v10"/></svg>
+      <svg class="status-icon icon-ready" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+      <svg class="status-icon icon-error" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6m0 3v1"/></svg>
+    </span>
     <output class="clock" aria-label="Playback time">0:00 / 0:00</output>
     <label class="speed-label">Speed <select class="speed" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label>
   </div>
   <input class="seek" type="range" min="0" max="1" value="0" step="0.01" disabled aria-label="Playback position">
   <div class="roll-wrap"><canvas class="roll" tabindex="0" role="img" aria-label="MIDI notes by time and pitch. Click to seek; use left and right arrows to move one second."></canvas>
-    <div class="loading" data-phase="loading">
-      <div class="loading-card">
-        <span class="loading-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <h2 class="loading-title" role="status">Opening your MIDI</h2>
-        <p class="loading-detail">Getting the notes ready…</p>
-        <progress class="loading-progress" max="1" aria-label="Loading progress"></progress>
-        <span class="loading-amount"></span>
-        <button class="loading-retry" hidden>Try again</button>
-      </div>
-    </div>
   </div>
   <footer><span>Click the roll to seek · lit notes are playing</span><label>Zoom <input class="zoom" type="range" min="1" max="4" step="0.25" value="1" aria-label="Piano roll zoom"></label></footer>
   <p class="error" role="status"></p>

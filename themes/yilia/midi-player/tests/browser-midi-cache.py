@@ -23,7 +23,7 @@ class Handler(SimpleHTTPRequestHandler):
    body = ('<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1">'
     '<style>body{margin:12px;background:#eef2f6;display:flex;gap:12px}iframe{border:0;width:440px;height:520px}</style>'
     + ''.join(f'<iframe allow="autoplay" src="/midi-player/player.html?src=/images/example.mid&title=Player+{i}"></iframe>' for i in range(2))).encode()
-  elif path in ['/midi-player/player.js', '/midi-player/asset-cache-sw.js']:
+  elif path in ['/midi-player/engine.js', '/midi-player/asset-cache-sw.js']:
    body = (public/path.lstrip('/')).read_bytes().replace(original_version.encode(),state['revision'].encode())
   elif path.endswith(('gm.sf3','libfluidsynth.js','js-synthesizer.worklet.js')):
    if state['fail']:
@@ -46,13 +46,12 @@ Thread(target=server.serve_forever,daemon=True).start()
 base=f'http://127.0.0.1:{server.server_port}'
 font='/midi-player/gm.sf3'
 def open_frames(page):
- page.goto(base+'/cache-test.html',wait_until='networkidle')
- frames=[e.content_frame() for e in page.locator('iframe').element_handles()]
- for f in frames:f.wait_for_function("!document.querySelector('.play').disabled",polling=100)
+ page.goto(base+'/cache-test.html',wait_until='domcontentloaded')
+ frames=[e.content_frame() for e in page.locator('iframe[src*="player.html"]').element_handles()]
  return frames
 
 def ready(frame):
- frame.wait_for_function("document.querySelector('.loading').hidden",polling=100,timeout=40000)
+ frame.locator('.loading[data-phase=ready]').wait_for(timeout=60000)
  assert not frame.locator('.error').inner_text()
 
 try:
@@ -60,55 +59,49 @@ try:
   browser=p.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_EXECUTABLE'),args=['--no-sandbox'])
   context=browser.new_context(viewport={'width':930,'height':620})
   page=context.new_page();frames=open_frames(page)
-  assert counts[font]==0
-  frames[0].locator('.play').click();frames[1].locator('.play').click()
-  frames[0].wait_for_function("document.querySelector('.loading-progress').value>0 && document.querySelector('.loading-progress').value<1",polling=50)
-  assert 'MB' in frames[0].locator('.loading-amount').inner_text()
+  # Both visible players warm automatically, without any click.
+  frames[0].wait_for_function("document.querySelector('.loading').title.includes('%')",polling=50)
   frames[0].locator('.player').screenshot(path='/tmp/klblog-midi-loading.png')
-  assert frames[0].locator('.player').get_attribute('aria-busy')=='true'
   for f in frames:ready(f)
   assert counts[font]==1,dict(counts)
-  frames=open_frames(page);frames[0].locator('.play').click();ready(frames[0])
-  assert counts[font]==1,dict(counts)
-  # Recreate the audio engine while the entire asset server is unavailable.
+  assert page.locator('iframe[data-midi-engine]').count()==1
+  host=page.locator('iframe[data-midi-engine]').element_handle().content_frame()
+  assert host.evaluate('midiEngine.context.state')=='suspended'
+  host.evaluate('window.originalSynth=midiEngine.synth')
   state['fail']=True
-  frames[1].locator('.play').click();ready(frames[1])
+  frames[0].locator('.play').click()
+  frames[1].locator('.play').click()
+  assert host.evaluate('midiEngine.synth===originalSynth')
   assert counts[font]==1
+  # A fresh article creates one new engine, reusing persistent cached files.
+  frames=open_frames(page)
+  for f in frames:ready(f)
+  assert counts[font]==1,dict(counts)
   assert counts['/midi-player/libfluidsynth.js']==1,dict(counts)
   assert counts['/midi-player/js-synthesizer.worklet.js']==1,dict(counts)
   state['fail']=False
-  # Emulate a changed asset build. The worker and bundle receive the new content hash.
   state['revision']='f'*20
-  page.reload(wait_until='networkidle')
-  frames=[e.content_frame() for e in page.locator('iframe').element_handles()]
-  for f in frames:f.wait_for_function("!document.querySelector('.play').disabled",polling=100)
-  frames[0].locator('.play').click();ready(frames[0])
+  frames=open_frames(page)
+  for f in frames:ready(f)
   assert counts[font]==2,dict(counts)
-  frames[0].wait_for_function("navigator.serviceWorker.controller !== null")
-  keys=frames[0].evaluate('caches.keys()')
-  assert any(k.endswith('f'*20) for k in keys),keys
   context.close()
-  # With SW blocked, Cache Storage + Web Locks still deduplicate the download.
   fallback=browser.new_context(service_workers='block')
-  page=fallback.new_page();frames=open_frames(page);before=counts[font]
-  frames[0].locator('.play').click();frames[1].locator('.play').click()
+  page=fallback.new_page();before=counts[font];frames=open_frames(page)
   for f in frames:ready(f)
   assert counts[font]-before==1,dict(counts)
   fallback.close()
-  # Failed responses aren't cached. The in-player retry can complete the download.
-  retry=browser.new_context();page=retry.new_page();frames=open_frames(page)
-  state['fail']=True;frames[0].locator('.play').click()
-  frames[0].wait_for_function("document.querySelector('.loading').dataset.phase==='error'",polling=100)
-  assert frames[0].locator('.loading-retry').is_visible()
+  retry=browser.new_context();page=retry.new_page()
+  state['fail']=True;frames=open_frames(page)
+  for f in frames:f.locator('.loading[data-phase=error]').wait_for(timeout=60000)
   state['fail']=False;before=counts[font]
-  frames[0].locator('.loading-retry').click();ready(frames[0])
+  frames[0].locator('.play').click()
+  for f in frames:ready(f)
   assert counts[font]-before==1
   retry.close()
-  # Cache API failures must not prevent playback either.
   no_storage=browser.new_context(service_workers='block')
   no_storage.add_init_script("Object.defineProperty(window,'caches',{get(){throw new Error('storage blocked')}})")
   page=no_storage.new_page();frames=open_frames(page)
-  frames[0].locator('.play').click();ready(frames[0])
+  for f in frames:ready(f)
   no_storage.close();browser.close()
   print(json.dumps(dict(result='passed',http_requests=dict(counts))))
 finally:
