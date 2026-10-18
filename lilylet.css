@@ -1,0 +1,18 @@
+.lilylet-container { margin: 1.5em 0; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: white; color: #333; }
+.lilylet-container > code { display: block; max-height: 6em; overflow: auto; white-space: pre; padding: 1em; }
+.lilylet-controls { display: flex; gap: 10px; align-items: center; min-height: 28px; margin: 12px; padding: 8px 12px; border-radius: 6px; background: #f0f0f0; font: 12px system-ui, sans-serif; }
+.lilylet-controls button { display: flex; align-items: center; justify-content: center; flex: 0 0 28px; width: 28px; height: 28px; padding: 0; cursor: pointer; border: 0; border-radius: 50%; }
+.lilylet-controls .lilylet-play { background: #0e639c; color: white; }
+.lilylet-controls .lilylet-play:hover { background: #1177bb; }
+.lilylet-restart { background: transparent; color: #666; }
+.lilylet-controls button:disabled { cursor: wait; opacity: .5; }
+.lilylet-time { white-space: nowrap; color: #666; font: 12px Consolas, Monaco, monospace; font-variant-numeric: tabular-nums; }
+.lilylet-progress { appearance: none; -webkit-appearance: none; flex: 1; min-width: 30px; height: 6px; margin: 0; border-radius: 3px; cursor: pointer; background: linear-gradient(to right, #0e639c var(--progress, 0%), #ddd var(--progress, 0%)); }
+.lilylet-progress::-webkit-slider-thumb { appearance: none; width: 10px; height: 10px; border-radius: 50%; background: #0e639c; }
+.lilylet-progress::-moz-range-thumb { width: 10px; height: 10px; border: 0; border-radius: 50%; background: #0e639c; }
+.lilylet-controls :focus-visible { outline: 2px solid #0e639c; outline-offset: 3px; }
+.lilylet-status:empty { display: none; }
+.lilylet-status { color: #666; }
+.lilylet-score { overflow-x: auto; padding: .7em; }
+.lilylet-score svg { display: block; max-width: none; }
+@media (max-width: 480px) { .lilylet-controls { gap: 6px; margin: 6px; padding: 6px; flex-wrap: wrap; } .lilylet-status { flex-basis: 100%; } }
