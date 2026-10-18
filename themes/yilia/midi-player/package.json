@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node build.mjs",
     "build:check": "node build.mjs --check",
-    "test": "node tests/midi.cjs"
+    "test": "node tests/midi.cjs && node tests/score-timing.cjs"
   },
   "devDependencies": {
     "esbuild": "0.21.5",

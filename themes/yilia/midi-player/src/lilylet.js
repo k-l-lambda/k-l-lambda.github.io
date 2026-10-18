@@ -1,4 +1,5 @@
 import {timeline} from './timeline.cjs';
+import {scoreTiming} from './score-timing.cjs';
 import {sharedEngine} from './shared-engine';
 
 const scriptURL = document.currentScript.src;
@@ -17,7 +18,19 @@ async function mount(root) {
   const bar = document.createElement('div'); bar.className = 'lilylet-controls'; bar.append(status);
   root.prepend(bar);
   let engine, unsubscribe, timer, playing = false, started = false, tick = 0, disposed = false;
-  let play, progress, time, data;
+  let play, progress, time, data, notesAt;
+  const noteHeads = new Map();
+  let highlighted = new Set();
+  function highlight(milliseconds) {
+    const next = new Set(playing && notesAt ? notesAt(milliseconds) : []);
+    for (const id of highlighted) if (!next.has(id)) {
+      for (const head of noteHeads.get(id) || []) head.classList.remove('lilylet-note-active');
+    }
+    for (const id of next) if (!highlighted.has(id)) {
+      for (const head of noteHeads.get(id) || []) head.classList.add('lilylet-note-active');
+    }
+    highlighted = next;
+  }
   const icon = path => `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="${path}"/></svg>`;
   const formatTime = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
   function refresh() {
@@ -25,6 +38,7 @@ async function mount(root) {
     play.innerHTML = icon(playing ? 'M4 2h3v12H4zM9 2h3v12H9z' : 'M3 2v12l10-6z');
     play.title = playing ? 'Pause' : 'Play'; play.setAttribute('aria-label', play.title);
     const seconds = Math.min(data.duration, data.tickToTime(tick));
+    highlight(seconds * 1000);
     time.textContent = `${formatTime(seconds)} / ${formatTime(data.duration)}`;
     progress.value = seconds;
     progress.style.setProperty('--progress', `${data.duration ? seconds / data.duration * 100 : 0}%`);
@@ -42,9 +56,16 @@ async function mount(root) {
       if (!toolkit.loadData(root.dataset.mei.replaceAll(' wordpos="u"', ''))) throw new Error('Could not engrave score');
       svg = Array.from({length:toolkit.getPageCount()}, (_, i) => toolkit.renderToSVG(i + 1, {})).join('');
       midi = toolkit.renderToMIDI();
+      if (root.hasAttribute('data-playable')) notesAt = scoreTiming(toolkit.renderToTimemap({}));
     } finally {toolkit.destroy();}
     const score = document.createElement('div'); score.className = 'lilylet-score'; score.innerHTML = svg;
     root.querySelector('code')?.remove(); root.append(score, bar);
+    // IDs are scoped to this score; separate blocks can contain identical MEI IDs.
+    for (const note of score.querySelectorAll('.note[id]')) {
+      const heads = noteHeads.get(note.id) || [];
+      heads.push(...note.querySelectorAll('.notehead'));
+      noteHeads.set(note.id, heads);
+    }
     root.removeAttribute('data-lilylet-pending'); root.setAttribute('data-lilylet', '');
     if (!root.hasAttribute('data-playable')) {bar.remove(); return;}
     const bytes = Uint8Array.from(atob(midi), c => c.charCodeAt(0)).buffer;
@@ -73,7 +94,7 @@ async function mount(root) {
         if (!playing || position === null) return;
         tick = position; refresh();
         if (tick >= data.ticks) {await engine.pause(client); tick = 0; client.deactivate(); return;}
-        timer = setTimeout(update, 60);
+        timer = setTimeout(update, 16);
       } catch (error) {client.deactivate(); status.textContent = error.message;}
     }
     play.addEventListener('click', async () => {

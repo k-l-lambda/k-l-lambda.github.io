@@ -48,3 +48,8 @@ Playable blocks use a compact control bar below the score, following the
 [Lilylet Markdown demo](https://k-l-lambda.github.io/lilylet-live-editor/markdown):
 play/pause, elapsed/total time and a seek slider, plus a restart button.
 The slider supports keyboard navigation as well as pointer input.
+
+During playback, noteheads are highlighted from Verovio’s millisecond timemap
+using the audio engine’s MIDI position. The timemap is extracted once per
+score; pauses, seeks, rest passages and player switches update or clear
+highlights without reloading MEI or retaining the engraving toolkit.
