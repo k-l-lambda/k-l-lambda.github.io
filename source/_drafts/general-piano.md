@@ -82,7 +82,11 @@ tags:
 - 自适应音符时值长度方法降低了其中歌词的可识别度，同时带来一种高频风铃音的杂音现象。
   采用分音区网格可兼顾音乐性和人声]]
 
-[[引用 images/general-piano/ 中的midi文件素材，分类演示拟合效果。]]
+[[以{% midi /images/general-piano/filename.mid "title" %}的形式引用 images/general-piano/ 中的midi文件素材，分类演示拟合效果。
+素材文件包括：
+90坦克.mid  iphone.mid      传奇.mid      圣女之歌.mid             暗香.mid    炸弹人.mid  豪勇七蛟龙.mid     鸟の诗.mid
+hi-en.mid   terminator.mid  功夫.mid      序曲_天地孤影任我行.mid  枉凝眉.mid  琴伤.mid    超级玛莉-pass.mid
+hi-zh.mid   wechat.mid      半岛铁盒.mid  彩虹岛.mid               欢沁.mid    琵琶语.mid  魂斗罗.mid]]
 
 ---
 
