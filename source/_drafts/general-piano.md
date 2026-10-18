@@ -12,9 +12,7 @@ tags:
 {% midi /images/general-piano/hi-en.mid "Hi, I'm a smart piano." %}
 {% midi /images/general-piano/hi-zh.mid "你好，我是一架智慧钢琴。" %}
 
-下面将 20 ms 记作一个三十二分音符，每小节为 4/4 拍，四分音符速度为 375。歌词作为语音的近似定位。曲谱播放保留音高和时值，但未保留原 MIDI 的逐音力度，原始拟合效果请听上方 MIDI。
-
-英文五线谱：
+以上两段语音MIDI对应的五线谱。由于曲谱记谱缺少MIDI的逐音符力度，播放效果略差。
 
 ```lyl.play
 % Exact pitches/onsets/gates; individual MIDI velocities are not encoded.
@@ -42,8 +40,6 @@ tags:
 \staff "1" \numericTimeSignature \time 4/4 <d'' ds fs g b gs' a>32[ <c cs d ds e f> <c cs d ds g' gs a b> <c cs>] r ds[ <f fs> <fs gs a>] a r r16 r8 r2 \addlyrics { _ _ _ _ _ _ _ _ } \\
 \staff "2" <fs g'>32[ <e ds' e f fs> <b c cs cs' d as' b> <gs a as' b a'> <ds gs> <ds gs b''> <ds as'''>] r r4 r2 | %6
 ```
-
-中文五线谱：
 
 ```lyl.play
 % Exact pitches/onsets/gates; individual MIDI velocities are not encoded.
