@@ -131,3 +131,4 @@ markdown:
     - markdown-it-ins
     - markdown-it-sub
     - markdown-it-sup
+    - name: ./themes/yilia/markdown/lilylet.cjs

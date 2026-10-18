@@ -23,7 +23,7 @@ for (const file of [path.join(output, 'gm.sf3'), ...Object.values(runtime).slice
 }
 const version = hash.digest('hex').slice(0, 20);
 const files = new Map();
-for (const name of ['player.js', 'engine.js']) {
+for (const name of ['player.js', 'engine.js', 'lilylet.js']) {
   const built = await build({entryPoints: [path.join(source, name)], bundle: true,
     write: false, minify: true, format: 'iife', platform: 'browser', target: ['es2020'],
     define: {__MIDI_ASSET_VERSION__: JSON.stringify(version)}});
