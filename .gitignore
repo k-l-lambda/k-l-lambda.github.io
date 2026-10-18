@@ -10,3 +10,5 @@ footages/
 .npmrc
 *.local
 .vscode/
+
+.coauthor/
