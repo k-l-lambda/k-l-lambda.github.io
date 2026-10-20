@@ -1,12 +1,14 @@
 ---
 title: 钢琴，作为通用声音拟合器
 tags:
-- essay
-- piano
-- midi
-- audio
-- 中文
+  - essay
+  - piano
+  - midi
+  - audio
+  - 中文
+date: 2026-10-20 19:24:48
 ---
+
 
 <figure>
   <picture>
