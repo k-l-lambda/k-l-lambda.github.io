@@ -8,18 +8,19 @@ tags:
 - 中文
 ---
 
-{% midi /images/general-piano/hi-en.mid "Hi, I'm a smart piano." %}
-{% midi /images/general-piano/hi-zh.mid "你好，我是一架智慧钢琴。" %}
+<figure>
+  {% midi /images/general-piano/hi-en.mid "Hi, I'm a smart piano." width=480 inline %}
+  {% midi /images/general-piano/hi-zh.mid "你好，我是一架智慧钢琴。" width=480 inline %}
+</figure>
 
-钢琴作品中从来不缺类似的声音魔术。李斯特的超技练习曲里，右手常在高音区铺出一整片珍珠般的音流用作装饰而非旋律。肖邦《降E大调夜曲》Op.9 No.1 中间段落的结尾，变换了音色的反复段落，制造出幽谷回声般的空间感。德彪西《水中倒影》和《欢乐岛》用绵密的琶音把键盘变成了水面。而里姆斯基-科萨科夫的《野蜂飞舞》则让钢琴模拟出昆虫振翅的嗡鸣。
 
-这些作曲家都在做同一件事：**把钢琴当作通用音色画布**。他们并不满足于“钢琴只弹钢琴该弹的东西”。
+钢琴作品中有很多以华丽绵密的伴奏声部为特色。李斯特的很多作品中，右手常在高音区铺出一整片珍珠般的音流用作装饰而非旋律。肖邦夜曲 Op.9 No.1 中间段落的结尾，变换了和声音色的反复段落，制造出幽谷回声般的空间感。德彪西《水中倒影》和《欢乐岛》用绵密的琶音把键盘变成了水面。而里姆斯基-科萨科夫的《野蜂飞舞》则让钢琴模拟出昆虫振翅的嗡鸣。
 
-这让我想到一个更极端的问题。
+这些作曲家都在做同一件事：把钢琴当作通用音色画布。他们并不满足于“钢琴只弹钢琴该弹的东西”。
 
-如果不考虑演奏可行性——不管手指够不够、踏板忙不忙得过来——纯粹从声音合成的角度看，一架固定音色的三角钢琴，用为**通用声音拟合器**极限能做到什么程度？
+这让我想到一个更极端的问题。如果不考虑演奏可行性——不管手指够不够、踏板忙不忙得过来——纯粹从声音合成的角度看，一架固定音色的三角钢琴，用为**通用声音拟合器**极限能做到什么程度？
 
-核心发现可以概括为三点。
+我的核心发现可以概括为三点。
 
 1. 时间轴上的密集表示，是语音可辨识度的关键。
 
@@ -37,39 +38,49 @@ tags:
 
 **语音**
 
-{% midi /images/general-piano/quiet-night.mid "静夜思" %}
-{% midi /images/general-piano/spring-dawn.mid "春晓" %}
+<figure>
+  {% midi /images/general-piano/quiet-night.mid "静夜思" width=480 inline %}
+  {% midi /images/general-piano/spring-dawn.mid "春晓" width=480 inline %}
+</figure>
 
 **铃声与音效**
 
-{% midi /images/general-piano/wechat.mid "WeChat" %}
-{% midi /images/general-piano/iphone.mid "iPhone" %}
+<figure>
+  {% midi /images/general-piano/wechat.mid "WeChat" width=480 inline %}
+  {% midi /images/general-piano/iphone.mid "iPhone" width=480 inline %}
+</figure>
 
 **电子游戏**
 
-{% midi /images/general-piano/90坦克.mid "90坦克" %}
-{% midi /images/general-piano/魂斗罗.mid "魂斗罗" %}
-{% midi /images/general-piano/炸弹人.mid "炸弹人" %}
-{% midi /images/general-piano/超级玛莉-pass.mid "超级玛莉" %}
-{% midi /images/general-piano/彩虹岛.mid "彩虹岛" %}
-{% midi /images/general-piano/功夫.mid "功夫" %}
+<figure>
+  {% midi /images/general-piano/90坦克.mid "90坦克" width=480 inline %}
+  {% midi /images/general-piano/魂斗罗.mid "魂斗罗" width=480 inline %}
+  {% midi /images/general-piano/炸弹人.mid "炸弹人" width=480 inline %}
+  {% midi /images/general-piano/超级玛莉-pass.mid "超级玛莉" width=480 inline %}
+  {% midi /images/general-piano/彩虹岛.mid "彩虹岛" width=480 inline %}
+  {% midi /images/general-piano/功夫.mid "功夫" width=480 inline %}
+</figure>
 
 **器乐与歌曲**
 
-{% midi /images/general-piano/琵琶语.mid "琵琶语" %}
-{% midi /images/general-piano/欢沁.mid "欢沁" %}
-{% midi /images/general-piano/琴伤.mid "琴伤" %}
-{% midi /images/general-piano/半岛铁盒.mid "半岛铁盒" %}
-{% midi /images/general-piano/暗香.mid "暗香" %}
-{% midi /images/general-piano/传奇.mid "传奇" %}
+<figure>
+  {% midi /images/general-piano/琵琶语.mid "琵琶语" width=480 inline %}
+  {% midi /images/general-piano/欢沁.mid "欢沁" width=480 inline %}
+  {% midi /images/general-piano/琴伤.mid "琴伤" width=480 inline %}
+  {% midi /images/general-piano/半岛铁盒.mid "半岛铁盒" width=480 inline %}
+  {% midi /images/general-piano/暗香.mid "暗香" width=480 inline %}
+  {% midi /images/general-piano/传奇.mid "传奇" width=480 inline %}
+</figure>
 
 **影视与动漫**
 
-{% midi /images/general-piano/圣女之歌.mid "圣女之歌" %}
-{% midi /images/general-piano/序曲_天地孤影任我行.mid "天地孤影任我行" %}
-{% midi /images/general-piano/鸟の诗.mid "鸟の诗" %}
-{% midi /images/general-piano/terminator.mid "Terminator" %}
-{% midi /images/general-piano/豪勇七蛟龙.mid "豪勇七蛟龙" %}
+<figure>
+  {% midi /images/general-piano/圣女之歌.mid "圣女之歌" width=480 inline %}
+  {% midi /images/general-piano/序曲_天地孤影任我行.mid "天地孤影任我行" width=480 inline %}
+  {% midi /images/general-piano/鸟の诗.mid "鸟の诗" width=480 inline %}
+  {% midi /images/general-piano/terminator.mid "Terminator" width=480 inline %}
+  {% midi /images/general-piano/豪勇七蛟龙.mid "豪勇七蛟龙" width=480 inline %}
+</figure>
 
 ## 五线谱转写
 

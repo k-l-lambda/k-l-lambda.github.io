@@ -15,6 +15,7 @@
 .lilylet-status { color: #666; }
 .lilylet-score { overflow-x: auto; padding: .7em; }
 .lilylet-score svg { display: block; max-width: none; }
+.lilylet-score > svg { margin-inline: auto; }
 @media (max-width: 480px) { .lilylet-controls { gap: 6px; margin: 6px; padding: 6px; flex-wrap: wrap; } .lilylet-status { flex-basis: 100%; } }
 
 /* Color only active noteheads; retain the original stems, beams and lyrics. */
