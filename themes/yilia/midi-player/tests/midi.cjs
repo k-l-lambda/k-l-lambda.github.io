@@ -49,6 +49,16 @@ async function main() {
   for (const option of ['width=0', 'height=-1', 'width=calc(100%)', 'width=100%;color:red', 'height=50%']) {
     await assert.rejects(() => hexo.extend.tag.render(`{% midi /test.mid ${option} %}`));
   }
+  const inline = await hexo.extend.tag.render('{% midi /test.mid "Side by side" inline=true width=40% %}');
+  assert.match(inline, /class="midi-embed midi-embed-inline"/);
+  assert.match(inline, /--midi-inline-width:40%/);
+  assert.match(inline, /width:100%/);
+  assert.match(inline, /title="Side by side"/);
+  const shorthand = await hexo.extend.tag.render('{% midi /test.mid "Side by side" inline width=40% %}');
+  assert.equal(shorthand, inline);
+  const block = await hexo.extend.tag.render('{% midi /test.mid inline=false %}');
+  assert.doesNotMatch(block, /midi-embed-inline|inline=false/);
+  await assert.rejects(() => hexo.extend.tag.render('{% midi /test.mid inline=yes %}'));
   await assert.rejects(() => hexo.extend.tag.render('{% midi javascript:alert(1) %}'));
   await assert.rejects(() => hexo.extend.tag.render('{% midi %}'));
   await hexo.exit();

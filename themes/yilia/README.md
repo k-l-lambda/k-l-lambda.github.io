@@ -213,3 +213,18 @@ aboutme: 很惭愧<br><br>只做了一点微小的工作<br>谢谢大家
 ```
 
 
+
+## Inline MIDI players
+
+Adjacent MIDI tags with `inline` share a row (two players by default).
+On screens up to 767px wide, they stack vertically. Omit the option or use
+`inline=false` for the usual block layout. `inline=true` is also supported. In inline mode, `width` sizes the
+outer player wrapper, while `height` retains its existing meaning.
+
+```text
+{% midi /images/general-piano/hi-en.mid "English" inline %}
+{% midi /images/general-piano/hi-zh.mid "中文" inline %}
+```
+
+Keep the tags adjacent, without intervening prose. For a custom desktop width,
+add e.g. `width=40%` to either tag.

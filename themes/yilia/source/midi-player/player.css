@@ -12,3 +12,5 @@ html,body{margin:0;padding:0;background:transparent}*{box-sizing:border-box}.pla
 @media(max-width:320px){.transport{flex-wrap:wrap}}
 
 .transport .seek{flex:1 1 0;width:0;min-width:24px;margin:0;accent-color:#6ce2b6}.transport{padding-bottom:10px;flex-wrap:nowrap}.speed-label{margin-left:0}@media(max-width:380px){.transport{gap:4px}.transport .clock{font-size:9px}.transport .loading{flex-basis:18px;width:18px}.transport .play{min-width:48px;padding:6px 4px}.transport .restart{padding:6px 4px}}
+
+.header-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}.player .download{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;color:#91a5c2;border-radius:5px;text-decoration:none}.player .download:hover{color:#6ce2b6;background:#24364f}.player header>div:first-child{min-width:0}

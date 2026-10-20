@@ -151,6 +151,7 @@ async function loadMidi() {
   if (!raw) throw new Error('No MIDI file specified.');
   const url = new URL(raw, location.origin);
   if (!['http:', 'https:'].includes(url.protocol)) throw new Error('Unsupported MIDI URL.');
+  $('.download').href = url.href; $('.download').hidden = false;
   bytes = await fetchBytes(url);
   data = timeline(new Uint8Array(bytes));
   if (!data.notes.length || data.duration <= 0) throw new Error('This file contains no playable notes.');
