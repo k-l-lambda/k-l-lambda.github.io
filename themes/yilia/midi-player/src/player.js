@@ -14,7 +14,7 @@ $('.title').textContent = params.get('title') || 'MIDI piano roll';
 const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
 const format = n => `${Math.floor(n / 60)}:${Math.floor(n % 60).toString().padStart(2, '0')}`;
 let data, bytes, engine, unsubscribe, initializing, timer, started = false, playing = false;
-let position = 0, offset = 0, zoom = 1, width = 600, height = 270, low = 36, high = 84;
+let position = 0, offset = 0, width = 600, height = 270, low = 36, high = 84;
 let longest = 0, dirty = true, generation = 0, dead = false;
 let busy = false;
 function statusLabel(label) {
@@ -36,7 +36,7 @@ function hideLoading() {
   $('.loading').dataset.phase = 'ready'; statusLabel('Piano ready'); play.disabled = false; controls(); draw();
 }
 const left = 46, top = 23, bottom = 10;
-const span = () => Math.max((data?.duration || 8) / zoom, .1);
+const span = () => Math.max((data?.duration || 8), .1);
 const client = {deactivate() {
   playing = false; started = false; generation++; clearTimeout(timer); controls(); draw();
 }};
@@ -198,7 +198,6 @@ play.addEventListener('click', async () => {
 $('.restart').addEventListener('click', () => seekTo(0));
 seek.addEventListener('input', () => seekTo(Number(seek.value)));
 $('.speed').addEventListener('change', e => engine?.speed(client, Number(e.target.value)));
-$('.zoom').addEventListener('input', e => {zoom = Number(e.target.value); offset = clamp(position - span() * .4, 0, Math.max(0, (data?.duration || 0) - span())); dirty = true; draw();});
 canvas.addEventListener('click', e => {const x = e.clientX - canvas.getBoundingClientRect().left; if (x >= left) seekTo(offset + (x - left) / (width - left) * span());});
 canvas.addEventListener('keydown', e => {if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {e.preventDefault(); seekTo(position + (e.key === 'ArrowRight' ? 1 : -1));}});
 const observer = new ResizeObserver(resize); observer.observe(canvas);

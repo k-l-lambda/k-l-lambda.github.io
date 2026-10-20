@@ -1,7 +1,7 @@
 {
   "name": "yilia-lilylet-build",
   "private": true,
-  "scripts": {"build": "node build.mjs", "build:check": "node build.mjs --check"},
+  "scripts": {"build": "node build.mjs", "build:check": "node build.mjs --check", "test": "node tests/mathjax.cjs"},
   "devDependencies": {
     "@k-l-lambda/lilylet-markdown": "0.1.62",
     "esbuild": "0.21.5"

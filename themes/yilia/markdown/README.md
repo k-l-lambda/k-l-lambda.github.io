@@ -53,3 +53,8 @@ During playback, noteheads are highlighted from Verovio’s millisecond timemap
 using the audio engine’s MIDI position. The timemap is extracted once per
 score; pauses, seeks, rest passages and player switches update or clear
 highlights without reloading MEI or retaining the engraving toolkit.
+
+`mathjax.cjs` preserves standalone `$$` display blocks before Markdown-it
+can interpret TeX underscores as emphasis. MathJax still typesets them in
+the browser; no extra math dependency is installed. Regression checks run
+with `npm test --prefix themes/yilia/source-src/lilylet` from the Hexo root.

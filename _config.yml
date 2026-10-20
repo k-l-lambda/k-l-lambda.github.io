@@ -126,6 +126,7 @@ markdown:
     typographer: true
     quotes: '“”‘’'
   plugins:
+    - name: ./themes/yilia/markdown/mathjax.cjs
     - markdown-it-abbr
     - markdown-it-footnote
     - markdown-it-ins
