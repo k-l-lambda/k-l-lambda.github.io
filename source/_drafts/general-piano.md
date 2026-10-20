@@ -1,5 +1,5 @@
 ---
-title: 钢琴作为通用声音拟合器
+title: 钢琴，作为通用声音拟合器
 tags:
 - essay
 - piano
@@ -9,8 +9,13 @@ tags:
 ---
 
 <figure>
-  {% midi /images/general-piano/hi-en.mid "Hi, I'm a smart piano." width=480 inline %}
-  {% midi /images/general-piano/hi-zh.mid "你好，我是一架智慧钢琴。" width=480 inline %}
+  <picture>
+    {% midi /images/general-piano/hi-en.mid "Hi, I'm a smart piano." width=480 inline %}
+    {% midi /images/general-piano/hi-zh.mid "你好，我是一架智慧钢琴。" width=480 inline %}
+  </picture>
+  <figcaption>
+    如果钢琴会说话，听起来什么样？
+  <figcaption>
 </figure>
 
 
@@ -18,9 +23,11 @@ tags:
 
 这些作曲家都在做同一件事：把钢琴当作通用音色画布。他们并不满足于“钢琴只弹钢琴该弹的东西”。
 
-这让我想到一个更极端的问题。如果不考虑演奏可行性——不管手指够不够、踏板忙不忙得过来——纯粹从声音合成的角度看，一架固定音色的三角钢琴，用为**通用声音拟合器**极限能做到什么程度？
+这让我想到一个更极端的问题。如果不考虑演奏可行性——不管手指够不够、踏板忙不忙得过来——纯粹从声音合成的角度看，一架固定音色的三角钢琴，作为**通用声音拟合器**极限能做到什么程度？
 
 我的核心发现可以概括为三点。
+
+<!-- more -->
 
 1. 时间轴上的密集表示，是语音可辨识度的关键。
 
@@ -41,6 +48,7 @@ tags:
 <figure>
   {% midi /images/general-piano/quiet-night.mid "静夜思" width=480 inline %}
   {% midi /images/general-piano/spring-dawn.mid "春晓" width=480 inline %}
+  {% midi /images/general-piano/明月几时有.mid "明月几时有" width=800 inline %}
 </figure>
 
 **铃声与音效**
@@ -144,6 +152,8 @@ tags:
 ```
 
 ## 拟合算法
+
+项目源代码：[k-l-lambda/speaking-midi](https://github.com/k-l-lambda/speaking-midi)
 
 ### 问题定义
 
