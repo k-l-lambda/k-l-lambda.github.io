@@ -23,15 +23,15 @@ tags:
 
 1. 时间轴上的密集表示，是语音可辨识度的关键。
 
-  把输入语音切成每 20 ms 一个的短音符，在 88 个琴键上联合优化激活强度，语音识别器（Whisper）居然能从钢琴渲染出的“叮叮咚咚”里读出中文诗。五段诗词的平均字错误率（CER）从早期稀疏路线的 100% 降到了 68%。这说明钢琴声音里确实可以保留足够的语音线索。
+   把输入语音切成每 20 ms 一个的短音符，在 88 个琴键上联合优化激活强度，语音识别器（Whisper）居然能从钢琴渲染出的“叮叮咚咚”里读出中文诗。五段诗词的平均字错误率（CER）从早期稀疏路线的 100% 降到了 68%。这说明钢琴声音里确实可以保留足够的语音线索。
 
-1. 密集表示用在器乐上会变成灾难。
+2. 密集表示用在器乐上会变成灾难。
 
-  当成千上万个短音符砸向一首流行歌时，听感不是音乐，而是白噪声般的密集敲击。给音符赋予自适应时值——低音铺长音、中高音用中等长度——器乐的音乐性立即回归。《画心》的音符数从 2706 个骤降到 473 个，频谱误差反而基本维持。
+   当成千上万个短音符砸向一首流行歌时，听感不是音乐，而是白噪声般的密集敲击。给音符赋予自适应时值——低音铺长音、中高音用中等长度——器乐的音乐性立即回归。《画心》的音符数从 2706 个骤降到 473 个，频谱误差反而基本维持。
 
 3. 长时值会牺牲语音细节，并带来“风铃感”杂音。
 
-  当音符变长，歌词的可识别度随之下降；同时，过多的高音谐波叠加产生一种类似风铃的泛音杂响。最终采用分音区时间网格：低音区继续用长音支撑结构，高音区回到 10 ms 级别的短音刻画快速变化，在两者之间取得平衡。
+   当音符变长，歌词的可识别度随之下降；同时，过多的高音谐波叠加产生一种类似风铃的泛音杂响。最终采用分音区时间网格：低音区继续用长音支撑结构，高音区回到 10 ms 级别的短音刻画快速变化，在两者之间取得平衡。
 
 下面按类别展示一些拟合结果。所有 MIDI 都由同一套固定音色（FluidSynth Grand Piano, bank 0 / program 0）渲染，可以直接点击试听。
 
@@ -40,25 +40,21 @@ tags:
 {% midi /images/general-piano/quiet-night.mid "静夜思" %}
 {% midi /images/general-piano/spring-dawn.mid "春晓" %}
 
-**电子游戏**
+**铃声与音效**
 
-8-bit 旋律天然适合钢琴分解，结果出奇地有复古感。
+{% midi /images/general-piano/wechat.mid "WeChat" %}
+{% midi /images/general-piano/iphone.mid "iPhone" %}
+
+**电子游戏**
 
 {% midi /images/general-piano/90坦克.mid "90坦克" %}
 {% midi /images/general-piano/魂斗罗.mid "魂斗罗" %}
 {% midi /images/general-piano/炸弹人.mid "炸弹人" %}
 {% midi /images/general-piano/超级玛莉-pass.mid "超级玛莉" %}
 {% midi /images/general-piano/彩虹岛.mid "彩虹岛" %}
+{% midi /images/general-piano/功夫.mid "功夫" %}
 
-**影视与动漫**
-
-{% midi /images/general-piano/terminator.mid "Terminator" %}
-{% midi /images/general-piano/豪勇七蛟龙.mid "豪勇七蛟龙" %}
-{% midi /images/general-piano/圣女之歌.mid "圣女之歌" %}
-{% midi /images/general-piano/序曲_天地孤影任我行.mid "天地孤影任我行" %}
-{% midi /images/general-piano/鸟の诗.mid "鸟の诗" %}
-
-**流行与中国风**
+**器乐与歌曲**
 
 {% midi /images/general-piano/琵琶语.mid "琵琶语" %}
 {% midi /images/general-piano/欢沁.mid "欢沁" %}
@@ -66,12 +62,16 @@ tags:
 {% midi /images/general-piano/半岛铁盒.mid "半岛铁盒" %}
 {% midi /images/general-piano/暗香.mid "暗香" %}
 {% midi /images/general-piano/传奇.mid "传奇" %}
-{% midi /images/general-piano/功夫.mid "功夫" %}
 
-**系统音效**
+**影视与动漫**
 
-{% midi /images/general-piano/wechat.mid "WeChat" %}
-{% midi /images/general-piano/iphone.mid "iPhone" %}
+{% midi /images/general-piano/圣女之歌.mid "圣女之歌" %}
+{% midi /images/general-piano/序曲_天地孤影任我行.mid "天地孤影任我行" %}
+{% midi /images/general-piano/鸟の诗.mid "鸟の诗" %}
+{% midi /images/general-piano/terminator.mid "Terminator" %}
+{% midi /images/general-piano/豪勇七蛟龙.mid "豪勇七蛟龙" %}
+
+## 五线谱转写
 
 开头两段语音MIDI对应的五线谱。由于曲谱记谱缺少MIDI的逐音符力度，播放效果略差。
 
