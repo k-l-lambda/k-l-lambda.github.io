@@ -90,6 +90,11 @@ tags:
   {% midi /images/general-piano/豪勇七蛟龙.mid "豪勇七蛟龙" width=480 inline %}
 </figure>
 
+
+## Demo
+
+生成你的拟声MIDI: [🤗 Speaking MIDI](https://huggingface.co/spaces/k-l-lambda/speaking-midi)
+
 ## 五线谱转写
 
 开头两段语音MIDI对应的五线谱。由于曲谱记谱缺少MIDI的逐音符力度，播放效果略差。
