@@ -12,7 +12,24 @@ tags:
 {% midi /images/general-piano/hi-en.mid "Hi, I'm a smart piano." %}
 {% midi /images/general-piano/hi-zh.mid "你好，我是一架智慧钢琴。" %}
 
-以上两段语音MIDI对应的五线谱。由于曲谱记谱缺少MIDI的逐音符力度，播放效果略差。
+[[钢琴作品中有很多以华丽的高音声部伴奏为特色，特别是李斯特的作品。这里可举两三个著名作品为例。
+还有一些以不同的和声效果制造特定声音意象，如chopin op9 no1中的远方回声，再如野蜂飞舞，再如一些水的意象的片段，可举德彪西的作品。]]
+
+[[现在我们想探讨一个问题，如果作为通用声音拟合器，包括人类语音，在不限制演奏可行性的情况下，钢琴这种乐器能做到什么程度。]]
+
+[[核心发现：
+- 时间轴的密集表示可有效提升语音音频的可识别程度
+- 但密集表示应用到器乐音乐时会出现白噪声问题，自适应音符时值长度恢复了器乐作品的音乐性，且提升了信息压缩程度
+- 自适应音符时值长度方法降低了其中歌词的可识别度，同时带来一种高频风铃音的杂音现象。
+  采用分音区网格可兼顾音乐性和人声]]
+
+[[以{% midi /images/general-piano/filename.mid "title" %}的形式引用 images/general-piano/ 中的midi文件素材，分类演示拟合效果。
+素材文件包括：
+90坦克.mid  iphone.mid      传奇.mid      圣女之歌.mid             暗香.mid    炸弹人.mid  豪勇七蛟龙.mid     鸟の诗.mid
+hi-en.mid   terminator.mid  功夫.mid      序曲_天地孤影任我行.mid  枉凝眉.mid  琴伤.mid    超级玛莉-pass.mid
+hi-zh.mid   wechat.mid      半岛铁盒.mid  彩虹岛.mid               欢沁.mid    琵琶语.mid  魂斗罗.mid]]
+
+开头两段语音MIDI对应的五线谱。由于曲谱记谱缺少MIDI的逐音符力度，播放效果略差。
 
 ```lyl.play
 % Exact pitches/onsets/gates; individual MIDI velocities are not encoded.
@@ -70,23 +87,6 @@ tags:
 \staff "1" \numericTimeSignature \time 4/4 fs'''32[ <d e> e, <cs d e b' c cs d ds e f fs g a as> <fs gs as b cs d as'> <c ds f a as gs' a as>] r16 <cs d ds e f g gs>32[ <c cs ds e f fs g gs a as ds e fs gs c> <cs as' b c d e fs gs> <a' as> <a as>] r r16 r2 \addlyrics { 的 _ _ _ _ _ 吗？ _ _ _ _ } \\
 \staff "2" <g' a as>32[ <ds, f g gs a> ds <f g gs g' b cs d ds e f gs> <gs a b a' as d ds e> <ds f gs> ds <b' as''>] <c d b' f' fs as b>[ <cs g''>] r16 r8 r2 | %7
 ```
-
-[[钢琴作品中有很多以华丽的高音声部伴奏为特色，特别是李斯特的作品。这里可举两三个著名作品为例。
-还有一些以不同的和声效果制造特定声音意象，如chopin op9 no1中的远方回声，再如野蜂飞舞，再如一些水的意象的片段，可举德彪西的作品。]]
-
-[[现在我们想探讨一个问题，如果作为通用声音拟合器，包括人类语音，在不限制演奏可行性的情况下，钢琴这种乐器能做到什么程度。]]
-
-[[核心发现：
-- 时间轴的密集表示可有效提升语音音频的可识别程度
-- 但密集表示应用到器乐音乐时会出现白噪声问题，自适应音符时值长度恢复了器乐作品的音乐性，且提升了信息压缩程度
-- 自适应音符时值长度方法降低了其中歌词的可识别度，同时带来一种高频风铃音的杂音现象。
-  采用分音区网格可兼顾音乐性和人声]]
-
-[[以{% midi /images/general-piano/filename.mid "title" %}的形式引用 images/general-piano/ 中的midi文件素材，分类演示拟合效果。
-素材文件包括：
-90坦克.mid  iphone.mid      传奇.mid      圣女之歌.mid             暗香.mid    炸弹人.mid  豪勇七蛟龙.mid     鸟の诗.mid
-hi-en.mid   terminator.mid  功夫.mid      序曲_天地孤影任我行.mid  枉凝眉.mid  琴伤.mid    超级玛莉-pass.mid
-hi-zh.mid   wechat.mid      半岛铁盒.mid  彩虹岛.mid               欢沁.mid    琵琶语.mid  魂斗罗.mid]]
 
 ---
 
