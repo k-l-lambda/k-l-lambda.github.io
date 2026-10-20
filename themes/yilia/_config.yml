@@ -3,6 +3,8 @@
 menu:
   blog: /
   studio: /klstudio/
+  liylet: /lilylet-live-editor/
+  portolan: /portolan/
   #team: https://findlab.github.io/
   #tags: /tags
   #随笔: /tags/随笔/
@@ -10,6 +12,7 @@ menu:
 # SubNav
 subnav:
   github: "https://github.com/k-l-lambda"
+  huggingface: "https://huggingface.co/k-l-lambda"
   #weibo: "#"
   rss: "/atom.xml"
   #zhihu: "#"

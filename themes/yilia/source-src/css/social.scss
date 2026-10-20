@@ -56,6 +56,13 @@
                 border:1px solid #909ab6;
             }
         }
+        a.huggingface {
+            background: #ff9d0b;
+            border:1px solid #ff9d0b;
+            &:hover {
+                border:1px solid #e68a00;
+            }
+        }
         a.facebook {
             background: #3b5998;
             border:1px solid #3b5998;
