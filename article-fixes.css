@@ -1,0 +1,8 @@
+/* Native markers stay aligned with the first paragraph of loose list items. */
+.article-entry ol { list-style: decimal outside; padding-left: 1.8em; }
+.article-entry ol > li { display: list-item; list-style: inherit; }
+.article-entry ol > li::before { content: none; }
+
+/* Adjacent inline MIDI embeds share a row; width applies to their wrapper. */
+.midi-embed-inline { display: inline-block; vertical-align: top; width: var(--midi-inline-width, calc(50% - 12px)); max-width: calc(100% - 8px); margin: 4px; }
+@media (max-width: 767px) { .midi-embed-inline { width: calc(100% - 8px); } }

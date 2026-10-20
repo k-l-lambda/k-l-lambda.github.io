@@ -38,7 +38,7 @@
 <meta property="og:description" content="In 3D space, an object has 6 &times; 4 &#x3D; 24 orthogonal orientations in total.  Motivation Canonical Rubik’s Cube solver algorithm1 constructs cube state from face colors and a lot of p">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-05T17:00:57.000Z">
-<meta property="article:modified_time" content="2026-10-20T07:10:48.860Z">
+<meta property="article:modified_time" content="2026-10-20T07:52:29.044Z">
 <meta property="article:author" content="K.L.">
 <meta property="article:tag" content="math">
 <meta property="article:tag" content="algebra">
@@ -261,28 +261,28 @@ And right on the reflection interface <strong>R</strong><sup>3</sup> subspace, d
 <p>$$i^{2} \cong j^{2} \cong k^{2} \cong 1$$</p>
 <p>means 360° rotation returns to origin.</p>
 <p>$$
-i \cong i^{-1} \\
-j \cong j^{-1} \\
+i \cong i^{-1} \\\\
+j \cong j^{-1} \\\\
 k \cong k^{-1}
 $$</p>
 <p>means ±180° rotation (along a same axis) arrives the same orientation.</p>
 <p>$$
-i^{\frac{3}{2}} \cong i^{-\frac{1}{2}} \\
-j^{\frac{3}{2}} \cong j^{-\frac{1}{2}} \\
+i^{\frac{3}{2}} \cong i^{-\frac{1}{2}} \\\\
+j^{\frac{3}{2}} \cong j^{-\frac{1}{2}} \\\\
 k^{\frac{3}{2}} \cong k^{-\frac{1}{2}}
 $$</p>
 <p>means 270° rotation equal -90° rotation (along a same axis).</p>
 <p>Not very obvious, but we can get rest items by computaion. The twice heterogeneous quarter rotation (can also be treated as 120° rotation along a cube diagonal):</p>
 <p>$$
-\sqrt{i}\sqrt{j} = \sqrt{j}\sqrt{k} = \sqrt{k}\sqrt{i} \\
-\sqrt{i}\sqrt[-]{j} = \sqrt[-]{j}\sqrt[-]{k} = \sqrt[-]{k}\sqrt{i} \\
-\sqrt[-]{i}\sqrt{j} = \sqrt{j}\sqrt[-]{k} = \sqrt[-]{k}\sqrt[-]{i} \\
+\sqrt{i}\sqrt{j} = \sqrt{j}\sqrt{k} = \sqrt{k}\sqrt{i} \\\\
+\sqrt{i}\sqrt[-]{j} = \sqrt[-]{j}\sqrt[-]{k} = \sqrt[-]{k}\sqrt{i} \\\\
+\sqrt[-]{i}\sqrt{j} = \sqrt{j}\sqrt[-]{k} = \sqrt[-]{k}\sqrt[-]{i} \\\\
 \sqrt[-]{i}\sqrt[-]{j} = \sqrt[-]{j}\sqrt{k} = \sqrt[-]{i}\sqrt{k}
 $$</p>
 <p>$$
-\sqrt{j}\sqrt{i} = \sqrt[-]{k}\sqrt{j} = \sqrt{i}\sqrt[-]{k} \\
-\sqrt[-]{j}\sqrt{i} = \sqrt{k}\sqrt[-]{j} = \sqrt{i}\sqrt{k} \\
-\sqrt{j}\sqrt[-]{i} = \sqrt{k}\sqrt{j} = \sqrt[-]{i}\sqrt{k} \\
+\sqrt{j}\sqrt{i} = \sqrt[-]{k}\sqrt{j} = \sqrt{i}\sqrt[-]{k} \\\\
+\sqrt[-]{j}\sqrt{i} = \sqrt{k}\sqrt[-]{j} = \sqrt{i}\sqrt{k} \\\\
+\sqrt{j}\sqrt[-]{i} = \sqrt{k}\sqrt{j} = \sqrt[-]{i}\sqrt{k} \\\\
 \sqrt[-]{j}\sqrt[-]{i} = \sqrt[-]{k}\sqrt[-]{j} = \sqrt[-]{i}\sqrt[-]{k}
 $$</p>
 <p>Which $\sqrt[-]{x}$ stand for $x^{-\frac{1}{2}}$.</p>
@@ -294,11 +294,11 @@ Based on these rules, we can do most of algebra deductions to simplify a complex
 We can call this kind of symmetry <em>ternary permutability</em>. And I think ternary permutability can be treated as the core of quaternion.</p>
 <p>And thrice quarter rotation (can also be treated as 180° rotation along a section square diagonal):</p>
 <p>$$
-\sqrt{i}j = \sqrt[-]{i}k = j\sqrt[-]{i} = k\sqrt[]{i} \\
-\sqrt[-]{i}j = \sqrt[]{i}k = j\sqrt[]{i} = k\sqrt[-]{i} \\
-\sqrt{j}k = \sqrt[-]{j}i = k\sqrt[-]{j} = i\sqrt[]{j} \\
-\sqrt[-]{j}k = \sqrt[]{j}i = k\sqrt[]{j} = i\sqrt[-]{j} \\
-\sqrt{k}i = \sqrt[-]{k}j = i\sqrt[-]{k} = j\sqrt[]{k} \\
+\sqrt{i}j = \sqrt[-]{i}k = j\sqrt[-]{i} = k\sqrt[]{i} \\\\
+\sqrt[-]{i}j = \sqrt[]{i}k = j\sqrt[]{i} = k\sqrt[-]{i} \\\\
+\sqrt{j}k = \sqrt[-]{j}i = k\sqrt[-]{j} = i\sqrt[]{j} \\\\
+\sqrt[-]{j}k = \sqrt[]{j}i = k\sqrt[]{j} = i\sqrt[-]{j} \\\\
+\sqrt{k}i = \sqrt[-]{k}j = i\sqrt[-]{k} = j\sqrt[]{k} \\\\
 \sqrt[-]{k}i = \sqrt[]{k}j = i\sqrt[]{k} = j\sqrt[-]{k}
 $$</p>
 <p>These 6 lines, plus basic $±\sqrt{i}$, $±\sqrt{j}$, $±\sqrt{k}$, these 12 items are values of all reposition permutations of $(\frac{\sqrt{2}}{2}, ±\frac{\sqrt{2}}{2}, 0, 0)$ multipy by $(1, i, j, k)^{T}$,
@@ -308,14 +308,14 @@ Because these items’ order number is $\frac{1}{2}$ or $\frac{3}{2}$, we call t
 (Also an answer to Euler angles problem mentioned ealier.)</p>
 <p>$$
 \begin{aligned}
-\sqrt{i}\sqrt{j}\sqrt{k}\sqrt{i}\sqrt{j}\sqrt{k} &amp;= \sqrt{i}(\sqrt{\textbf{j}}\sqrt{\textbf{k}})\sqrt{i}\sqrt{j}\sqrt{k} \\
-&amp; = \sqrt{i}(\sqrt{i}\sqrt{j})\sqrt{i}\sqrt{j}\sqrt{k} \\
-&amp; = \sqrt{i}\sqrt{i}(\sqrt{\textbf{j}}\sqrt{\textbf{i}})\sqrt{j}\sqrt{k} \\
-&amp; = \sqrt{i}\sqrt{i}(\sqrt{i}\sqrt[-]{k})\sqrt{j}\sqrt{k} \\
-&amp; = \sqrt{i}\sqrt{i}\sqrt{i}(\sqrt[-]{\textbf{k}}\sqrt{\textbf{j}})\sqrt{k} \\
-&amp; = \sqrt{i}\sqrt{i}\sqrt{i}(\sqrt{i}\sqrt[-]{k})\sqrt{k} \\
-&amp; = (\sqrt{i}\sqrt{i}\sqrt{i}\sqrt{i})(\sqrt[-]{k}\sqrt{k}) \\
-&amp; = i^{2} \cdot 1 \\
+\sqrt{i}\sqrt{j}\sqrt{k}\sqrt{i}\sqrt{j}\sqrt{k} &amp;= \sqrt{i}(\sqrt{\textbf{j}}\sqrt{\textbf{k}})\sqrt{i}\sqrt{j}\sqrt{k} \\\\
+&amp; = \sqrt{i}(\sqrt{i}\sqrt{j})\sqrt{i}\sqrt{j}\sqrt{k} \\\\
+&amp; = \sqrt{i}\sqrt{i}(\sqrt{\textbf{j}}\sqrt{\textbf{i}})\sqrt{j}\sqrt{k} \\\\
+&amp; = \sqrt{i}\sqrt{i}(\sqrt{i}\sqrt[-]{k})\sqrt{j}\sqrt{k} \\\\
+&amp; = \sqrt{i}\sqrt{i}\sqrt{i}(\sqrt[-]{\textbf{k}}\sqrt{\textbf{j}})\sqrt{k} \\\\
+&amp; = \sqrt{i}\sqrt{i}\sqrt{i}(\sqrt{i}\sqrt[-]{k})\sqrt{k} \\\\
+&amp; = (\sqrt{i}\sqrt{i}\sqrt{i}\sqrt{i})(\sqrt[-]{k}\sqrt{k}) \\\\
+&amp; = i^{2} \cdot 1 \\\\
 &amp; = -1 \cong 1
 \end{aligned}
 $$</p>
@@ -666,6 +666,8 @@ MathJax.Hub.Queue(function() {
 
 <link rel="stylesheet" href="/lilylet.css">
 <script defer src="/midi-player/lilylet.js"></script>
+
+<link rel="stylesheet" href="/article-fixes.css">
 
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">

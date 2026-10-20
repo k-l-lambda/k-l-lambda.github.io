@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MIDI player</title><link rel="stylesheet" href="./player.css"></head><body>
 <section class="player" aria-label="MIDI piano roll player">
-  <header><div><strong class="title">MIDI piano roll</strong><span class="subtitle">MIDI player</span></div><span class="note-count">No MIDI loaded</span></header>
+  <header><div><strong class="title">MIDI piano roll</strong><span class="subtitle">MIDI player</span></div><div class="header-actions"><span class="note-count">No MIDI loaded</span><a class="download" hidden download title="Download MIDI" aria-label="Download MIDI"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 21h14"/></svg></a></div></header>
   <div class="transport">
     <button class="play" disabled aria-label="Play piano MIDI">▶ Play</button>
     <button class="restart" disabled aria-label="Restart playback" title="Restart playback"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:block"><path d="M4 5v14M20 12H8m5-5-5 5 5 5"/></svg></button>
@@ -12,12 +12,11 @@
       <svg class="status-icon icon-error" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6m0 3v1"/></svg>
     </span>
     <output class="clock" aria-label="Playback time">0:00 / 0:00</output>
+    <input class="seek" type="range" min="0" max="1" value="0" step="0.01" disabled aria-label="Playback position">
     <label class="speed-label">Speed <select class="speed" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label>
   </div>
-  <input class="seek" type="range" min="0" max="1" value="0" step="0.01" disabled aria-label="Playback position">
   <div class="roll-wrap"><canvas class="roll" tabindex="0" role="img" aria-label="MIDI notes by time and pitch. Click to seek; use left and right arrows to move one second."></canvas>
   </div>
-  <footer><span>Click the roll to seek · lit notes are playing</span><label>Zoom <input class="zoom" type="range" min="1" max="4" step="0.25" value="1" aria-label="Piano roll zoom"></label></footer>
   <p class="error" role="status"></p>
 </section>
 <script defer src="./player.js"></script></body></html>
