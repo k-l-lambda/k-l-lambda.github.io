@@ -6,3 +6,19 @@
 /* Adjacent inline MIDI embeds share a row; width applies to their wrapper. */
 .midi-embed-inline { display: inline-block; vertical-align: top; width: var(--midi-inline-width, calc(50% - 12px)); max-width: calc(100% - 8px); margin: 4px; }
 @media (max-width: 767px) { .midi-embed-inline { width: calc(100% - 8px); } }
+
+/* details 折叠标记：收起时三角朝右、展开时朝下，画在 summary 文字之后。 */
+.article-entry details > summary { list-style: none; cursor: pointer; }
+.article-entry details > summary::-webkit-details-marker { display: none; }
+.article-entry details > summary::marker { content: none; }
+.article-entry details > summary::after {
+  content: "";
+  display: inline-block;
+  margin-left: .4em;
+  vertical-align: middle;
+  border-style: solid;
+  border-width: .35em 0 .35em .55em;
+  border-color: transparent transparent transparent currentColor;
+  transition: transform .15s ease;
+}
+.article-entry details[open] > summary::after { transform: rotate(90deg); }
